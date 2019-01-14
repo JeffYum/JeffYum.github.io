@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent">
+  <meta name="description" content="在 view 中嵌入地图 用 Geocoder 将地址转换为坐标 添加和自定义 Pin 自定义注解">
 <meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Auto Layout">
-<meta property="og:url" content="http://yoursite.com/2018/10/11/chap5/index.html">
+<meta property="og:title" content="地图">
+<meta property="og:url" content="http://yoursite.com/2018/12/18/chap16 地图/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent">
+<meta property="og:description" content="在 view 中嵌入地图 用 Geocoder 将地址转换为坐标 添加和自定义 Pin 自定义注解">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:06:16.306Z">
+<meta property="og:updated_time" content="2019-01-14T08:19:07.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Auto Layout">
-<meta name="twitter:description" content="This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent">
+<meta name="twitter:title" content="地图">
+<meta name="twitter:description" content="在 view 中嵌入地图 用 Geocoder 将地址转换为坐标 添加和自定义 Pin 自定义注解">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/11/chap5/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/18/chap16 地图/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>Auto Layout | Jeff Ren</title>
+  <title>地图 | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/chap5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/18/chap16 地图/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Auto Layout
+          <h1 class="post-title" itemprop="name headline">地图
 
               
             
@@ -410,7 +410,7 @@
                 
               
 
-              <time title="Created: 2018-10-11 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-11T00:00:00+08:00">2018-10-11</time>
+              <time title="Created: 2018-12-18 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-18T00:00:00+08:00">2018-12-18</time>
             
 
             
@@ -427,7 +427,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-01-14 00:06:16" itemprop="dateModified" datetime="2019-01-14T00:06:16+08:00">2019-01-14</time>
+                <time title="Modified: 2019-01-14 16:19:07" itemprop="dateModified" datetime="2019-01-14T16:19:07+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +459,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/11/chap5/#comments" itemprop="discussionUrl">
+                <a href="/2018/12/18/chap16 地图/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/11/chap5/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/18/chap16 地图/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,23 +490,55 @@
 
       
         <blockquote>
-<p><em>This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent the objects in the view from moving everywhere. We discussed how to set and edit Auto Layout and some theories about it.</em></p>
+<ul>
+<li>在 view 中嵌入地图</li>
+<li>用 <strong>Geocoder</strong> 将地址转换为坐标</li>
+<li>添加和自定义 Pin</li>
+<li>自定义注解</li>
+</ul>
 </blockquote>
 <a id="more"></a>
-<p>An adaptive UI that responds appropriately to changes in screen size and device orientation.</p>
-<h2 id="Constraint-based-Layout-System"><a href="#Constraint-based-Layout-System" class="headerlink" title="Constraint-based Layout System"></a>Constraint-based Layout System</h2><p>There are two approaches to add them: </p>
-<ol>
-<li>layout button at the lower right corner</li>
-<li>Control-drag, hold the control key, drag the mouse to the orient that you want to set a constraint. When the view become blue, release clicking, a pop-over menu will show.</li>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><ol>
+<li>手动添加一条灰色的分割线，这条线实际上是一个高度为 1 的 view，记得设置 constraint 来保持高度。</li>
+<li>为了支持动态字体，需要将某些 constraint 设成 <code>Greater Than or Equal</code>。</li>
+<li>通常一个页面会有多于屏幕大小的内容，在编辑时没有滚动操作，所以有些内容会超出边框，为了便于编辑，我们可以将 controller 拉长。</li>
 </ol>
-<p><strong>Align:</strong> e.g. vertically center, horizontally center.</p>
-<p><strong>Spacing constraint:</strong> e.g. The label is 20 points away from the bottom</p>
-<p><strong>Safe Area:</strong> the entire view excluding the status bar, navigation bar or tab bar. It can make the objects layout correctly even if there are all kinds of bars.</p>
-<h2 id="Editing-Constraints"><a href="#Editing-Constraints" class="headerlink" title="Editing Constraints"></a>Editing Constraints</h2><p>Change the properties of constraints including relation, constant and priority.</p>
-<ol>
-<li>Attributes inspector</li>
-<li>Double click the constraint</li>
-</ol>
+<h2 id="嵌入地图"><a href="#嵌入地图" class="headerlink" title="嵌入地图"></a>嵌入地图</h2><p>首先要在 capability 中打开 Map framework。</p>
+<p>然后就是各种拖拽，详细页中一个 cell 放一个小 mapView，另开一个 controller 再放一个大 mapView，建立好 Segue。相应地创建和绑定 <code>RestaurantDetailMapCell.swift</code> 和 <code>MapViewController.swift</code>。</p>
+<blockquote>
+<p>复习如何创建 Segue？</p>
+<p>按住 <em>control</em>，从源头拖向目的地。 </p>
+</blockquote>
+<h2 id="Geocoder"><a href="#Geocoder" class="headerlink" title="Geocoder"></a>Geocoder</h2><p><em>Forward geocoding</em> 物理地址 -&gt; 全球坐标，<em>Reverse geocoding</em> 全球坐标 -&gt; 物理地址</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> geoCoder = <span class="type">CLGeocoder</span>()</span><br><span class="line">geoCoder.geocodeAddressString(<span class="string">"524 Ct St, Brooklyn, NY 11231"</span>, completionHandler: &#123; placemarks, error <span class="keyword">in</span></span><br><span class="line">	<span class="comment">// 操作 placemark</span></span><br><span class="line">	<span class="keyword">let</span> coordinate = placemark.location?.coordinate                                                                                  &#125;)</span><br></pre></td></tr></table></figure>
+<p>不要尝试在使用一次地理解码后再次使用，因为它在每个 app 中都是有速率限制的，当超出最大速率，地理解码器将会传出错误对象到 completion handler。</p>
+<h2 id="气球-annotation"><a href="#气球-annotation" class="headerlink" title="气球(annotation)"></a>气球(annotation)</h2><p>一个 annotation 实际上由两个对象组成，</p>
+<ul>
+<li><strong>an annotation object:</strong> 储存数据</li>
+<li><strong>an annotation view:</strong> 视觉</li>
+</ul>
+<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><ul>
+<li>markerTintColor - 背景色</li>
+<li>glyphText - 文本</li>
+<li>glyphImage - 图片</li>
+</ul>
+<p>要调整 annotation view，得采用 <code>MKMapViewDelegate</code> 协议，这个协议定义了一系列可选的方法，你可以用来接收地图相关的更新消息。map view 用了其中的一个方法来请求 annotation，每当 map view 需要 annotaion view 时，会调用 <code>mapView(_:viewFor:)</code>方法，现在我们还没有采用协议和提供实现，所以默认的 annotaiton view 被显示出来。</p>
+<p>既然我们要自定义，那还是基本步骤。采用协议：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MapViewController</span>: <span class="title">UIViewController</span>, <span class="title">MKMapViewDelegate</span></span></span><br></pre></td></tr></table></figure>
+<p>定义委托对象（连接）</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mapView.delegate = <span class="keyword">self</span></span><br></pre></td></tr></table></figure>
+<p>最后实现方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapView</span><span class="params">(<span class="number">_</span> mapView: MKMapView, viewFor annotation: MKAnnotation)</span></span> -&gt; <span class="type">MKAnnotationView</span>? &#123;</span><br><span class="line">    <span class="keyword">let</span> identifier = <span class="string">"MyMarker"</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> annotation.isKind(of: <span class="type">MKUserLocation</span>.<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> annoationView: <span class="type">MKMarkerAnnotationView</span>? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) <span class="keyword">as</span>? <span class="type">MKMarkerAnnotationView</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> annotationView == <span class="literal">nil</span> &#123;</span><br><span class="line">        annotationView = <span class="type">MKMarkerAnnotationView</span>(annotaiton: annotaion, reuseIdentifier: identifier)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    annotaitonView?.glyphText = <span class="string">"   "</span></span><br><span class="line">    annotationView?.markerTintColot = <span class="type">UIColor</span>.orange</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> annotationView</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有两种类型的 annotations</p>
+<ul>
+<li>Placemark</li>
+<li>Current location</li>
+</ul>
+<p>因为每当 map view 需要 annotaion view 时，会调用 <code>mapView(_:viewFor:)</code>方法。用户当前位置也是一种 annotaition，而我们的 app 没有打开显示用户位置，因此也不需要注解用户位置，所以当 annotation 是 current location 时，我们简单地返回 <code>nil</code>，即 4 - 6 行代码。</p>
+<p>为了提高性能，就像主页重复利用 cell 一样，我们重复利用 annotation view，如第 8 行代码所示。如果没有可利用的，则新建。</p>
+<h2 id="自定义地图"><a href="#自定义地图" class="headerlink" title="自定义地图"></a>自定义地图</h2><p>插入一些小属性，<code>viewDidLoad</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mapView.showsCompass = <span class="literal">true</span></span><br><span class="line">mapView.showsScale = <span class="literal">true</span></span><br><span class="line">mapView.showsTraffic = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>## </p>
 
       
     </div>
@@ -577,8 +609,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/10/chap4/" rel="next" title="Explaination of Hello World App">
-                <i class="fa fa-chevron-left"></i> Explaination of Hello World App
+              <a href="/2018/12/13/chap15 导航栏自定义，扩展，动态类型/" rel="next" title="导航栏自定义，扩展，动态类型">
+                <i class="fa fa-chevron-left"></i> 导航栏自定义，扩展，动态类型
               </a>
             
           </div>
@@ -587,8 +619,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/" rel="prev" title="牛顿法解非线性方程组（MATLAB 实现）">
-                牛顿法解非线性方程组（MATLAB 实现） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/24/chap17 基本动画，视觉效果/" rel="prev" title="基本动画，视觉效果">
+                基本动画，视觉效果 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -765,7 +797,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraint-based-Layout-System"><span class="nav-number">1.</span> <span class="nav-text">Constraint-based Layout System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Editing-Constraints"><span class="nav-number">2.</span> <span class="nav-text">Editing Constraints</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小技巧"><span class="nav-number">1.</span> <span class="nav-text">小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌入地图"><span class="nav-number">2.</span> <span class="nav-text">嵌入地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geocoder"><span class="nav-number">3.</span> <span class="nav-text">Geocoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#气球-annotation"><span class="nav-number">4.</span> <span class="nav-text">气球(annotation)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义"><span class="nav-number">4.1.</span> <span class="nav-text">自定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义地图"><span class="nav-number">5.</span> <span class="nav-text">自定义地图</span></a></li></ol></div>
             
 
           </div>
@@ -921,9 +953,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://yoursite.com/2018/10/11/chap5/";
-        this.page.identifier = "2018/10/11/chap5/";
-        this.page.title = 'Auto Layout';
+        this.page.url = "http://yoursite.com/2018/12/18/chap16 地图/";
+        this.page.identifier = "2018/12/18/chap16 地图/";
+        this.page.title = '地图';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

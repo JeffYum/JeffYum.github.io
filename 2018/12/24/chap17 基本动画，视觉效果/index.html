@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent">
+  <meta name="description" content="动画是什么？模拟运动和形状，通过快速显示一系列静态图片(帧)，带来对象在移动或改变大小的错觉。">
 <meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Auto Layout">
-<meta property="og:url" content="http://yoursite.com/2018/10/11/chap5/index.html">
+<meta property="og:title" content="基本动画，视觉效果">
+<meta property="og:url" content="http://yoursite.com/2018/12/24/chap17 基本动画，视觉效果/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent">
+<meta property="og:description" content="动画是什么？模拟运动和形状，通过快速显示一系列静态图片(帧)，带来对象在移动或改变大小的错觉。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:06:16.306Z">
+<meta property="og:updated_time" content="2019-01-14T08:20:36.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Auto Layout">
-<meta name="twitter:description" content="This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent">
+<meta name="twitter:title" content="基本动画，视觉效果">
+<meta name="twitter:description" content="动画是什么？模拟运动和形状，通过快速显示一系列静态图片(帧)，带来对象在移动或改变大小的错觉。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/11/chap5/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/24/chap17 基本动画，视觉效果/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>Auto Layout | Jeff Ren</title>
+  <title>基本动画，视觉效果 | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/chap5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/chap17 基本动画，视觉效果/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Auto Layout
+          <h1 class="post-title" itemprop="name headline">基本动画，视觉效果
 
               
             
@@ -410,7 +410,7 @@
                 
               
 
-              <time title="Created: 2018-10-11 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-11T00:00:00+08:00">2018-10-11</time>
+              <time title="Created: 2018-12-24 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-24T00:00:00+08:00">2018-12-24</time>
             
 
             
@@ -427,7 +427,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-01-14 00:06:16" itemprop="dateModified" datetime="2019-01-14T00:06:16+08:00">2019-01-14</time>
+                <time title="Modified: 2019-01-14 16:20:36" itemprop="dateModified" datetime="2019-01-14T16:20:36+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +459,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/11/chap5/#comments" itemprop="discussionUrl">
+                <a href="/2018/12/24/chap17 基本动画，视觉效果/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/11/chap5/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/24/chap17 基本动画，视觉效果/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -489,23 +489,42 @@
       
 
       
-        <blockquote>
-<p><em>This is the first article that I use English totally, because the content in this chapter is talking about some apparent working, doesn’t involve any logical code. In short, Auto Layout is to prevent the objects in the view from moving everywhere. We discussed how to set and edit Auto Layout and some theories about it.</em></p>
-</blockquote>
+        <h2 id="动画是什么？"><a href="#动画是什么？" class="headerlink" title="动画是什么？"></a>动画是什么？</h2><p>模拟运动和形状，通过快速显示一系列静态图片(帧)，带来对象在移动或改变大小的错觉。</p>
 <a id="more"></a>
-<p>An adaptive UI that responds appropriately to changes in screen size and device orientation.</p>
-<h2 id="Constraint-based-Layout-System"><a href="#Constraint-based-Layout-System" class="headerlink" title="Constraint-based Layout System"></a>Constraint-based Layout System</h2><p>There are two approaches to add them: </p>
-<ol>
-<li>layout button at the lower right corner</li>
-<li>Control-drag, hold the control key, drag the mouse to the orient that you want to set a constraint. When the view become blue, release clicking, a pop-over menu will show.</li>
+<p>指定初始状态，告诉 UIView 结束状态，通过调用 <code>UIView.animateWithDuration</code>方法</p>
+<h2 id="圆角"><a href="#圆角" class="headerlink" title="圆角"></a>圆角</h2><h2 id="review-view-controller"><a href="#review-view-controller" class="headerlink" title="review view controller"></a>review view controller</h2><h2 id="使用-unwind-segues-返回"><a href="#使用-unwind-segues-返回" class="headerlink" title="使用 unwind segues 返回"></a>使用 unwind segues 返回</h2><ol>
+<li>在返回目的地中定义 <code>IBAction</code> 方法 <code>close</code></li>
 </ol>
-<p><strong>Align:</strong> e.g. vertically center, horizontally center.</p>
-<p><strong>Spacing constraint:</strong> e.g. The label is 20 points away from the bottom</p>
-<p><strong>Safe Area:</strong> the entire view excluding the status bar, navigation bar or tab bar. It can make the objects layout correctly even if there are all kinds of bars.</p>
-<h2 id="Editing-Constraints"><a href="#Editing-Constraints" class="headerlink" title="Editing Constraints"></a>Editing Constraints</h2><p>Change the properties of constraints including relation, constant and priority.</p>
-<ol>
-<li>Attributes inspector</li>
-<li>Double click the constraint</li>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">close</span><span class="params">(segue: UIStoryboardSegue)</span></span> &#123;</span><br><span class="line">    <span class="comment">// dismiss the review view</span></span><br><span class="line">    dismiss(animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 storyboard 中将关闭按钮与之连接，control 拽到控制器上方 <em>exit</em> 图标。</li>
+</ol>
+<p>##使用内建 API 实现模糊背景</p>
+<p><code>UIVisualEffectView</code> 类</p>
+<h2 id="Outlet-Connections"><a href="#Outlet-Connections" class="headerlink" title="Outlet Connections"></a>Outlet Connections</h2><p>Outlet collection 允许你用一个 outlet 变量涉及多个 UI 对象，实际上就是一个数组，在下面的动画实现中将会用到。</p>
+<h2 id="动画-core-part"><a href="#动画-core-part" class="headerlink" title="动画(core part)"></a>动画(core part)</h2><h3 id="Fade-in"><a href="#Fade-in" class="headerlink" title="Fade-in"></a>Fade-in</h3><p>要实现 fade-in 动画效果，像上面所说的，我们仅需要提供两种状态，UIView 就会为我们生成动画。</p>
+<ul>
+<li>Invisible state - start, alpha = 0</li>
+<li>Visible state - end, alpha = 1</li>
+</ul>
+<p>在 <code>viewDidLoad</code> 中初始化开始状态，即完全不显示。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> rateButton <span class="keyword">in</span> rateButtons &#123;</span><br><span class="line">    rateButton.alpha = <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>viewWillAppear</code> 中设定结束状态，并使之<strong>持续</strong>两秒到达。<code>delay</code> 参数，实现更复杂的动画</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="comment">// basic situation</span></span><br><span class="line">    <span class="type">UIView</span>.animate(withDuration: <span class="number">2.0</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.rateButtons[<span class="number">0</span>].alpha = <span class="number">1.0</span></span><br><span class="line">        <span class="comment">// ... 1 2 3 4</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// with distinct delay</span></span><br><span class="line">    <span class="type">UIView</span>.animate(withDuration: <span class="number">0.4</span>, delay: <span class="number">0.1</span>, options: [], animations: &#123;</span><br><span class="line">        <span class="keyword">self</span>.rateButtons[<span class="number">0</span>].alpha = <span class="number">1.0</span></span><br><span class="line">    &#125;, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>回顾 <code>viewWillAppear</code>，在 view <strong>每一次</strong>显示之前都调用，很适合我们完成动画渲染。</p>
+<h3 id="Slide-in-and-scale-组合"><a href="#Slide-in-and-scale-组合" class="headerlink" title="Slide-in and scale 组合"></a>Slide-in and scale 组合</h3><p>先声明两个转换，再声明一个新的转换，为他俩的组合</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newTransform = transform1.concatenating(transform2)</span><br></pre></td></tr></table></figure>
+<p>开始状态：buttons 全部右移，放大 5 倍，设置 <code>transform</code> 属性</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> moveRightTransform = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(translationX: <span class="number">600</span>, y: <span class="number">0</span>)</span><br><span class="line"><span class="keyword">let</span> scaleUpTransform = <span class="type">CGAffineTransform</span>.<span class="keyword">init</span>(scaleX: <span class="number">5.0</span>, y: <span class="number">5.0</span>)</span><br><span class="line"><span class="keyword">let</span> moveScaleTransform = scaleUpTransform.concatenating(moveRightTransform)</span><br><span class="line">rateButton.transform = moveScaleTransform</span><br></pre></td></tr></table></figure>
+<p>结束状态：和 IB 中设置的一致，用 .identity</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rateButton.transform = .identity</span><br></pre></td></tr></table></figure>
+<h3 id="Spring-弹弹乐-，配合-Slide-in"><a href="#Spring-弹弹乐-，配合-Slide-in" class="headerlink" title="Spring(弹弹乐)，配合 Slide-in"></a>Spring(弹弹乐)，配合 Slide-in</h3><p>再添加两个参数：</p>
+<p><code>usingSpringWithDamping</code> 阻尼</p>
+<p><code>initialSpringVelocity</code> 初始速率</p>
+<h2 id="使用-unwind-segues-在-view-controllers-之间传输数据"><a href="#使用-unwind-segues-在-view-controllers-之间传输数据" class="headerlink" title="使用 unwind segues 在 view controllers 之间传输数据"></a>使用 unwind segues 在 view controllers 之间传输数据</h2><ol>
+<li>在 ReviewViewController 类中添加一个 unwind 动作方法，当任意一个 button 被点击时调用</li>
+<li>在这个方法中，判定是哪一个 button 被点击了，保存它</li>
+<li>在详细页显示这个 button</li>
 </ol>
 
       
@@ -577,8 +596,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/10/chap4/" rel="next" title="Explaination of Hello World App">
-                <i class="fa fa-chevron-left"></i> Explaination of Hello World App
+              <a href="/2018/12/18/chap16 地图/" rel="next" title="地图">
+                <i class="fa fa-chevron-left"></i> 地图
               </a>
             
           </div>
@@ -586,10 +605,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/" rel="prev" title="牛顿法解非线性方程组（MATLAB 实现）">
-                牛顿法解非线性方程组（MATLAB 实现） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -765,7 +780,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraint-based-Layout-System"><span class="nav-number">1.</span> <span class="nav-text">Constraint-based Layout System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Editing-Constraints"><span class="nav-number">2.</span> <span class="nav-text">Editing Constraints</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动画是什么？"><span class="nav-number">1.</span> <span class="nav-text">动画是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆角"><span class="nav-number">2.</span> <span class="nav-text">圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#review-view-controller"><span class="nav-number">3.</span> <span class="nav-text">review view controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-unwind-segues-返回"><span class="nav-number">4.</span> <span class="nav-text">使用 unwind segues 返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Outlet-Connections"><span class="nav-number">5.</span> <span class="nav-text">Outlet Connections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画-core-part"><span class="nav-number">6.</span> <span class="nav-text">动画(core part)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fade-in"><span class="nav-number">6.1.</span> <span class="nav-text">Fade-in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slide-in-and-scale-组合"><span class="nav-number">6.2.</span> <span class="nav-text">Slide-in and scale 组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-弹弹乐-，配合-Slide-in"><span class="nav-number">6.3.</span> <span class="nav-text">Spring(弹弹乐)，配合 Slide-in</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-unwind-segues-在-view-controllers-之间传输数据"><span class="nav-number">7.</span> <span class="nav-text">使用 unwind segues 在 view controllers 之间传输数据</span></a></li></ol></div>
             
 
           </div>
@@ -921,9 +936,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://yoursite.com/2018/10/11/chap5/";
-        this.page.identifier = "2018/10/11/chap5/";
-        this.page.title = 'Auto Layout';
+        this.page.url = "http://yoursite.com/2018/12/24/chap17 基本动画，视觉效果/";
+        this.page.identifier = "2018/12/24/chap17 基本动画，视觉效果/";
+        this.page.title = '基本动画，视觉效果';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="介绍 MVC 模式删除，分享，check in 通过滑动UIActivityViewController 实现分享页特性">
+<meta name="keywords" content="iOS,Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对行的一些操作">
+<meta property="og:url" content="http://yoursite.com/2018/12/06/chap11 滑动/index.html">
+<meta property="og:site_name" content="Jeff Ren">
+<meta property="og:description" content="介绍 MVC 模式删除，分享，check in 通过滑动UIActivityViewController 实现分享页特性">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-13T16:06:47.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对行的一些操作">
+<meta name="twitter:description" content="介绍 MVC 模式删除，分享，check in 通过滑动UIActivityViewController 实现分享页特性">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/06/chap11 滑动/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>对行的一些操作 | Jeff Ren</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127291009-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127291009-1');
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4e5c9b3d17bfd01c7e6f81305b2eff02";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jeff Ren</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/chap11 滑动/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">对行的一些操作
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-06T00:00:00+08:00">2018-12-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-14 00:06:47" itemprop="dateModified" datetime="2019-01-14T00:06:47+08:00">2019-01-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/06/chap11 滑动/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/06/chap11 滑动/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>介绍 MVC 模式<br>删除，分享，check in 通过滑动<br>UIActivityViewController 实现分享页特性</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Model-View-Controller-MVC-模型-视图-控制器"><a href="#Model-View-Controller-MVC-模型-视图-控制器" class="headerlink" title="Model-View-Controller(MVC) 模型-视图-控制器"></a>Model-View-Controller(MVC) 模型-视图-控制器</h2><blockquote>
+<p><strong>Separated Presentation</strong></p>
+<p>Domain object: 模型化对现实世界的认知</p>
+<p>（完全自包含，不设计 presentation，同时支持多个 presentations）</p>
+<p>Presentation object: 屏幕上的 GUI 元素</p>
+<p>允许应用在图形界面和命令行运行</p>
+</blockquote>
+<p><strong><em>Separation of Concerns(SoC)</em></strong></p>
+<p><em>Concerns:</em> 软件功能性的不同方面。将复杂的特征或程序分割为不同的区域，有各自的职责。（回顾之前提到过的<em>委托模式</em>）</p>
+<p>Model-View-Controller 也是一种 SoC。</p>
+<ul>
+<li><strong>Model:</strong> 负责保存数据和与数据相关的操作。例如，数组；添加，更新，删除。</li>
+<li><strong>View:</strong> 负责视觉显示。例如，UITableView 以列表形式显示数据。</li>
+<li><strong>Controller:</strong> model 和 view 之间的桥梁。转换来自 view 的用户交互(e.g. tap)，变成能在 model 中执行的动作。例如，用户点击了删除按钮，controller 触发 model 中的删除操作。完成后，model 请求 view 刷新来显示更新后的数据。</li>
+</ul>
+<h2 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h2><p>弄懂 MVC 模式后，要删除一行，可分为以下 3 步：</p>
+<ol>
+<li>view 中添加滑动删除，以便用户操作</li>
+<li>model 中删除相关数据</li>
+<li>重新加载 view</li>
+</ol>
+<h3 id="Enable-the-Swipe-to-delete-feature"><a href="#Enable-the-Swipe-to-delete-feature" class="headerlink" title="Enable the Swipe-to-delete feature"></a>Enable the Swipe-to-delete feature</h3><p><code>UITableVIewDataSource</code>协议中的方法(查看官方文档)，为特定行处理删除或插入</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Delete-Row-Data-from-the-Model"><a href="#Delete-Row-Data-from-the-Model" class="headerlink" title="Delete Row Data from the Model"></a>Delete Row Data from the Model</h3><p>实现上面的方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> editingStyle == .delete &#123;</span><br><span class="line">        restaurantNames.remove(at: indexPath.row)</span><br><span class="line">        restaurantLocations.remove(at: indexPath.row)</span><br><span class="line">        restaurantTypes.remove(at: indexPath.row)</span><br><span class="line">        restaurantIsVisited.remove(at: indexPath.row)</span><br><span class="line">        restaurantImages.remove(at: indexPath.row)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Delete-Row-Data-from-UITableView"><a href="#Delete-Row-Data-from-UITableView" class="headerlink" title="Delete Row Data from UITableView"></a>Delete Row Data from UITableView</h3><p>与其重新载入 Model，不如直接删除相关行。在上述方法中添加：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tableView.deleteRows(at: [indexPath], with: .fade)</span><br></pre></td></tr></table></figure>
+<h2 id="更多操作-重点"><a href="#更多操作-重点" class="headerlink" title="更多操作(重点)"></a>更多操作(重点)</h2><p>如果我们只要删除功能，上面的代码已经足够。不过，怎么加入其他操作呢？例如分享，check in 等等。这时我们需要用到两个全新的方法，都定义在 <code>UITableViewDelegate</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableView(<span class="number">_</span>:leadingSwipeActionsConfigurationForRowAt:)</span><br><span class="line">tableView(<span class="number">_</span>:trailingSwipeActionsConfigurationForRowAt:)</span><br></pre></td></tr></table></figure>
+<p>两个方法一个左划，一个右划，操作完全一样。</p>
+<p>现在，我们想要添加两个动作：删除和分享。在方法中声明两个 <code>UIContextualAction</code> 类型的 action，分别实现删除和分享操作。以下是删除操作：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> deleteAction = <span class="type">UIContextualAction</span>(style: .destructive, title: <span class="string">"Delete"</span>) &#123; (action, sourceView, completionHandler) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.restaurantNames.remove(at: indexPath.row)</span><br><span class="line">    <span class="keyword">self</span>.restaurantLocations.remove(at: indexPath.row)</span><br><span class="line">    <span class="keyword">self</span>.restaurantTypes.remove(at: indexPath.row)</span><br><span class="line">    <span class="keyword">self</span>.restaurantIsVisited.remove(at: indexPath.row)</span><br><span class="line">    <span class="keyword">self</span>.restaurantImages.remove(at: indexPath.row)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.tableView.deleteRows(at: [indexPath], with: .fade)</span><br><span class="line">            </span><br><span class="line">    completionHandler(<span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有一点要注意，第 10 行 <code>completionHandler(true)</code>是用来在点击后让 row 回弹。在练习中，我忽略了这一行代码，导致点击 check in 后仍然显示划动后的界面，十分僵硬。</p>
+<p>分享操作基本类似，其中有一些细节，<code>activityController</code> 用于控制分享活动，分享餐馆名称。当 cell 中有图片时，也可以分享出去。先声明一个 <code>UIActivityViewController</code> 类型的活动控制器。然后判断有无图片，赋值。最后展示。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> shareAction = <span class="type">UIContextualAction</span>(style: .normal, title: <span class="string">"Share"</span>) &#123; (action, sourceView, completionHandle) <span class="keyword">in</span>                                                          </span><br><span class="line">	<span class="keyword">let</span> defaultText = <span class="string">"Just checking in at "</span> + <span class="keyword">self</span>.restaurantNames[indexPath.row]</span><br><span class="line">    <span class="keyword">let</span> activityController: <span class="type">UIActivityViewController</span></span><br><span class="line">    <span class="comment">// Is there an image? Use 'if let' to verify</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> imageToShare = <span class="type">UIImage</span>(named: <span class="keyword">self</span>.restaurantImages[indexPath.row]) &#123;</span><br><span class="line">    	activityController = <span class="type">UIActivityViewController</span>(activityItems: [defaultText, imageToShare], applicationActivities: <span class="literal">nil</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        activityController = <span class="type">UIActivityViewController</span>(activityItems: [defaultText], applicationActivities: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">self</span>.present(activityController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    completionHandle(<span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这两个方法都是有返回值的，类型为 <code>UISwipeActionsConfiguration</code> ，因此最后我们需要将两个 acitons 整合</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> swipeConfiguration = <span class="type">UISwipeActionsConfiguration</span>(actions: [deleteAction shareAction])</span><br></pre></td></tr></table></figure>
+<p>并将其返回。</p>
+<p>与前面提到的 alter sheet 在 iPad 弹出相同，我们还要规定 activity 弹出的位置以在 iPad 上正常运行。</p>
+<h2 id="个性化-UIContextualAction"><a href="#个性化-UIContextualAction" class="headerlink" title="个性化 UIContextualAction"></a>个性化 UIContextualAction</h2><p>改变按钮的颜色，图标</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deleteAction.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">231.0</span>/<span class="number">255.0</span>, green: <span class="number">76.0</span>/<span class="number">255.0</span>, blue: <span class="number">60.0</span>/<span class="number">255.0</span>, alpha: <span class="number">1.0</span>)</span><br><span class="line">deleteAction.image = <span class="type">UIImage</span>(named: <span class="string">"delete"</span>)</span><br></pre></td></tr></table></figure>
+<p>两个调色网站</p>
+<p><a href="http://www.flatuicolorpicker.com/" target="_blank" rel="noopener">http://www.flatuicolorpicker.com/</a></p>
+<p><a href="https://color.adobe.com/zh/create/color-wheel/" target="_blank" rel="noopener">https://color.adobe.com/zh/create/color-wheel/</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jeff Ren wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Jeff Ren WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/06/chap8 开始 table/" rel="next" title="最基础的 Table Based App">
+                <i class="fa fa-chevron-left"></i> 最基础的 Table Based App
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/06/chap10 tableView 简单交互/" rel="prev" title="tableView 简单交互">
+                tableView 简单交互 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jeff Ren</p>
+              <p class="site-description motion-element" itemprop="description">「Stay Hungry, Stay Foolish.」</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/StudentJeffRen" title="GitHub &rarr; https://github.com/StudentJeffRen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-View-Controller-MVC-模型-视图-控制器"><span class="nav-number">1.</span> <span class="nav-text">Model-View-Controller(MVC) 模型-视图-控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除行"><span class="nav-number">2.</span> <span class="nav-text">删除行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-the-Swipe-to-delete-feature"><span class="nav-number">2.1.</span> <span class="nav-text">Enable the Swipe-to-delete feature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Row-Data-from-the-Model"><span class="nav-number">2.2.</span> <span class="nav-text">Delete Row Data from the Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Row-Data-from-UITableView"><span class="nav-number">2.3.</span> <span class="nav-text">Delete Row Data from UITableView</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多操作-重点"><span class="nav-number">3.</span> <span class="nav-text">更多操作(重点)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个性化-UIContextualAction"><span class="nav-number">4.</span> <span class="nav-text">个性化 UIContextualAction</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff Ren</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://jeffren.disqus.com/count.js" async></script>
+  
+
+  
+    <script>
+      var disqus_config = function () {
+        this.page.url = "http://yoursite.com/2018/12/06/chap11 滑动/";
+        this.page.identifier = "2018/12/06/chap11 滑动/";
+        this.page.title = '对行的一些操作';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jeffren.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

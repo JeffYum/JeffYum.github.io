@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="新建一个详细页。">
+<meta name="keywords" content="iOS,Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Navigation Controller">
+<meta property="og:url" content="http://yoursite.com/2018/12/06/chap 12 Navigation Controller/index.html">
+<meta property="og:site_name" content="Jeff Ren">
+<meta property="og:description" content="新建一个详细页。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-13T16:05:45.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Navigation Controller">
+<meta name="twitter:description" content="新建一个详细页。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/06/chap 12 Navigation Controller/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Navigation Controller | Jeff Ren</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127291009-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127291009-1');
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4e5c9b3d17bfd01c7e6f81305b2eff02";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jeff Ren</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/chap 12 Navigation Controller/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Navigation Controller
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-06T00:00:00+08:00">2018-12-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-14 00:05:45" itemprop="dateModified" datetime="2019-01-14T00:05:45+08:00">2019-01-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/06/chap 12 Navigation Controller/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/06/chap 12 Navigation Controller/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>新建一个详细页。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h2><h3 id="Creating-Navigation-Controller"><a href="#Creating-Navigation-Controller" class="headerlink" title="Creating Navigation Controller"></a>Creating Navigation Controller</h3><p>Xcode provides an embed feature that makes it easy to embed any view controller in a navigation controller. Select the table view controller and click Editor in the menu. Choose Embed in &gt; Navigation Controller.</p>
+<h3 id="大标题"><a href="#大标题" class="headerlink" title="大标题"></a>大标题</h3><p>在 viewDidLoad 中添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">navigationController?.navigationBar.prefersLargeTitles = <span class="literal">true</span></span><br><span class="line">navigationItem.largeTitleDisplayMode = .never <span class="comment">// 阻止详细页也显示大标题，在 RestaurantDetailViewController 的 viewDidLoad 中添加</span></span><br></pre></td></tr></table></figure>
+<h3 id="图片缩放"><a href="#图片缩放" class="headerlink" title="图片缩放"></a>图片缩放</h3><p>一张图片铺满屏幕，为了适当缩放，将 <em>Scale to Fill</em> 改为 <em>Aspect Fill</em>.</p>
+<h3 id="Segues-需要标识符"><a href="#Segues-需要标识符" class="headerlink" title="Segues 需要标识符"></a>Segues 需要标识符</h3><p>当应用的页面越来越多，我们需要给每个 segue 起名字以区分各自。</p>
+<h2 id="Scenes-and-Segues"><a href="#Scenes-and-Segues" class="headerlink" title="Scenes and Segues"></a>Scenes and Segues</h2><p>连接多个视图控制器</p>
+<p><strong>Scenes:</strong> refer to the on-screen content.</p>
+<p><strong>Segues:</strong> 连接两个 Scenes, represent the transition from one scene to another. A segue object contains both the source and destination view controllers involved in the transition.</p>
+<h2 id="Adding-a-Detail-View-Controller"><a href="#Adding-a-Detail-View-Controller" class="headerlink" title="Adding a Detail View Controller"></a>Adding a Detail View Controller</h2><p>要实现点击一行进入详细页，我们要添加一个新的视图控制器，并与主控制器建立连接，传递信息。</p>
+<p><strong>连接:</strong> ctrl and drag datacell to Detail View Controller</p>
+<blockquote>
+<p><strong>Segue 的几种显示方式</strong></p>
+<ul>
+<li><strong>Show - </strong>默认的，当前页面被推走，带导航栏和返回按钮</li>
+<li><strong>Show detail - </strong>取代当前，无导航栏和返回按钮</li>
+<li><strong>Present modally - </strong>从底部向上动态覆盖整个页面。在 <em>Add</em> 时比较常用</li>
+<li><strong>Present as popover - </strong>iPad 上常用</li>
+</ul>
+</blockquote>
+<p>各种表面工作完成后，到了核心部分，如何传输信息给新的 Controller 呢？</p>
+<p>新的自定义类中需要添加两个东西</p>
+<ul>
+<li>变量 <code>restaurantImageName</code> 用于数据传输，当一行被选择，图片名称要传过来，供选择图片使用</li>
+<li>Outlet <code>restaurantImageView</code>显示图片</li>
+</ul>
+<p>随后，在 <code>viewDidLoad</code> 中添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restaurantImageView.image = <span class="type">UIImage</span>(named: restaurantImageName)</span><br></pre></td></tr></table></figure>
+<p><code>viewDidLoad</code> 方法在视图被载入内存时调用，即我们把相应的图片赋值给 Outlet <code>restaurantImageView</code>，以便展示。</p>
+<p>好了，展示图片我们用一行代码就解决了，真正的核心部分是：<strong>图片名称</strong>怎么从主视图控制器转到详细页控制器？</p>
+<p>当一个 segue 被触发，在视觉传输发生之前，storyboard runtime 会通知源试图控制器调用一个叫做 <code>prepare(for:sender:)</code>的方法。默认情况下，此方法不做任何事情，因此我们又要通过 <code>override</code>来强行对其进行改造。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="keyword">for</span> segue: UIStoryboardSegue, sender: <span class="keyword">Any</span>?)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> segue.identifier == <span class="string">"showRestaurantDetail"</span> &#123; <span class="comment">// check identifier</span></span><br><span class="line">    	<span class="keyword">if</span> <span class="keyword">let</span> indexPath = tableView.indexPathForSelectedRow &#123; <span class="comment">// retrieve the selected row</span></span><br><span class="line">            <span class="comment">// retrieve destination</span></span><br><span class="line">        	<span class="keyword">let</span> destinationController = segue.destination <span class="keyword">as</span>! <span class="type">RestaurantDetailViewController</span></span><br><span class="line">            <span class="comment">// set restaurantImageName</span></span><br><span class="line">            destinationController.restaurantImageName = restaurantImages[indexPath.row]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的逻辑十分清晰，首先检查 segue 的标识符是否是我们想用的，再将被选择的行数赋给 indexPath，声明一个目的地控制器，因为 segue 中包含了其源头和目的地的信息，并转型为我们自定义的类，最后为目的地控制器中的 restaurantImageName 赋值，完成信息传递。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jeff Ren wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Jeff Ren WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/06/chap9 自定义 tableView/" rel="next" title="自定义 tableView">
+                <i class="fa fa-chevron-left"></i> 自定义 tableView
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/07/chap 13 OOP/" rel="prev" title="Object Oriented Programming">
+                Object Oriented Programming <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jeff Ren</p>
+              <p class="site-description motion-element" itemprop="description">「Stay Hungry, Stay Foolish.」</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/StudentJeffRen" title="GitHub &rarr; https://github.com/StudentJeffRen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小知识点"><span class="nav-number">1.</span> <span class="nav-text">小知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-Navigation-Controller"><span class="nav-number">1.1.</span> <span class="nav-text">Creating Navigation Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大标题"><span class="nav-number">1.2.</span> <span class="nav-text">大标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片缩放"><span class="nav-number">1.3.</span> <span class="nav-text">图片缩放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Segues-需要标识符"><span class="nav-number">1.4.</span> <span class="nav-text">Segues 需要标识符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scenes-and-Segues"><span class="nav-number">2.</span> <span class="nav-text">Scenes and Segues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-a-Detail-View-Controller"><span class="nav-number">3.</span> <span class="nav-text">Adding a Detail View Controller</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff Ren</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://jeffren.disqus.com/count.js" async></script>
+  
+
+  
+    <script>
+      var disqus_config = function () {
+        this.page.url = "http://yoursite.com/2018/12/06/chap 12 Navigation Controller/";
+        this.page.identifier = "2018/12/06/chap 12 Navigation Controller/";
+        this.page.title = 'Navigation Controller';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jeffren.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

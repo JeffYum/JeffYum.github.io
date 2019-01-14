@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="MIPS 汇编语言的几个基本指令和一些基本操作的实现。">
+<meta name="keywords" content="MIPS 汇编,计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIPS 指令">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/MIPS 指令/index.html">
+<meta property="og:site_name" content="Jeff Ren">
+<meta property="og:description" content="MIPS 汇编语言的几个基本指令和一些基本操作的实现。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-13T16:03:45.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MIPS 指令">
+<meta name="twitter:description" content="MIPS 汇编语言的几个基本指令和一些基本操作的实现。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/23/MIPS 指令/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MIPS 指令 | Jeff Ren</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127291009-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127291009-1');
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4e5c9b3d17bfd01c7e6f81305b2eff02";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jeff Ren</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/MIPS 指令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MIPS 指令
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-23 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-23T00:00:00+08:00">2018-10-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-14 00:03:45" itemprop="dateModified" datetime="2019-01-14T00:03:45+08:00">2019-01-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/23/MIPS 指令/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/23/MIPS 指令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>MIPS 汇编语言的几个基本指令和一些基本操作的实现。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="算数指令和逻辑指令-R-format"><a href="#算数指令和逻辑指令-R-format" class="headerlink" title="算数指令和逻辑指令(R format)"></a>算数指令和逻辑指令(R format)</h2><p>每条指令执行一个操作。三个操作数都包含在数据通路的寄存器堆中(<code>$s0</code>,<code>$s1</code> <code>$s2</code>)，且顺序固定（目的地在前）。</p>
+<p>CPU 中有 32 个 通用寄存器。每一个寄存器可以存储 32-bit 的数据。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add </span>$<span class="built_in">t0</span>, $<span class="built_in">s1</span>, $<span class="built_in">s2</span> <span class="comment"># 寄存器 s1 和 寄存器 s2 的值相加存到 t0</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t0</span>, $<span class="built_in">s1</span>, $<span class="built_in">s2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and </span>$<span class="built_in">t0</span>, $<span class="built_in">s1</span>, $<span class="built_in">s2</span> <span class="comment"># $t0 = $t1 &amp; $t2</span></span><br><span class="line"><span class="keyword">or </span>$<span class="built_in">t0</span>, $<span class="built_in">s1</span>, $<span class="built_in">s2</span> <span class="comment"># $t0 = $t1 | $t2</span></span><br><span class="line"><span class="keyword">nor </span>$<span class="built_in">t0</span>, $<span class="built_in">s1</span>, $<span class="built_in">s2</span> <span class="comment"># $t0 = not($t1 | $t2)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Why register?</strong></p>
+<p>快，减少内存和 CPU 之间传输。</p>
+</blockquote>
+<h2 id="移位指令"><a href="#移位指令" class="headerlink" title="移位指令"></a>移位指令</h2><p>逻辑位移，全部补 0。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sll </span>$<span class="built_in">t2</span>, $<span class="built_in">s0</span>, <span class="number">8</span> <span class="comment"># $t2 = $s0 &lt;&lt; 8 bits</span></span><br><span class="line"><span class="keyword">srl </span>$<span class="built_in">t2</span>, $<span class="built_in">s0</span>, <span class="number">8</span> <span class="comment"># &gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="立即数指令"><a href="#立即数指令" class="headerlink" title="立即数指令"></a>立即数指令</h2><p>可以创建 hard-wired 寄存器像 <code>$zero</code>，永远储存一个 0。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">count:</span> <span class="meta">.word</span> <span class="number">35</span> <span class="comment"># 定义一个恒定值 35，数据存在内存中。变量 count 是数据 35 的内存地址</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">s1</span>, $<span class="built_in">zero</span>, <span class="number">5</span> <span class="comment"># A = 0 + 5</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">s2</span>, $<span class="built_in">s2</span>, <span class="number">4</span> <span class="comment"># A = A + 4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">slti </span>$<span class="built_in">s5</span>, $<span class="built_in">s5</span>, <span class="number">10</span>  <span class="comment"># slt: set less true</span></span><br><span class="line"><span class="keyword">andi </span>$<span class="built_in">s2</span>, $<span class="built_in">s2</span>, <span class="number">6</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s2</span>, $<span class="built_in">s2</span>, <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h2 id="内存访问指令"><a href="#内存访问指令" class="headerlink" title="内存访问指令"></a>内存访问指令</h2><p>32 位 MIPS 中：1 word = 4 byte </p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sw </span>$<span class="built_in">t0</span>, <span class="number">8</span>($<span class="built_in">s3</span>) <span class="comment"># 写一个字到 [s3+8]</span></span><br><span class="line"><span class="keyword">sh </span>$<span class="built_in">t1</span>, <span class="number">102</span>($<span class="built_in">t2</span>) <span class="comment"># 半个字</span></span><br><span class="line"><span class="keyword">sb </span>$<span class="built_in">t1</span>, <span class="number">102</span>($<span class="built_in">t2</span>) <span class="comment"># 最低有效字节</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">lw </span>$<span class="built_in">t0</span>, <span class="number">4</span>($<span class="built_in">s3</span>) <span class="comment"># $s3基地址，4 偏移量。读内存中地址为 [s3+4] 的数据，存进 t0</span></span><br><span class="line"><span class="keyword">lh </span>$<span class="built_in">t1</span>, <span class="number">102</span>($<span class="built_in">t2</span>) <span class="comment"># 读符号扩展的半个字从 [t2+102]</span></span><br><span class="line"><span class="keyword">lhu </span>$<span class="built_in">t1</span>, <span class="number">102</span>($<span class="built_in">t2</span>) <span class="comment"># 无符号扩展</span></span><br><span class="line"><span class="keyword">lb </span>$<span class="built_in">t1</span>, <span class="number">103</span>($<span class="built_in">t2</span>) <span class="comment"># 读符号扩展的一个字节</span></span><br><span class="line"><span class="keyword">lbu </span>$<span class="built_in">t1</span>, <span class="number">103</span>($<span class="built_in">t2</span>) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>符号扩展和无符号扩展</strong></p>
+<p>将 n 位立即数扩展为 32 位。</p>
+<p>无符号扩展：(32-n) 位全部补 0</p>
+<p>符号扩展：补该数的最高位</p>
+</blockquote>
+<h2 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bne </span>$<span class="built_in">t0</span>, $<span class="built_in">t1</span>, Label <span class="comment"># t0 ≠ t1 jump</span></span><br><span class="line"><span class="keyword">beq </span>$<span class="built_in">t0</span>, $<span class="built_in">t1</span>, Label <span class="comment"># =</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">j </span>Label <span class="comment"># 无条件跳</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">slt </span>$<span class="built_in">t0</span>, $<span class="built_in">s0</span>, $<span class="built_in">s1</span> <span class="comment"># set less true $s0 &lt; $s1，$t0 = 1 </span></span><br><span class="line"><span class="comment"># 不难理解，sltu, slti, sltiu</span></span><br></pre></td></tr></table></figure>
+<h3 id="伪指令-pseudo-instructions"><a href="#伪指令-pseudo-instructions" class="headerlink" title="伪指令(pseudo instructions)"></a>伪指令(pseudo instructions)</h3><p>为什么汇编程序需要一个保留寄存器（$at）</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">blt </span>$<span class="built_in">s1</span>, $<span class="built_in">s2</span>, Label <span class="comment"># $1 &lt; $2 跳</span></span><br><span class="line"><span class="comment"># 以下是实现 blt</span></span><br><span class="line"><span class="keyword">slt </span>$<span class="built_in">at</span>, $<span class="built_in">s1</span>, $<span class="built_in">s2</span> <span class="comment"># if $s1 &lt; $s2, $at 设为 0</span></span><br><span class="line"><span class="keyword">bne </span>$<span class="built_in">at</span>, $<span class="built_in">zero</span>, Label</span><br><span class="line"><span class="comment"># end</span></span><br><span class="line"><span class="keyword">ble </span>$<span class="built_in">s1</span>, $<span class="built_in">s2</span>, Label <span class="comment"># less than or equal to</span></span><br><span class="line"><span class="keyword">bgt </span>$<span class="built_in">s1</span>, $<span class="built_in">s2</span>, Label <span class="comment"># great than</span></span><br><span class="line"><span class="keyword">bge </span>$<span class="built_in">s1</span>, $<span class="built_in">s2</span>, Label <span class="comment"># great than or equal to</span></span><br></pre></td></tr></table></figure>
+<h3 id="Do-while-Loop"><a href="#Do-while-Loop" class="headerlink" title="Do-while Loop"></a>Do-while Loop</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// do something;</span></span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">&#125; <span class="keyword">while</span> (i &lt; <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">addi </span>$<span class="built_in">s1</span>, $<span class="built_in">zero</span>, <span class="number">0</span> <span class="comment"># i = 0</span></span><br><span class="line"><span class="symbol">START:</span> <span class="comment"># do something</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">s1</span>, $<span class="built_in">s1</span>, <span class="number">1</span></span><br><span class="line"><span class="keyword">slti </span>$<span class="built_in">t1</span>, $<span class="built_in">s1</span>, <span class="number">10</span> <span class="comment"># if $s1 &lt; 10, $t1 = 1</span></span><br><span class="line"><span class="keyword">bne </span>$<span class="built_in">t1</span>, $<span class="built_in">zero</span>, START <span class="comment"># if $t1 ≠ 0, go to START</span></span><br></pre></td></tr></table></figure>
+<h3 id="While-Loop"><a href="#While-Loop" class="headerlink" title="While Loop"></a>While Loop</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">addi </span>$<span class="built_in">s1</span>, $<span class="built_in">zero</span>, <span class="number">0</span> <span class="comment"># $s1 = 0</span></span><br><span class="line"><span class="keyword">j </span>CHECK <span class="comment"># 先检查 i &lt; 10</span></span><br><span class="line"><span class="symbol">START:</span> <span class="comment"># do something</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">s1</span>, $<span class="built_in">s1</span>, <span class="number">1</span></span><br><span class="line"><span class="symbol">CHECK:</span> <span class="keyword">slti </span>$<span class="built_in">t1</span>, $<span class="built_in">s1</span>, <span class="number">10</span></span><br><span class="line"><span class="keyword">bne </span>$<span class="built_in">t1</span>, $<span class="built_in">zero</span>, START</span><br></pre></td></tr></table></figure>
+<h3 id="For-Loop"><a href="#For-Loop" class="headerlink" title="For Loop"></a>For Loop</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">addi </span>$<span class="built_in">s1</span>, $<span class="built_in">zero</span>, <span class="number">0</span></span><br><span class="line"><span class="symbol">START:</span> <span class="keyword">slti </span>$<span class="built_in">t1</span>, $<span class="built_in">s1</span>, <span class="number">10</span></span><br><span class="line"><span class="keyword">bne </span>$<span class="built_in">t1</span>, $<span class="built_in">zero</span>, QUIT</span><br><span class="line"><span class="comment"># do something</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">s1</span>, $<span class="built_in">s1</span>, <span class="number">1</span></span><br><span class="line"><span class="keyword">j </span><span class="keyword">SRART</span></span><br><span class="line"><span class="keyword">QUIT: </span>...</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jeff Ren wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Jeff Ren WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MIPS-汇编/" rel="tag"># MIPS 汇编</a>
+          
+            <a href="/tags/计算机组成原理/" rel="tag"># 计算机组成原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/23/chap6/" rel="next" title="Stack View">
+                <i class="fa fa-chevron-left"></i> Stack View
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/09/Single Cycle Processor/" rel="prev" title="Single Cycle Processor">
+                Single Cycle Processor <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jeff Ren</p>
+              <p class="site-description motion-element" itemprop="description">「Stay Hungry, Stay Foolish.」</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/StudentJeffRen" title="GitHub &rarr; https://github.com/StudentJeffRen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算数指令和逻辑指令-R-format"><span class="nav-number">1.</span> <span class="nav-text">算数指令和逻辑指令(R format)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移位指令"><span class="nav-number">2.</span> <span class="nav-text">移位指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#立即数指令"><span class="nav-number">3.</span> <span class="nav-text">立即数指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存访问指令"><span class="nav-number">4.</span> <span class="nav-text">内存访问指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件分支"><span class="nav-number">5.</span> <span class="nav-text">条件分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#伪指令-pseudo-instructions"><span class="nav-number">5.1.</span> <span class="nav-text">伪指令(pseudo instructions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Do-while-Loop"><span class="nav-number">5.2.</span> <span class="nav-text">Do-while Loop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#While-Loop"><span class="nav-number">5.3.</span> <span class="nav-text">While Loop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#For-Loop"><span class="nav-number">5.4.</span> <span class="nav-text">For Loop</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff Ren</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://jeffren.disqus.com/count.js" async></script>
+  
+
+  
+    <script>
+      var disqus_config = function () {
+        this.page.url = "http://yoursite.com/2018/10/23/MIPS 指令/";
+        this.page.identifier = "2018/10/23/MIPS 指令/";
+        this.page.title = 'MIPS 指令';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jeffren.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

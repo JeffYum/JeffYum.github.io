@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="新建一个详细页。">
-<meta name="keywords" content="iOS,Swift">
+  <meta name="description" content="具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。  尝试写只读段 读写不存在的数组元素 使用之前没有合理定义指针 意外地使用变量值作为地址">
+<meta name="keywords" content="C,操作系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Navigation Controller">
-<meta property="og:url" content="http://jeffren.top/2018/12/06/chap 12 Navigation Controller/index.html">
+<meta property="og:title" content="Segmentation Fault">
+<meta property="og:url" content="http://jeffren.top/2019/01/22/Segmentation Fault/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="新建一个详细页。">
+<meta property="og:description" content="具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。  尝试写只读段 读写不存在的数组元素 使用之前没有合理定义指针 意外地使用变量值作为地址">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:05:45.231Z">
+<meta property="og:updated_time" content="2019-01-22T13:47:33.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Navigation Controller">
-<meta name="twitter:description" content="新建一个详细页。">
+<meta name="twitter:title" content="Segmentation Fault">
+<meta name="twitter:description" content="具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。  尝试写只读段 读写不存在的数组元素 使用之前没有合理定义指针 意外地使用变量值作为地址">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/12/06/chap 12 Navigation Controller/">
+  <link rel="canonical" href="http://jeffren.top/2019/01/22/Segmentation Fault/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>Navigation Controller | Jeff Ren</title>
+  <title>Segmentation Fault | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/12/06/chap 12 Navigation Controller/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/01/22/Segmentation Fault/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Navigation Controller
+          <h1 class="post-title" itemprop="name headline">Segmentation Fault
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-12-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-06T00:00:00+08:00">2018-12-06</time>
+              <time title="Created: 2019-01-22 00:00:00 / Modified: 21:47:33" itemprop="dateCreated datePublished" datetime="2019-01-22T00:00:00+08:00">2019-01-22</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 00:05:45" itemprop="dateModified" datetime="2019-01-14T00:05:45+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/12/06/chap 12 Navigation Controller/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/01/22/Segmentation Fault/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/06/chap 12 Navigation Controller/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/22/Segmentation Fault/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -489,42 +477,29 @@
       
 
       
-        <blockquote>
-<p>新建一个详细页。</p>
-</blockquote>
+        <p>具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。</p>
+<ul>
+<li>尝试写只读段</li>
+<li>读写不存在的数组元素</li>
+<li>使用之前没有合理定义指针</li>
+<li>意外地使用变量值作为地址</li>
+</ul>
 <a id="more"></a>
-<h2 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h2><h3 id="Creating-Navigation-Controller"><a href="#Creating-Navigation-Controller" class="headerlink" title="Creating Navigation Controller"></a>Creating Navigation Controller</h3><p>Xcode provides an embed feature that makes it easy to embed any view controller in a navigation controller. Select the table view controller and click Editor in the menu. Choose Embed in &gt; Navigation Controller.</p>
-<h3 id="大标题"><a href="#大标题" class="headerlink" title="大标题"></a>大标题</h3><p>在 viewDidLoad 中添加</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">navigationController?.navigationBar.prefersLargeTitles = <span class="literal">true</span></span><br><span class="line">navigationItem.largeTitleDisplayMode = .never <span class="comment">// 阻止详细页也显示大标题，在 RestaurantDetailViewController 的 viewDidLoad 中添加</span></span><br></pre></td></tr></table></figure>
-<h3 id="图片缩放"><a href="#图片缩放" class="headerlink" title="图片缩放"></a>图片缩放</h3><p>一张图片铺满屏幕，为了适当缩放，将 <em>Scale to Fill</em> 改为 <em>Aspect Fill</em>.</p>
-<h3 id="Segues-需要标识符"><a href="#Segues-需要标识符" class="headerlink" title="Segues 需要标识符"></a>Segues 需要标识符</h3><p>当应用的页面越来越多，我们需要给每个 segue 起名字以区分各自。</p>
-<h2 id="Scenes-and-Segues"><a href="#Scenes-and-Segues" class="headerlink" title="Scenes and Segues"></a>Scenes and Segues</h2><p>连接多个视图控制器</p>
-<p><strong>Scenes:</strong> refer to the on-screen content.</p>
-<p><strong>Segues:</strong> 连接两个 Scenes, represent the transition from one scene to another. A segue object contains both the source and destination view controllers involved in the transition.</p>
-<h2 id="Adding-a-Detail-View-Controller"><a href="#Adding-a-Detail-View-Controller" class="headerlink" title="Adding a Detail View Controller"></a>Adding a Detail View Controller</h2><p>要实现点击一行进入详细页，我们要添加一个新的视图控制器，并与主控制器建立连接，传递信息。</p>
-<p><strong>连接:</strong> ctrl and drag datacell to Detail View Controller</p>
-<blockquote>
-<p><strong>Segue 的几种显示方式</strong></p>
-<ul>
-<li><strong>Show - </strong>默认的，当前页面被推走，带导航栏和返回按钮</li>
-<li><strong>Show detail - </strong>取代当前，无导航栏和返回按钮</li>
-<li><strong>Present modally - </strong>从底部向上动态覆盖整个页面。在 <em>Add</em> 时比较常用</li>
-<li><strong>Present as popover - </strong>iPad 上常用</li>
-</ul>
-</blockquote>
-<p>各种表面工作完成后，到了核心部分，如何传输信息给新的 Controller 呢？</p>
-<p>新的自定义类中需要添加两个东西</p>
-<ul>
-<li>变量 <code>restaurantImageName</code> 用于数据传输，当一行被选择，图片名称要传过来，供选择图片使用</li>
-<li>Outlet <code>restaurantImageView</code>显示图片</li>
-</ul>
-<p>随后，在 <code>viewDidLoad</code> 中添加</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restaurantImageView.image = <span class="type">UIImage</span>(named: restaurantImageName)</span><br></pre></td></tr></table></figure>
-<p><code>viewDidLoad</code> 方法在视图被载入内存时调用，即我们把相应的图片赋值给 Outlet <code>restaurantImageView</code>，以便展示。</p>
-<p>好了，展示图片我们用一行代码就解决了，真正的核心部分是：<strong>图片名称</strong>怎么从主视图控制器转到详细页控制器？</p>
-<p>当一个 segue 被触发，在视觉传输发生之前，storyboard runtime 会通知源试图控制器调用一个叫做 <code>prepare(for:sender:)</code>的方法。默认情况下，此方法不做任何事情，因此我们又要通过 <code>override</code>来强行对其进行改造。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="keyword">for</span> segue: UIStoryboardSegue, sender: <span class="keyword">Any</span>?)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> segue.identifier == <span class="string">"showRestaurantDetail"</span> &#123; <span class="comment">// check identifier</span></span><br><span class="line">    	<span class="keyword">if</span> <span class="keyword">let</span> indexPath = tableView.indexPathForSelectedRow &#123; <span class="comment">// retrieve the selected row</span></span><br><span class="line">            <span class="comment">// retrieve destination</span></span><br><span class="line">        	<span class="keyword">let</span> destinationController = segue.destination <span class="keyword">as</span>! <span class="type">RestaurantDetailViewController</span></span><br><span class="line">            <span class="comment">// set restaurantImageName</span></span><br><span class="line">            destinationController.restaurantImageName = restaurantImages[indexPath.row]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码的逻辑十分清晰，首先检查 segue 的标识符是否是我们想用的，再将被选择的行数赋给 indexPath，声明一个目的地控制器，因为 segue 中包含了其源头和目的地的信息，并转型为我们自定义的类，最后为目的地控制器中的 restaurantImageName 赋值，完成信息传递。</p>
+<h2 id="s-和-s-有什么区别？"><a href="#s-和-s-有什么区别？" class="headerlink" title="*s 和 s[] 有什么区别？"></a>*s 和 s[] 有什么区别？</h2><ol>
+<li>栈区(stack)：由编译器自动分配释放，存放函数的参数值，局部变量的值等</li>
+<li>文字常量区：存放常量字符串</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Writing to read-only memory\n"</span>);</span><br><span class="line">	<span class="keyword">char</span> *s = <span class="string">"hello world"</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s);</span><br><span class="line">	*s = <span class="string">'H'</span>;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//char s[] = "hello world";</span></span><br><span class="line">	<span class="comment">//s[0] = 'H'; // equivalently, *s = 'H';</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Char *s = &quot;hello world&quot;</code> ， s 是 “hello world” 的地址，其本身位于<strong>栈区</strong>，而它指向的 “hello world”，位于<strong>文字常量区</strong>，因此 “hello world” 是不可以改动的。</p>
+<p><code>char s[] = &quot;hello world&quot;</code> ，这个数组位于<strong>栈区</strong>，可以被改动。</p>
+<p>下面两个例子更进一步解释他们的区别：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *str = <span class="string">"hello world"</span>;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数能返回正确的结果，因为 “hello world” 被保存在只读的数据段，即文字常量区。</p>
+<p>然而</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[] = <span class="string">"hello world"</span>;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不一定返回正确的结果，因为数组存在于函数 strB 的栈帧中，是<strong>局部变量</strong>，当调用完成，栈帧恢复调用之前的状态，临时空间被重置，str 指向的地址啥都没有了。</p>
+<h2 id="空指针是值为-0-的常量"><a href="#空指针是值为-0-的常量" class="headerlink" title="空指针是值为 0 的常量"></a>空指针是值为 0 的常量</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Null pointer dereference\n"</span>);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">// NULL pointer is a constant with a value of zero</span></span><br><span class="line">	<span class="keyword">int</span> *ptr = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">	*ptr = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *ptr);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="没有基础条件的递归"><a href="#没有基础条件的递归" class="headerlink" title="没有基础条件的递归"></a>没有基础条件的递归</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	main();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -580,9 +555,9 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/iOS/" rel="tag"># iOS</a>
+            <a href="/StudentJeffRen.github.io/tags/C/" rel="tag"># C</a>
           
-            <a href="/StudentJeffRen.github.io/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/StudentJeffRen.github.io/tags/操作系统/" rel="tag"># 操作系统</a>
           
         </div>
       
@@ -595,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/11/09/Single Cycle Processor/" rel="next" title="Single Cycle Processor">
-                <i class="fa fa-chevron-left"></i> Single Cycle Processor
+              <a href="/StudentJeffRen.github.io/2018/12/24/chap17 基本动画，视觉效果/" rel="next" title="基本动画，视觉效果">
+                <i class="fa fa-chevron-left"></i> 基本动画，视觉效果
               </a>
             
           </div>
@@ -604,10 +579,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2018/12/06/chap9 自定义 tableView/" rel="prev" title="自定义 tableView">
-                自定义 tableView <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -787,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小知识点"><span class="nav-number">1.</span> <span class="nav-text">小知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-Navigation-Controller"><span class="nav-number">1.1.</span> <span class="nav-text">Creating Navigation Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大标题"><span class="nav-number">1.2.</span> <span class="nav-text">大标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片缩放"><span class="nav-number">1.3.</span> <span class="nav-text">图片缩放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Segues-需要标识符"><span class="nav-number">1.4.</span> <span class="nav-text">Segues 需要标识符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scenes-and-Segues"><span class="nav-number">2.</span> <span class="nav-text">Scenes and Segues</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-a-Detail-View-Controller"><span class="nav-number">3.</span> <span class="nav-text">Adding a Detail View Controller</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#s-和-s-有什么区别？"><span class="nav-number">1.</span> <span class="nav-text">*s 和 s[] 有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空指针是值为-0-的常量"><span class="nav-number">2.</span> <span class="nav-text">空指针是值为 0 的常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有基础条件的递归"><span class="nav-number">3.</span> <span class="nav-text">没有基础条件的递归</span></a></li></ol></div>
             
 
           </div>
@@ -943,9 +914,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/12/06/chap 12 Navigation Controller/";
-        this.page.identifier = "2018/12/06/chap 12 Navigation Controller/";
-        this.page.title = 'Navigation Controller';
+        this.page.url = "http://jeffren.top/2019/01/22/Segmentation Fault/";
+        this.page.identifier = "2019/01/22/Segmentation Fault/";
+        this.page.title = 'Segmentation Fault';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

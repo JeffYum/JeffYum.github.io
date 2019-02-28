@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="Solve the following system of equations:$$y+x^2-1-x=0 \x^2-2y^2-y=0$$Initial guess x = 0, y = 0.">
-<meta name="keywords" content="MATLAB,Numerical Methods">
+  <meta name="description" content="UISeachController, creat a search bar and manage search results.  添加搜索栏 过滤逻辑 更新 table，显示搜索结果 把搜索栏放到 Table Header View 个性化外观 未解决的问题">
+<meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="牛顿法解非线性方程组（MATLAB 实现）">
-<meta property="og:url" content="http://jeffren.top/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/index.html">
+<meta property="og:title" content="Search Bar">
+<meta property="og:url" content="http://jeffren.top/2019/02/28/chap20 Search Bar/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="Solve the following system of equations:$$y+x^2-1-x=0 \x^2-2y^2-y=0$$Initial guess x = 0, y = 0.">
+<meta property="og:description" content="UISeachController, creat a search bar and manage search results.  添加搜索栏 过滤逻辑 更新 table，显示搜索结果 把搜索栏放到 Table Header View 个性化外观 未解决的问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:05:35.608Z">
+<meta property="og:updated_time" content="2019-02-28T06:01:44.594Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="牛顿法解非线性方程组（MATLAB 实现）">
-<meta name="twitter:description" content="Solve the following system of equations:$$y+x^2-1-x=0 \x^2-2y^2-y=0$$Initial guess x = 0, y = 0.">
+<meta name="twitter:title" content="Search Bar">
+<meta name="twitter:description" content="UISeachController, creat a search bar and manage search results.  添加搜索栏 过滤逻辑 更新 table，显示搜索结果 把搜索栏放到 Table Header View 个性化外观 未解决的问题">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/">
+  <link rel="canonical" href="http://jeffren.top/2019/02/28/chap20 Search Bar/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>牛顿法解非线性方程组（MATLAB 实现） | Jeff Ren</title>
+  <title>Search Bar | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/02/28/chap20 Search Bar/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">牛顿法解非线性方程组（MATLAB 实现）
+          <h1 class="post-title" itemprop="name headline">Search Bar
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-10-17 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-17T00:00:00+08:00">2018-10-17</time>
+              <time title="Created: 2019-02-28 00:00:00 / Modified: 14:01:44" itemprop="dateCreated datePublished" datetime="2019-02-28T00:00:00+08:00">2019-02-28</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 00:05:35" itemprop="dateModified" datetime="2019-01-14T00:05:35+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/02/28/chap20 Search Bar/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/28/chap20 Search Bar/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -489,15 +477,52 @@
       
 
       
-        <p>Solve the following system of equations:<br>$$<br>y+x^2-1-x=0 \<br>x^2-2y^2-y=0<br>$$<br>Initial guess x = 0, y = 0.</p>
+        <p><code>UISeachController</code>, creat a search bar and manage search results.</p>
+<ul>
+<li>添加搜索栏</li>
+<li>过滤逻辑</li>
+<li>更新 table，显示搜索结果</li>
+<li>把搜索栏放到 Table Header View</li>
+<li>个性化外观</li>
+<li>未解决的问题</li>
+</ul>
 <a id="more"></a>
-<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>牛顿迭代公式：<br>$$<br>X_{k+1} = X_k - \frac{F(X_k)}{F’(X_k)} \tag{1}<br>$$<br>其中<br>$$<br>F’(X) =<br>\left[<br>\begin{matrix}<br>\frac{\partial{y_1}}{\partial{x}} &amp; \frac{\partial{y_1}}{\partial{y}} \<br>\frac{\partial{y_2}}{\partial{x}} &amp; \frac{\partial{y_2}}{\partial{y}}<br>\end{matrix}<br>\right] \tag{2}<br>$$</p>
-<h2 id="MATLAB-代码"><a href="#MATLAB-代码" class="headerlink" title="MATLAB 代码"></a>MATLAB 代码</h2><p>原矩阵 F(X)</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% F.m</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Z</span> = <span class="title">F</span><span class="params">(X)</span></span></span><br><span class="line"><span class="comment">%   计算F(X)</span></span><br><span class="line">x = X(<span class="number">1</span>); y = X(<span class="number">2</span>); <span class="comment">% 从参数中获取 x, y 的值</span></span><br><span class="line">Z = <span class="built_in">zeros</span>(<span class="number">2</span>, <span class="number">1</span>); <span class="comment">% 先定义一个零矩阵，2 行 1 列</span></span><br><span class="line">Z(<span class="number">1</span>) = y + x^<span class="number">2</span> - <span class="number">1</span> - x; <span class="comment">% 为矩阵中的两个元素赋值</span></span><br><span class="line">Z(<span class="number">2</span>) = x^<span class="number">2</span> - <span class="number">2</span>*y^<span class="number">2</span> - y;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>对 F(X) 求偏导得到 F’(X)。折腾了半天想让 Jacobian 矩阵根据原矩阵自己得出，没有成功，书上的例子也是手动输入。留个疑问，以后熟练了再来看看。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% JF.m</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">W</span> = <span class="title">JF</span><span class="params">(X)</span></span></span><br><span class="line"><span class="comment">% 对原矩阵求偏导，Jacobian 矩阵</span></span><br><span class="line">x = X(<span class="number">1</span>); y = X(<span class="number">2</span>);</span><br><span class="line">W = [<span class="number">2</span>*x<span class="number">-1</span> <span class="number">1</span>; <span class="number">2</span>*x <span class="number">-4</span>*y<span class="number">-1</span>];</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>迭代</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clc;</span><br><span class="line">clear;</span><br><span class="line"></span><br><span class="line">X = [<span class="number">0</span>; <span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="number">5</span></span><br><span class="line">    A = feval(<span class="string">'F'</span>, X); <span class="comment">% 执行函数：feval('函数名', 参数)</span></span><br><span class="line">    B = feval(<span class="string">'JF'</span>, X);</span><br><span class="line">    X = X - inv(B)*A; <span class="comment">% 牛顿迭代公式，inv() 是求逆矩阵</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="添加搜索栏"><a href="#添加搜索栏" class="headerlink" title="添加搜索栏"></a>添加搜索栏</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> seachController: <span class="type">UISearchController</span>!</span><br><span class="line"></span><br><span class="line"><span class="comment">// in viewDidLoad</span></span><br><span class="line">searchController = <span class="type">UISeachController</span>(searchResultsController: <span class="literal">nil</span>)</span><br><span class="line"><span class="keyword">self</span>.navigationItem.searchController = searchController</span><br></pre></td></tr></table></figure>
+<p>第 4 行的 <code>nil</code> 表示搜索结果会显示在当前的 table view 里面。</p>
+<p>第 5 行告诉 search controller，哪个对象负责更新搜索结果。</p>
+<p>第 6 行将搜索栏添加到导航栏。 </p>
+<p>现在搜索栏的框架已经出现在我们的 App 里了，下一步是添加一些过滤逻辑。</p>
+<h2 id="过滤逻辑"><a href="#过滤逻辑" class="headerlink" title="过滤逻辑"></a>过滤逻辑</h2><p>先声明一个数组保存结果</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> searchResults: [<span class="type">RestaurantMO</span>] = []</span><br></pre></td></tr></table></figure>
+<p>过滤方法，参数是用户输入的内容，得到搜索结果。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">filterContent</span><span class="params">(<span class="keyword">for</span> searchText: String)</span></span> &#123;</span><br><span class="line">    searchResults = restaurant.<span class="built_in">filter</span>(&#123; (restaurant) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">    	<span class="keyword">if</span> <span class="keyword">let</span> name = restaurant.name &#123;</span><br><span class="line">        	<span class="keyword">let</span> isMatch = name.localizedCaseInsensitiveContains(searchText)</span><br><span class="line">        	<span class="keyword">return</span> isMatch</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="更新-table，显示搜索结果"><a href="#更新-table，显示搜索结果" class="headerlink" title="更新 table，显示搜索结果"></a>更新 table，显示搜索结果</h2><p>将搜索结果显示出来，这里调用了上面的方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">updateSearchResults</span><span class="params">(<span class="keyword">for</span> searchController: UISearchController)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> searchText = searchController.searchBar.text &#123;</span><br><span class="line">        filterContext(<span class="keyword">for</span>: searchText)</span><br><span class="line">        tableView.reloadData()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只有当搜索栏激活时，才显示搜索结果，修改 <code>tableView(_:numberOfRowsInSection:)</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> searchController.isActive &#123;</span><br><span class="line">    <span class="keyword">return</span> searchResults.<span class="built_in">count</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> restaurants.<span class="built_in">count</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>tableView(_:cellForRowAt:)</code> 方法也要做相应的调整，要决定唯一的 tableView 应该显示原始数组还是搜索结果。这里的实现十分巧妙，我们只需要确定 restaurant 的值，tableView 中具体每一行的内容配置都是通用的，并且在 <code>tableView(_:numberOfRowsInSection:)</code> 方法中，我们已经正确设置了 table 有多少行。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]</span><br></pre></td></tr></table></figure>
+<p>当我们选择一个 restaurant 进入详细页时，也应该检查搜索栏是否激活，以传递正确的餐馆</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">destinationController.restaurant = (seachController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]</span><br></pre></td></tr></table></figure>
+<p>最后在 viewDidLoad 中添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">searchController.searchResultsUpdater = <span class="keyword">self</span></span><br><span class="line">searchController.dimsBackgroundDuringPresentation = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>表明当前类是搜索结果更新者，并关闭暗淡背景。</p>
+<p>在搜索结果中，cell 继承了分享和删除 button，就像原始 table 一样，可以滑动来操作，下面的方法可以将搜索结果设为不可编辑状态。但我个人认为，保留可编辑也是可以的，用户搜到结果后不一定是进详细页查看，很可能想要删除或分享等等。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, canEditRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> searchController.isActive &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="把搜索栏放到-Table-Header-View"><a href="#把搜索栏放到-Table-Header-View" class="headerlink" title="把搜索栏放到 Table Header View"></a>把搜索栏放到 Table Header View</h2><p>之前我们把搜索栏放在了导航栏，效果跟系统原生（短信，联系人等）的一样，搜索栏默认隐藏，下拉显示。将搜索栏放到 Table Header View 可以更显式的展现给用户，我们有搜索功能。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// instead of </span></span><br><span class="line"><span class="comment">// self.navigationItem.searchController = searchController</span></span><br><span class="line"><span class="comment">// using:</span></span><br><span class="line">tableView.tableHeaderView = searchController.searchBar</span><br></pre></td></tr></table></figure>
+<h2 id="个性化外观"><a href="#个性化外观" class="headerlink" title="个性化外观"></a>个性化外观</h2><p>通过这种形式可以访问搜索栏的各个属性</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchController.searchBar.tintColor</span><br></pre></td></tr></table></figure>
+<p>常见的属性有</p>
+<ul>
+<li><strong>placeholder</strong> - 没有输入时的默认文本</li>
+<li><strong>prompt</strong> - 搜索栏顶部显示一行文本（效果不太好？重叠 to be fixed）</li>
+<li><strong>barTintColor</strong> - 背景颜色</li>
+<li><strong>tintColor</strong> - 关键元素颜色，如 Cancel 键</li>
+<li><strong>searchBarStyle</strong> - 风格，默认 <code>.prominent</code>, 半透明背景，搜索区域不透明。设为 <code>.minimal</code> 可移除背景，搜索区域透明</li>
+</ul>
+<h2 id="未解决的问题"><a href="#未解决的问题" class="headerlink" title="未解决的问题"></a>未解决的问题</h2><p>进入搜索界面后，向下拉会把 FoodPin 显示出来，稍后解决。</p>
+<p>可选功能：设置一个 button，点击激活搜索</p>
 
       
     </div>
@@ -553,9 +578,9 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/MATLAB/" rel="tag"># MATLAB</a>
+            <a href="/StudentJeffRen.github.io/tags/iOS/" rel="tag"># iOS</a>
           
-            <a href="/StudentJeffRen.github.io/tags/Numerical-Methods/" rel="tag"># Numerical Methods</a>
+            <a href="/StudentJeffRen.github.io/tags/Swift/" rel="tag"># Swift</a>
           
         </div>
       
@@ -568,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/10/11/chap5/" rel="next" title="Auto Layout">
-                <i class="fa fa-chevron-left"></i> Auto Layout
+              <a href="/StudentJeffRen.github.io/2019/02/19/linux/" rel="next" title="Linux 基本命令">
+                <i class="fa fa-chevron-left"></i> Linux 基本命令
               </a>
             
           </div>
@@ -577,10 +602,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2018/10/23/MIPS 指令/" rel="prev" title="MIPS 指令">
-                MIPS 指令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -762,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本原理"><span class="nav-number">1.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MATLAB-代码"><span class="nav-number">2.</span> <span class="nav-text">MATLAB 代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加搜索栏"><span class="nav-number">1.</span> <span class="nav-text">添加搜索栏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤逻辑"><span class="nav-number">2.</span> <span class="nav-text">过滤逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新-table，显示搜索结果"><span class="nav-number">3.</span> <span class="nav-text">更新 table，显示搜索结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把搜索栏放到-Table-Header-View"><span class="nav-number">4.</span> <span class="nav-text">把搜索栏放到 Table Header View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个性化外观"><span class="nav-number">5.</span> <span class="nav-text">个性化外观</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未解决的问题"><span class="nav-number">6.</span> <span class="nav-text">未解决的问题</span></a></li></ol></div>
             
 
           </div>
@@ -918,9 +939,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/";
-        this.page.identifier = "2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/";
-        this.page.title = '牛顿法解非线性方程组（MATLAB 实现）';
+        this.page.url = "http://jeffren.top/2019/02/28/chap20 Search Bar/";
+        this.page.identifier = "2019/02/28/chap20 Search Bar/";
+        this.page.title = 'Search Bar';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

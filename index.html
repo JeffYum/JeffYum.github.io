@@ -411,7 +411,7 @@
                 
               
 
-              <time title="Created: 2019-03-03 00:00:00 / Modified: 16:04:10" itemprop="dateCreated datePublished" datetime="2019-03-03T00:00:00+08:00">2019-03-03</time>
+              <time title="Created: 2019-03-03 00:00:00 / Modified: 16:07:29" itemprop="dateCreated datePublished" datetime="2019-03-03T00:00:00+08:00">2019-03-03</time>
             
 
             
@@ -479,60 +479,18 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>iOS 开发到此告一段落，那本书基本上算是学完了，只剩下一点偏向于辅助性的功能没有实现（99 美元/年的开发者账号阻止了我继续学习）。More important，现在有了新的任务，一个月学会 Python。</p>
 </blockquote>
-<h2 id="一些规则"><a href="#一些规则" class="headerlink" title="一些规则"></a>一些规则</h2><p>类名大写开头，其他全部小写</p>
-<p>_ 开头说明标识符是私有的</p>
-<p>__ 强私有</p>
-<p><code>__name__</code> 语言定义的特殊名称</p>
-<p>所有关键字都是小写的</p>
-<p>\ 表示内容在下一行继续</p>
-<p>“”” 允许字符串多行</p>
-<h2 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h2><p><code>sys</code> 库，<code>sys.argv</code> 获取命令行参数，可以用 len(), str() 方法来获取个数和字符串。注意第一个参数是脚本的名字</p>
-<h2 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="string">"john"</span> <span class="comment"># 有妙用，后面会提到</span></span><br></pre></td></tr></table></figure>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>以下是几个有趣的操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'Hello World!'</span></span><br><span class="line">print(str[<span class="number">0</span>]) <span class="comment"># 第一个</span></span><br><span class="line">print(str[<span class="number">2</span>:<span class="number">5</span>]) <span class="comment"># 切片，str[2], str[3], str[4], 不包括 str[5]</span></span><br><span class="line">print(str[<span class="number">2</span>:])</span><br><span class="line">print(str * <span class="number">2</span>) <span class="comment"># 复读</span></span><br><span class="line">print(str + <span class="string">"TEST"</span>) <span class="comment"># 拼接</span></span><br></pre></td></tr></table></figure>
-<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>和字符串操作完全一致</p>
-<h2 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h2><p><strong>只读</strong>列表，用圆括号，不可更新。但访问还是用方括号 <code>tuple[0]</code></p>
-<h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><p>键值对，与列表和元组不同的是，index 可以是其他类型（如字符串），不局限于数字。用花括号，没有顺序。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&#125;</span><br><span class="line">tinydict = &#123;<span class="string">'name'</span>: <span class="string">'john'</span>, <span class="string">'code'</span>: <span class="number">6734</span>, <span class="string">'dept'</span>: <span class="string">'sales'</span>&#125;</span><br><span class="line">dict[<span class="string">'one'</span>] = <span class="string">"This is one"</span> <span class="comment"># 赋值，index 是字符串</span></span><br><span class="line">print(dict[<span class="string">'one'</span>])</span><br><span class="line">print(tinydict) <span class="comment"># 完整的字典</span></span><br><span class="line">print(tinydict.keys()) <span class="comment"># 所有键</span></span><br><span class="line">print(tinydic.values()) <span class="comment"># 所有值</span></span><br></pre></td></tr></table></figure>
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>查表，通常方法名就是类型名，会返回一个新的对象。</p>
-<h2 id="Operator"><a href="#Operator" class="headerlink" title="Operator"></a>Operator</h2><h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p><code>**</code> 指数</p>
-<p><code>//</code> 除完移除小数部分</p>
-<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>没什么好说的</p>
-<h3 id="赋值-1"><a href="#赋值-1" class="headerlink" title="赋值"></a>赋值</h3><p>还是这些不太常见的操作符</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c %= a <span class="comment"># c = c % a</span></span><br><span class="line">c **= a <span class="comment"># c = c**a</span></span><br><span class="line">c //= a <span class="comment"># c = c//a</span></span><br></pre></td></tr></table></figure>
-<h3 id="按位-Bitwise"><a href="#按位-Bitwise" class="headerlink" title="按位 Bitwise"></a>按位 Bitwise</h3><p><code>bin()</code> 可以获取整数的二进制数</p>
-<p>与，或，非，异或，左移，右移</p>
-<h3 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h3><p><code>and</code>, <code>or</code>, <code>not</code></p>
-<h3 id="Membership"><a href="#Membership" class="headerlink" title="Membership"></a>Membership</h3><p><code>in</code>, <code>not in</code></p>
-<p>变量在列表里吗？</p>
-<h3 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h3><p><code>id()</code> 获取变量的内存地址</p>
-<p><code>a is b</code> 相当于 <code>id(a) == id(b)</code>, 即比较操作符两边的变量是否指向同一个对象</p>
-<p>此外还有 <code>is not</code></p>
-<h3 id="优先级-Precedence"><a href="#优先级-Precedence" class="headerlink" title="优先级 Precedence"></a>优先级 Precedence</h3><p>查表</p>
-<h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>注意格式，冒号，缩进。当仅有一行代码时，可以紧随判断之后，不换行。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> expression:</span><br><span class="line">    statement(s)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    statement(s)</span><br></pre></td></tr></table></figure>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> expression:</span><br><span class="line">	statement(s)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    statement(s)</span><br></pre></td></tr></table></figure>
-<p>无限循环可用于客户端/服务器，与用户交互的场景。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input(<span class="string">"Enter a number:"</span>) <span class="comment"># 先打印，再接受输入</span></span><br></pre></td></tr></table></figure>
-<p>类似地，循环也支持 <code>else</code> 语句，当循环到条件为 <code>false</code> 时执行。</p>
-<p><code>for</code> 循环通常用于迭代，遍历列表或字符串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> iterating_var <span class="keyword">in</span> sequence:</span><br><span class="line">    statements(s)</span><br></pre></td></tr></table></figure>
-<p>序列中的每个元素一一赋值给临时变量 <code>iterating_var</code>, 每次赋值后执行语句，全部遍历后结束循环</p>
-<p><code>range()</code> 生成数列</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">5</span>))</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="循环控制语句"></a>循环控制语句</h3><p><code>break</code> 跳出循环</p>
-<p><code>continue</code> 进入下一个循环</p>
-<p><code>pass</code> 什么都不干，满足语法</p>
-<h3 id="Iterator-and-Generator"><a href="#Iterator-and-Generator" class="headerlink" title="Iterator and Generator"></a>Iterator and Generator</h3><p>迭代器是一个对象，允许程序员遍历集合中的所有元素，不用管具体如何实现，有两个基本方法 <code>iter()</code>, <code>next()</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">it = iter(list) <span class="comment"># 创建一个迭代器</span></span><br><span class="line">print(next(it)) <span class="comment"># 迭代器中的下一个合法元素，由 next() 方法获得</span></span><br><span class="line"><span class="comment"># 可以结合 while 循环来遍历:</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>: print(next(it))</span><br><span class="line">    <span class="keyword">except</span> StopIteration: sys.exit()</span><br></pre></td></tr></table></figure>
-<p>使用了 <code>yield</code> 的函数被称为生成器，下面是一个斐波那契生成器的例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成器函数 斐波那契</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span><span class="params">(n)</span>:</span></span><br><span class="line">    a, b, counter = <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">if</span> (counter &gt; n):</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">yield</span> a <span class="comment"># 返回 a，下一次执行 next() 时从这里继续</span></span><br><span class="line">        a, b = b, a + b <span class="comment"># 同一行赋值，免掉了用 temp，奇妙</span></span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">f = fibonacci(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>: print(next(it)) <span class="comment"># 在这里输出结果哦</span></span><br><span class="line">    <span class="keyword">except</span> StopIteration: sys.exit()</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/03/03/PyNote1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

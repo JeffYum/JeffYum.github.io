@@ -122,24 +122,25 @@
 
 
 
-  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;sys/types.h&amp;gt;#include&amp;lt;unistd.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;int main()&amp;#123;        int i;    int c">
+  <meta name="description" content="讨论列表，元组，字典的用法。">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jeff Ren">
-<meta property="og:url" content="http://jeffren.top/2019/03/05/understand process/index.html">
+<meta property="og:title" content="Python Note(3)">
+<meta property="og:url" content="http://jeffren.top/2019/03/09/PythonNote3/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;sys/types.h&amp;gt;#include&amp;lt;unistd.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;int main()&amp;#123;        int i;    int c">
+<meta property="og:description" content="讨论列表，元组，字典的用法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T08:25:34.406Z">
+<meta property="og:updated_time" content="2019-03-09T14:51:58.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jeff Ren">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536#include&amp;lt;stdio.h&amp;gt;#include&amp;lt;sys/types.h&amp;gt;#include&amp;lt;unistd.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;int main()&amp;#123;        int i;    int c">
+<meta name="twitter:title" content="Python Note(3)">
+<meta name="twitter:description" content="讨论列表，元组，字典的用法。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2019/03/05/understand process/">
+  <link rel="canonical" href="http://jeffren.top/2019/03/09/PythonNote3/">
 
 
 
@@ -149,7 +150,7 @@
   };
 </script>
 
-  <title> | Jeff Ren</title>
+  <title>Python Note(3) | Jeff Ren</title>
   
 
 
@@ -366,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/05/understand process/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/09/PythonNote3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -383,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">Python Note(3)
 
               
             
@@ -409,12 +410,34 @@
                 
               
 
-              <time title="Created: 2019-03-05 16:25:34" itemprop="dateCreated datePublished" datetime="2019-03-05T16:25:34+08:00">2019-03-05</time>
+              <time title="Created: 2019-03-09 00:00:00 / Modified: 22:51:58" itemprop="dateCreated datePublished" datetime="2019-03-09T00:00:00+08:00">2019-03-09</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -424,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2019/03/05/understand process/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/03/09/PythonNote3/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/05/understand process/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/09/PythonNote3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -454,7 +477,66 @@
       
 
       
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> childpid;</span><br><span class="line">    <span class="keyword">int</span> pid;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is parent process step1.\n\n"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// child process</span></span><br><span class="line">    <span class="keyword">if</span> (fork() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> * execv_str[] = &#123;<span class="string">"echo"</span>, <span class="string">"executed by execv"</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (execv(<span class="string">"/bin/echo"</span>, execv_str) &lt; <span class="number">0</span>) &#123; <span class="comment">// 失败返回错误信息，继续执行后面的代码</span></span><br><span class="line">            perror(<span class="string">"error on exec"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>); <span class="comment">// 子进程完成后退出</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// parent process</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        pid = wait(&amp;childpid); <span class="comment">// 等待子进程结束，再执行。参数记录子进程的结束状态值</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"child pid = %d, exit status = %d\n"</span>, pid, WEXITSTATUS(childpid));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"execv done.\n\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"before execl ...\n"</span>);</span><br><span class="line">    execl(<span class="string">"/bin/ls"</span>, <span class="string">"/bin/ls"</span>, <span class="literal">NULL</span>); <span class="comment">// 如果成功执行，进程结束，后面的代码就没机会执行了，失败见 16 行。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"after execl ...\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>讨论列表，元组，字典的用法。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p>删除元素 <code>del list[2]</code></p>
+<p>与字符串操作十分类似，长度，加，复读，检查是否存在，迭代</p>
+<p><code>list[-1]</code> 表示最后一个元素，往前走 -2，-3…</p>
+<h3 id="内建方法"><a href="#内建方法" class="headerlink" title="内建方法"></a>内建方法</h3><ul>
+<li><code>len(list)</code></li>
+<li><code>max(list)</code>; <code>min()</code></li>
+<li><code>list(seq)</code>, 元组或字符串转换成 list</li>
+</ul>
+<p>操作</p>
+<ul>
+<li><p><code>list.append(obj)</code>, 添加</p>
+</li>
+<li><p><code>.count(obj)</code>, 统计出现几次</p>
+</li>
+<li><p><code>.extend(seq)</code>, 添加多个</p>
+</li>
+<li><p><code>.index(onj)</code>, 对象第一次出现的 index，否则报错</p>
+</li>
+<li><p><code>.insert(index, obj)</code>, 指定位置插入</p>
+</li>
+<li><p><code>.pop(index)</code>, index 可选，默认弹出最后一个，返回弹出的元素</p>
+</li>
+<li><p><code>.remove(obj)</code>, 移除，不返回任何值</p>
+</li>
+<li><p><code>.reverse()</code>, 反转</p>
+</li>
+<li><p><code>.sort([func])</code>, 排序，可使用比较函数 func</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">'Biology'</span>, <span class="string">'chemistry'</span>, <span class="string">'maths'</span>, <span class="string">'physics'</span>]</span><br><span class="line">list1.sort(reverse = <span class="keyword">True</span>) <span class="comment"># 降序</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">takeSecond</span><span class="params">(elem)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> elem[<span class="number">1</span>]</span><br><span class="line">random = [(<span class="number">2</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="number">4</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">3</span>)]</span><br><span class="line">random.sort(key = takeSecond) <span class="comment"># 按第二个元素进行排序</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Tuples"><a href="#Tuples" class="headerlink" title="Tuples"></a>Tuples</h2><p>空元组 <code>tup1 = ()</code></p>
+<p>即使元组中只有一个值，也要在后面加个逗号 <code>tup1 = (50,)</code></p>
+<p>元组的值不可改变，但是可以用存在的元组创建新元组</p>
+<p>没有任何括号的默认是元组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whatAmI = <span class="string">'I'</span>, <span class="string">'am'</span>, <span class="string">'a'</span>, <span class="string">'tuple'</span></span><br></pre></td></tr></table></figure>
+<p>除了会对列表做更改的函数，其他函数完全和列表一样。</p>
+<h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><p>键值以冒号分隔，元素之间逗号，整个花括号，空字典 <code>{}</code>。</p>
+<p>一个字典中键是唯一的，而值不是。值可以是任何类型，键只能是不可更改的类型如字符串，数字，元组。</p>
+<p>访问，更新，添加，删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> dict[<span class="string">'name'</span>] <span class="comment"># 删除元素</span></span><br><span class="line">dict.clear() <span class="comment"># 移除所有元素</span></span><br><span class="line"><span class="keyword">del</span> dict <span class="comment"># 删除字典</span></span><br></pre></td></tr></table></figure>
+<h3 id="键的性质"><a href="#键的性质" class="headerlink" title="键的性质"></a>键的性质</h3><ol>
+<li>多个相同的键是不允许的，访问时会使用最后相同的最后一个键。</li>
+<li>键应该是不可更改的类型，用列表来做键就不行</li>
+</ol>
+<h3 id="内建方法-1"><a href="#内建方法-1" class="headerlink" title="内建方法"></a>内建方法</h3><ul>
+<li><code>len(dict)</code></li>
+<li><code>str(dict)</code>, 转成字符串</li>
+<li><code>type(parameter)</code>, 返回参数的类型</li>
+<li><code>.copy()</code>, 复制</li>
+<li><code>.fromkeys(seq, value)</code>, 以 seq 中的元素为键，创建字典，value 可选，作为所有键的值</li>
+<li><code>.get(key, default=None)</code>, 返回对应键的值，如果没有返回 default(可以自定义); <code>.setdefault(key, default=None)</code>, 功能一样，区别是没有就创建</li>
+<li><code>.items()</code>, 返回由双元素元组组成的列表</li>
+<li><code>.keys()</code>, 列表形式返回所有键</li>
+<li><code>.values()</code>，列表形式返回所有值</li>
+<li><code>.update(dict2)</code>, 将 dict2 的键值对加入</li>
+</ul>
 
       
     </div>
@@ -508,6 +590,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/StudentJeffRen.github.io/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
 
       
       
@@ -517,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/03/03/PythonNote1/" rel="next" title="Python Note(1)">
-                <i class="fa fa-chevron-left"></i> Python Note(1)
+              <a href="/StudentJeffRen.github.io/2019/03/09/understand process/" rel="next" title="Linux 基本命令">
+                <i class="fa fa-chevron-left"></i> Linux 基本命令
               </a>
             
           </div>
@@ -526,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2019/03/08/PythonNote2/" rel="prev" title="Python Note(2)">
-                Python Note(2) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -581,8 +665,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -597,7 +690,7 @@
                 
                   <a href="/StudentJeffRen.github.io/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -693,6 +786,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">1.</span> <span class="nav-text">list</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内建方法"><span class="nav-number">1.1.</span> <span class="nav-text">内建方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tuples"><span class="nav-number">2.</span> <span class="nav-text">Tuples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dictionary"><span class="nav-number">3.</span> <span class="nav-text">Dictionary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#键的性质"><span class="nav-number">3.1.</span> <span class="nav-text">键的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内建方法-1"><span class="nav-number">3.2.</span> <span class="nav-text">内建方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -843,9 +953,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2019/03/05/understand process/";
-        this.page.identifier = "2019/03/05/understand process/";
-        this.page.title = '';
+        this.page.url = "http://jeffren.top/2019/03/09/PythonNote3/";
+        this.page.identifier = "2019/03/09/PythonNote3/";
+        this.page.title = 'Python Note(3)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

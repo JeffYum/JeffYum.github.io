@@ -122,27 +122,25 @@
 
 
 
-  <meta name="description" content="创建一个 table base app">
-<meta name="keywords" content="iOS,Swift">
+  <meta name="description" content="理清 Linux 中的父进程和子进程的关系">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最基础的 Table Based App">
-<meta property="og:url" content="http://jeffren.top/2018/12/06/chap8 开始 table/index.html">
+<meta property="og:title" content="Linux 基本命令">
+<meta property="og:url" content="http://jeffren.top/2019/03/09/understand process/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="创建一个 table base app">
+<meta property="og:description" content="理清 Linux 中的父进程和子进程的关系">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jeffren.top/Users/jeffren/Library/Application%20Support/typora-user-images/image-20181128234147029.png">
-<meta property="og:updated_time" content="2019-01-13T16:01:37.702Z">
+<meta property="og:updated_time" content="2019-03-09T14:51:01.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最基础的 Table Based App">
-<meta name="twitter:description" content="创建一个 table base app">
-<meta name="twitter:image" content="http://jeffren.top/Users/jeffren/Library/Application%20Support/typora-user-images/image-20181128234147029.png">
+<meta name="twitter:title" content="Linux 基本命令">
+<meta name="twitter:description" content="理清 Linux 中的父进程和子进程的关系">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/12/06/chap8 开始 table/">
+  <link rel="canonical" href="http://jeffren.top/2019/03/09/understand process/">
 
 
 
@@ -152,7 +150,7 @@
   };
 </script>
 
-  <title>最基础的 Table Based App | Jeff Ren</title>
+  <title>Linux 基本命令 | Jeff Ren</title>
   
 
 
@@ -369,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/12/06/chap8 开始 table/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/09/understand process/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -386,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">最基础的 Table Based App
+          <h1 class="post-title" itemprop="name headline">Linux 基本命令
 
               
             
@@ -412,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-12-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-06T00:00:00+08:00">2018-12-06</time>
+              <time title="Created: 2019-03-09 00:00:00 / Modified: 22:51:01" itemprop="dateCreated datePublished" datetime="2019-03-09T00:00:00+08:00">2019-03-09</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 00:01:37" itemprop="dateModified" datetime="2019-01-14T00:01:37+08:00">2019-01-14</time>
               
             
           </span>
@@ -461,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/12/06/chap8 开始 table/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/03/09/understand process/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/06/chap8 开始 table/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/09/understand process/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -492,66 +478,10 @@
 
       
         <blockquote>
-<p>创建一个 table base app</p>
+<p>理清 Linux 中的父进程和子进程的关系</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h2><p><strong>prototype cell</strong>: a cell template can be reused.</p>
-<p><strong>Identifier</strong>: a unique key for identifying prototype cell.</p>
-<h2 id="Protocol-协议"><a href="#Protocol-协议" class="headerlink" title="Protocol(协议)"></a>Protocol(协议)</h2><p><strong><em>Delegation pattern</em></strong>: 一个对象依赖于另一个对象执行特定任务。</p>
-<p>打个比方，你开公司，请了一位顶尖的图像设计师，你必须提供足够的信息给他，他才能根据要求设计你的 logo，而你太忙了，所以派个人助理将信息提供给他。</p>
-<table>
-<thead>
-<tr>
-<th>现实生活</th>
-<th>iOS</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>图像设计师</td>
-<td>UITableView</td>
-<td><strong>显示</strong>数据</td>
-</tr>
-<tr>
-<td>你的个人助理</td>
-<td>delegate object(委托对象)</td>
-<td>提供问题的答案</td>
-</tr>
-<tr>
-<td></td>
-<td>protocols</td>
-<td>提各种问题</td>
-</tr>
-</tbody>
-</table>
-<p><strong>UITableView:</strong> 我可以<strong>显示</strong>数据，但你必须提供给我信息。</p>
-<p><strong>Protocols</strong>: <strong>提问题</strong>，UITableView 需要什么信息，例如</p>
-<p><code>UITableViewDataSource</code>: 数据和 Table View 之间的连接，定义了必须采用的方法</p>
-<ul>
-<li>表格有几部分？</li>
-<li>几行？</li>
-<li>你想在第 x 行显示啥内容？</li>
-<li>各个部分的标题是什么？</li>
-<li>…</li>
-</ul>
-<p><code>UITableViewDelegate</code>: 外观</p>
-<ul>
-<li>行高？</li>
-<li>头部分的高度？</li>
-<li>第 x 行的锁进级别是多少？</li>
-<li>…</li>
-</ul>
-<p><strong>Delegate object</strong>: 遵守协议，提供实现，即<strong>回答问题</strong>。<code>ViewController</code></p>
-<h2 id="重复利用-cell"><a href="#重复利用-cell" class="headerlink" title="重复利用 cell"></a>重复利用 cell</h2><p>当处理成千上万行数据时，如果我们为每一个数据都申请一个 cell，内存爆炸。因此我们需要从队列回收带有特定标识符，可重复使用的 table cell。</p>
-<h3 id="为什么可以回收？"><a href="#为什么可以回收？" class="headerlink" title="为什么可以回收？"></a>为什么可以回收？</h3><p>屏幕大小是有限的，即便总共有 1000 条数据要显示，一屏幕最多显示 10 条。</p>
-<h3 id="如何回收？"><a href="#如何回收？" class="headerlink" title="如何回收？"></a>如何回收？</h3><p>回顾数据结构所学的知识。有一个队列，当一个 cell 划出屏幕时，入队列；滑进屏幕待使用的 cell 出队列。</p>
-<p><img src="/Users/jeffren/Library/Application Support/typora-user-images/image-20181128234147029.png" alt="image-20181128234147029"></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">RestaurantTableViewCell</span></span><br></pre></td></tr></table></figure>
-<p>这里的 <code>as!</code>会在下一篇文章中详细说明。</p>
-<h2 id="隐藏状态栏"><a href="#隐藏状态栏" class="headerlink" title="隐藏状态栏"></a>隐藏状态栏</h2><p>在 <code>ViewController</code> class 中添加</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">var</span> prefersStatusBarHidden: <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>override</strong> 掉它的默认值，重设为 true。(回顾 override)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> childpid;</span><br><span class="line">    <span class="keyword">int</span> pid;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is parent process step1.\n\n"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// child process</span></span><br><span class="line">    <span class="keyword">if</span> (fork() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> * execv_str[] = &#123;<span class="string">"echo"</span>, <span class="string">"executed by execv"</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (execv(<span class="string">"/bin/echo"</span>, execv_str) &lt; <span class="number">0</span>) &#123; <span class="comment">// 失败返回错误信息，继续执行后面的代码</span></span><br><span class="line">            perror(<span class="string">"error on exec"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>); <span class="comment">// 子进程完成后退出</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// parent process</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        pid = wait(&amp;childpid); <span class="comment">// 等待子进程结束，再执行。参数记录子进程的结束状态值</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"child pid = %d, exit status = %d\n"</span>, pid, WEXITSTATUS(childpid));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"execv done.\n\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"before execl ...\n"</span>);</span><br><span class="line">    execl(<span class="string">"/bin/ls"</span>, <span class="string">"/bin/ls"</span>, <span class="literal">NULL</span>); <span class="comment">// 如果成功执行，进程结束，后面的代码就没机会执行了，失败见 16 行。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"after execl ...\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -607,9 +537,7 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/StudentJeffRen.github.io/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/StudentJeffRen.github.io/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -622,8 +550,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/11/09/Single Cycle Processor/" rel="next" title="Single Cycle Processor">
-                <i class="fa fa-chevron-left"></i> Single Cycle Processor
+              <a href="/StudentJeffRen.github.io/2019/03/08/PythonNote2/" rel="next" title="Python Note(2)">
+                <i class="fa fa-chevron-left"></i> Python Note(2)
               </a>
             
           </div>
@@ -632,8 +560,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/12/06/chap9 自定义 tableView/" rel="prev" title="自定义 tableView">
-                自定义 tableView <i class="fa fa-chevron-right"></i>
+              <a href="/StudentJeffRen.github.io/2019/03/09/PythonNote3/" rel="prev" title="Python Note(3)">
+                Python Note(3) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -686,17 +614,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -807,23 +726,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小知识点"><span class="nav-number">1.</span> <span class="nav-text">小知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol-协议"><span class="nav-number">2.</span> <span class="nav-text">Protocol(协议)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复利用-cell"><span class="nav-number">3.</span> <span class="nav-text">重复利用 cell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么可以回收？"><span class="nav-number">3.1.</span> <span class="nav-text">为什么可以回收？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何回收？"><span class="nav-number">3.2.</span> <span class="nav-text">如何回收？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏状态栏"><span class="nav-number">4.</span> <span class="nav-text">隐藏状态栏</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -974,9 +876,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/12/06/chap8 开始 table/";
-        this.page.identifier = "2018/12/06/chap8 开始 table/";
-        this.page.title = '最基础的 Table Based App';
+        this.page.url = "http://jeffren.top/2019/03/09/understand process/";
+        this.page.identifier = "2019/03/09/understand process/";
+        this.page.title = 'Linux 基本命令';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

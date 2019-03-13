@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="There are not many contents in this chapter. We talk about the basic elements of user interface. Then, we creat a button in the original view, and customize it. Last, we work in ViewController.swift">
-<meta name="keywords" content="iOS,Swift">
+  <meta name="description" content="时间日期相关方法  函数">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Swift App">
-<meta property="og:url" content="http://jeffren.top/2018/10/07/chap3/index.html">
+<meta property="og:title" content="Python Note(4)">
+<meta property="og:url" content="http://jeffren.top/2019/03/13/PythonNote4/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="There are not many contents in this chapter. We talk about the basic elements of user interface. Then, we creat a button in the original view, and customize it. Last, we work in ViewController.swift">
+<meta property="og:description" content="时间日期相关方法  函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:06:00.420Z">
+<meta property="og:updated_time" content="2019-03-13T08:04:48.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My First Swift App">
-<meta name="twitter:description" content="There are not many contents in this chapter. We talk about the basic elements of user interface. Then, we creat a button in the original view, and customize it. Last, we work in ViewController.swift">
+<meta name="twitter:title" content="Python Note(4)">
+<meta name="twitter:description" content="时间日期相关方法  函数">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/10/07/chap3/">
+  <link rel="canonical" href="http://jeffren.top/2019/03/13/PythonNote4/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>My First Swift App | Jeff Ren</title>
+  <title>Python Note(4) | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/10/07/chap3/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/13/PythonNote4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">My First Swift App
+          <h1 class="post-title" itemprop="name headline">Python Note(4)
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-10-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-07T00:00:00+08:00">2018-10-07</time>
+              <time title="Created: 2019-03-13 00:00:00 / Modified: 16:04:48" itemprop="dateCreated datePublished" datetime="2019-03-13T00:00:00+08:00">2019-03-13</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 00:06:00" itemprop="dateModified" datetime="2019-01-14T00:06:00+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/10/07/chap3/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/03/13/PythonNote4/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/07/chap3/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/13/PythonNote4/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,18 +478,50 @@
 
       
         <blockquote>
-<p><em>There are not many contents in this chapter. We talk about the basic elements of user interface. Then, we creat a button in the original view, and customize it. Last, we work in ViewController.swift to creat a pop-up after clicking the button and connect them together.</em></p>
+<ol>
+<li><p>时间日期相关方法</p>
+</li>
+<li><p>函数</p>
+</li>
+</ol>
 </blockquote>
 <a id="more"></a>
-<h2 id="UI-部分"><a href="#UI-部分" class="headerlink" title="UI 部分"></a>UI 部分</h2><p><strong>Scene：</strong> 故事板中一个屏幕表示一个 view controller 及其 view.</p>
-<p><strong>view：</strong> UI 基本模块。例如 storyboard 中自带的 view 是放其他 buttons, labels, image views 的容器。</p>
-<p><strong>view controller：</strong> 管理与之关联的 view 和 subviews(e.g. button and label).</p>
-<p><strong>Command+=</strong> can let Xcode resize the button, 让文字显示完整。</p>
-<h2 id="让-button-做出反应"><a href="#让-button-做出反应" class="headerlink" title="让 button 做出反应"></a>让 button 做出反应</h2><p>在 ViewController.swift 的 <code>ViewController</code> 类中添加 <code>showMessage(sender: UIButton)</code> 方法</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">showMessage</span><span class="params">(sender: UIButton)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 声明一个警告控制器</span></span><br><span class="line">    <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="string">"Welcome to My First App"</span>, message: <span class="string">"Hello World"</span>, preferredStyle: <span class="type">UIAlertController</span>.<span class="type">Style</span>.alert)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 向这个警告控制器中添加动作 OK</span></span><br><span class="line">    alertController.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"OK"</span>, style: <span class="type">UIAlertAction</span>.<span class="type">Style</span>.<span class="keyword">default</span>, handler: <span class="literal">nil</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 显示这个控制器</span></span><br><span class="line">    present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>建立联系</strong></p>
-<p>我们需要将故事板中的「Hello World」Button 与刚刚创建的方法联系起来。</p>
-<p>Simply 按住 Ctrl 和鼠标左键拖拽到控制器图标</p>
+<h2 id="Data-amp-Time"><a href="#Data-amp-Time" class="headerlink" title="Data &amp; Time"></a>Data &amp; Time</h2><p><code>ticks = time.time()</code> 1970 年 1 月 1 日 12:00 am 开始以秒为单位的浮点数</p>
+<p>可以用这个值获取时间元组，<code>timeTuple = time.localtime(ticks)</code></p>
+<p>进一步通过元组获取适合人类识别的时间日期 <code>formattedTime = time.asctime(timeTuple)</code></p>
+<h3 id="日历"><a href="#日历" class="headerlink" title="日历"></a>日历</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line">cal = calendar.month(<span class="number">2015</span>, <span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>time.altzone</code>, 当地与格林威治(本初子午线)的偏差，以西为正，东为负</li>
+<li><code>.clock()</code>, 返回当前处理器时间，通常用于测试</li>
+<li><code>.ctime(sec)</code>, 将秒数转化为时间</li>
+<li><code>.gmtime([sec])</code>, 转换为 struct_time，格林威治时间</li>
+<li><code>.localtime()</code>, 当地时间</li>
+<li><code>.mktime()</code>, localtime 的反函数</li>
+<li><code>.sleep()</code>, 暂停执行，参数可以是浮点数。实际暂停时间可能比预定的少。</li>
+<li><code>.strftime(format, t)</code>, 接受元组，可以自定如何输出时间，指令查表</li>
+<li><code>.strptime(string, format)</code>, 反过来，接受响应格式的时间，返回元组</li>
+</ul>
+<p>还有很多跟时间日期相关的方法，需要用到时再查询。</p>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>基本格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">functionname</span><span class="params">(parameters)</span>:</span></span><br><span class="line">    <span class="string">"function description"</span></span><br><span class="line">    <span class="comment"># do something</span></span><br><span class="line">    <span class="keyword">return</span> [expression]</span><br></pre></td></tr></table></figure>
+<p>传入函数的参数会被函数改变，比较下面两个函数，版本 1 会让传入 mylist 改变，而 2 不会</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">changeme1</span><span class="params">(mylist)</span>:</span></span><br><span class="line">    mylist[<span class="number">2</span>] = <span class="number">50</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">changeme2</span><span class="params">(mylist)</span>:</span></span><br><span class="line">    mylist = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] <span class="comment"># 声明一个新列表（局部变量），与参数 mylist 无关</span></span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>有 4 种提供参数的方法：</p>
+<ul>
+<li><p>Required arguments，必须提供否则报错，且要按顺序</p>
+</li>
+<li><p>Keyword，关键字，可以忽略顺序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printme(str = <span class="string">"My string"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Default，构建函数时提供的默认值，如果调用时没有提供，则用这个值，如果不用关键字，还是要按顺序来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printinfo</span><span class="params">(name, age = <span class="number">35</span>)</span>:</span></span><br><span class="line">    <span class="comment"># balabalabala</span></span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Variable-length，不知道会传入多少参数，<code>arg1</code> 是正常的参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printinfo</span><span class="params">( arg1, *vartuple)</span>:</span></span><br><span class="line">    print(<span class="string">"Output is:"</span>)</span><br><span class="line">    print(arg1)</span><br><span class="line">    print(<span class="string">"Fixed argument(s) done.\n"</span>)</span><br><span class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> vartuple:</span><br><span class="line">        print(var)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">printinfo(<span class="number">10</span>)</span><br><span class="line">printinfo(<span class="number">70</span>, <span class="number">60</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><p><code>lambda arg1, arg2, ……: expression</code> 只有一行的函数，没有名字，支持多个参数，但只能返回一个值。用法如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum = <span class="keyword">lambda</span> arg1, arg2: arg1 + arg2</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Value of total:"</span>, sum(<span class="number">10</span>, <span class="number">20</span>))</span><br><span class="line">print(<span class="string">"Value of total:"</span>, sum(<span class="number">20</span>, <span class="number">20</span>))</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -557,9 +577,7 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/StudentJeffRen.github.io/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/StudentJeffRen.github.io/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -572,8 +590,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/10/06/TheVerybeginning/" rel="next" title="The Very Beginning">
-                <i class="fa fa-chevron-left"></i> The Very Beginning
+              <a href="/StudentJeffRen.github.io/2019/03/09/PythonNote3/" rel="next" title="Python Note(3)">
+                <i class="fa fa-chevron-left"></i> Python Note(3)
               </a>
             
           </div>
@@ -581,10 +599,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2018/10/10/chap4/" rel="prev" title="Explaination of Hello World App">
-                Explaination of Hello World App <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -768,7 +782,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UI-部分"><span class="nav-number">1.</span> <span class="nav-text">UI 部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让-button-做出反应"><span class="nav-number">2.</span> <span class="nav-text">让 button 做出反应</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-amp-Time"><span class="nav-number">1.</span> <span class="nav-text">Data &amp; Time</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日历"><span class="nav-number">1.1.</span> <span class="nav-text">日历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">2.</span> <span class="nav-text">Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数"><span class="nav-number">2.2.</span> <span class="nav-text">匿名函数</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -924,9 +938,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/10/07/chap3/";
-        this.page.identifier = "2018/10/07/chap3/";
-        this.page.title = 'My First Swift App';
+        this.page.url = "http://jeffren.top/2019/03/13/PythonNote4/";
+        this.page.identifier = "2019/03/13/PythonNote4/";
+        this.page.title = 'Python Note(4)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

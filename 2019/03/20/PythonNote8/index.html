@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="在 view 中嵌入地图 用 Geocoder 将地址转换为坐标 添加和自定义 Pin 自定义注解">
-<meta name="keywords" content="iOS,Swift">
+  <meta name="description" content="Python 的面向对象，之前 iOS 的文章中有更基础详细的讲解。">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="地图">
-<meta property="og:url" content="http://jeffren.top/2018/12/18/chap16 地图/index.html">
+<meta property="og:title" content="Python Note(8)">
+<meta property="og:url" content="http://jeffren.top/2019/03/20/PythonNote8/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="在 view 中嵌入地图 用 Geocoder 将地址转换为坐标 添加和自定义 Pin 自定义注解">
+<meta property="og:description" content="Python 的面向对象，之前 iOS 的文章中有更基础详细的讲解。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-14T08:19:07.088Z">
+<meta property="og:updated_time" content="2019-03-20T14:44:20.273Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="地图">
-<meta name="twitter:description" content="在 view 中嵌入地图 用 Geocoder 将地址转换为坐标 添加和自定义 Pin 自定义注解">
+<meta name="twitter:title" content="Python Note(8)">
+<meta name="twitter:description" content="Python 的面向对象，之前 iOS 的文章中有更基础详细的讲解。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/12/18/chap16 地图/">
+  <link rel="canonical" href="http://jeffren.top/2019/03/20/PythonNote8/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>地图 | Jeff Ren</title>
+  <title>Python Note(8) | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/12/18/chap16 地图/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote8/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">地图
+          <h1 class="post-title" itemprop="name headline">Python Note(8)
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-12-18 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-18T00:00:00+08:00">2018-12-18</time>
+              <time title="Created: 2019-03-20 00:00:00 / Modified: 22:44:20" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 16:19:07" itemprop="dateModified" datetime="2019-01-14T16:19:07+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/12/18/chap16 地图/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/18/chap16 地图/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote8/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,55 +478,30 @@
 
       
         <blockquote>
-<ul>
-<li>在 view 中嵌入地图</li>
-<li>用 <strong>Geocoder</strong> 将地址转换为坐标</li>
-<li>添加和自定义 Pin</li>
-<li>自定义注解</li>
-</ul>
+<p>Python 的面向对象，之前 iOS 的<a href="http://jeffren.top/2018/12/07/chap%2013%20OOP/#more">文章</a>中有更基础详细的讲解。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><ol>
-<li>手动添加一条灰色的分割线，这条线实际上是一个高度为 1 的 view，记得设置 constraint 来保持高度。</li>
-<li>为了支持动态字体，需要将某些 constraint 设成 <code>Greater Than or Equal</code>。</li>
-<li>通常一个页面会有多于屏幕大小的内容，在编辑时没有滚动操作，所以有些内容会超出边框，为了便于编辑，我们可以将 controller 拉长。</li>
-</ol>
-<h2 id="嵌入地图"><a href="#嵌入地图" class="headerlink" title="嵌入地图"></a>嵌入地图</h2><p>首先要在 capability 中打开 Map framework。</p>
-<p>然后就是各种拖拽，详细页中一个 cell 放一个小 mapView，另开一个 controller 再放一个大 mapView，建立好 Segue。相应地创建和绑定 <code>RestaurantDetailMapCell.swift</code> 和 <code>MapViewController.swift</code>。</p>
-<blockquote>
-<p>复习如何创建 Segue？</p>
-<p>按住 <em>control</em>，从源头拖向目的地。 </p>
-</blockquote>
-<h2 id="Geocoder"><a href="#Geocoder" class="headerlink" title="Geocoder"></a>Geocoder</h2><p><em>Forward geocoding</em> 物理地址 -&gt; 全球坐标，<em>Reverse geocoding</em> 全球坐标 -&gt; 物理地址</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> geoCoder = <span class="type">CLGeocoder</span>()</span><br><span class="line">geoCoder.geocodeAddressString(<span class="string">"524 Ct St, Brooklyn, NY 11231"</span>, completionHandler: &#123; placemarks, error <span class="keyword">in</span></span><br><span class="line">	<span class="comment">// 操作 placemark</span></span><br><span class="line">	<span class="keyword">let</span> coordinate = placemark.location?.coordinate                                                                                  &#125;)</span><br></pre></td></tr></table></figure>
-<p>不要尝试在使用一次地理解码后再次使用，因为它在每个 app 中都是有速率限制的，当超出最大速率，地理解码器将会传出错误对象到 completion handler。</p>
-<h2 id="气球-annotation"><a href="#气球-annotation" class="headerlink" title="气球(annotation)"></a>气球(annotation)</h2><p>一个 annotation 实际上由两个对象组成，</p>
-<ul>
-<li><strong>an annotation object:</strong> 储存数据</li>
-<li><strong>an annotation view:</strong> 视觉</li>
+<p>可以添加，移除，修改属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">emp1.salary = <span class="number">7000</span></span><br><span class="line">emp1.name = <span class="string">'xyz'</span></span><br><span class="line"><span class="keyword">del</span> emp1.salary</span><br></pre></td></tr></table></figure>
+<p>替代直接操作，下面有几个访问属性的方法：（为什么要用方法？）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hasattr(emp1, <span class="string">'salary'</span>) <span class="comment"># 有无</span></span><br><span class="line">getattr(emp1, <span class="string">'salary'</span>) <span class="comment"># 获取</span></span><br><span class="line">setattr(emp1, <span class="string">'salary'</span>, <span class="number">7000</span>) <span class="comment"># 设置</span></span><br><span class="line">delattr(emp1, <span class="string">'salary'</span>) <span class="comment"># 删除</span></span><br></pre></td></tr></table></figure>
+<h2 id="内建类属性"><a href="#内建类属性" class="headerlink" title="内建类属性"></a>内建类属性</h2><ul>
+<li><code>__dict__</code>, 包含命名空间的字典</li>
+<li><code>__doc__</code>, 说明书</li>
+<li><code>__name__</code>, 类名</li>
+<li><code>__module__</code>, 定义该类的模块名，交互模式（当前）叫 <code>__main__</code></li>
+<li><code>__bases__</code>, 包含基类的元组</li>
 </ul>
-<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><ul>
-<li>markerTintColor - 背景色</li>
-<li>glyphText - 文本</li>
-<li>glyphImage - 图片</li>
-</ul>
-<p>要调整 annotation view，得采用 <code>MKMapViewDelegate</code> 协议，这个协议定义了一系列可选的方法，你可以用来接收地图相关的更新消息。map view 用了其中的一个方法来请求 annotation，每当 map view 需要 annotaion view 时，会调用 <code>mapView(_:viewFor:)</code>方法，现在我们还没有采用协议和提供实现，所以默认的 annotaiton view 被显示出来。</p>
-<p>既然我们要自定义，那还是基本步骤。采用协议：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MapViewController</span>: <span class="title">UIViewController</span>, <span class="title">MKMapViewDelegate</span></span></span><br></pre></td></tr></table></figure>
-<p>定义委托对象（连接）</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mapView.delegate = <span class="keyword">self</span></span><br></pre></td></tr></table></figure>
-<p>最后实现方法</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapView</span><span class="params">(<span class="number">_</span> mapView: MKMapView, viewFor annotation: MKAnnotation)</span></span> -&gt; <span class="type">MKAnnotationView</span>? &#123;</span><br><span class="line">    <span class="keyword">let</span> identifier = <span class="string">"MyMarker"</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> annotation.isKind(of: <span class="type">MKUserLocation</span>.<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> annoationView: <span class="type">MKMarkerAnnotationView</span>? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) <span class="keyword">as</span>? <span class="type">MKMarkerAnnotationView</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> annotationView == <span class="literal">nil</span> &#123;</span><br><span class="line">        annotationView = <span class="type">MKMarkerAnnotationView</span>(annotaiton: annotaion, reuseIdentifier: identifier)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    annotaitonView?.glyphText = <span class="string">"   "</span></span><br><span class="line">    annotationView?.markerTintColot = <span class="type">UIColor</span>.orange</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> annotationView</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有两种类型的 annotations</p>
-<ul>
-<li>Placemark</li>
-<li>Current location</li>
-</ul>
-<p>因为每当 map view 需要 annotaion view 时，会调用 <code>mapView(_:viewFor:)</code>方法。用户当前位置也是一种 annotaition，而我们的 app 没有打开显示用户位置，因此也不需要注解用户位置，所以当 annotation 是 current location 时，我们简单地返回 <code>nil</code>，即 4 - 6 行代码。</p>
-<p>为了提高性能，就像主页重复利用 cell 一样，我们重复利用 annotation view，如第 8 行代码所示。如果没有可利用的，则新建。</p>
-<h2 id="自定义地图"><a href="#自定义地图" class="headerlink" title="自定义地图"></a>自定义地图</h2><p>插入一些小属性，<code>viewDidLoad</code></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mapView.showsCompass = <span class="literal">true</span></span><br><span class="line">mapView.showsScale = <span class="literal">true</span></span><br><span class="line">mapView.showsTraffic = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>## </p>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span></span><br><span class="line">    parentAttr = <span class="number">100</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Calling parent constructor"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parentMethod</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Calling parent method"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setAttr</span><span class="params">(self, attr)</span>:</span></span><br><span class="line">        Parent.parentAttr = attr</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getAttr</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Parent attribute:"</span>, Parent.parentAttr)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Calling child constructor"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">childMethod</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Calling child method"</span>)</span><br><span class="line"></span><br><span class="line">c = Child() <span class="comment"># 即使 c 是 Child 类的实例</span></span><br><span class="line">c.childMethod()</span><br><span class="line">c.parentMethod() <span class="comment"># 它也可以调用其父类 Parent 的方法</span></span><br><span class="line">c.setAttr(<span class="number">200</span>)</span><br><span class="line">c.getAttr()</span><br></pre></td></tr></table></figure>
+<p>一个字类可以有多个父类</p>
+<p><code>issubclass(sub, sup)</code> 检查是否是字类</p>
+<p><code>isinstance(obj, Class)</code> 检查是否是类的实例</p>
+<h2 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h2><p>子类中可以重写父类的方法，直接定义相同名称的方法即可，无需加关键字 override</p>
+<h3 id="重写基本函数"><a href="#重写基本函数" class="headerlink" title="重写基本函数"></a>重写基本函数</h3><p>一些带下划线的通用函数也可以重写，例如前面我们无意中重写了 <code>__init__</code> 和 <code>__del__</code>， 在里面加入了打印的语句。</p>
+<h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>假设我们创建了一个表示二维向量的类，需要一个向量中的元素分别相加的功能，常规的 <code>+</code> 号是不能实现的，此时我们可以重新定义 <code>+</code> 号，称为运算符重载。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">    self.a = a</span><br><span class="line">    self.b = b</span><br><span class="line">    </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Vector (%d, %d)'</span> % (self.a, self.b)</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__add__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Vector(self.a + other.a, self.b + other.b)</span><br><span class="line"></span><br><span class="line">  v1 = Vector(<span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">  v2 = Vector(<span class="number">5</span>, <span class="number">-2</span>)</span><br><span class="line">  <span class="keyword">print</span> (v1 + v2)</span><br></pre></td></tr></table></figure>
+<h2 id="数据隐藏"><a href="#数据隐藏" class="headerlink" title="数据隐藏"></a>数据隐藏</h2><p>让属性不能被类以外的空间看见，双下划线前缀（强私有）。实际上 Python 只是改了下文件名来实现隐藏，我们仍然可以通过形如 <code>object._className__attrName</code> 的格式，在外部访问隐藏属性。</p>
+<p>私有属性，私有方法。单下划线表示私有，子类还是允许访问的。在第一篇笔记的开头提到过。</p>
 
       
     </div>
@@ -594,9 +557,7 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/StudentJeffRen.github.io/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/StudentJeffRen.github.io/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -609,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/12/13/chap15 导航栏自定义，扩展，动态类型/" rel="next" title="导航栏自定义，扩展，动态类型">
-                <i class="fa fa-chevron-left"></i> 导航栏自定义，扩展，动态类型
+              <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/" rel="next" title="Python Note(7)">
+                <i class="fa fa-chevron-left"></i> Python Note(7)
               </a>
             
           </div>
@@ -618,10 +579,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2018/12/24/chap17 基本动画，视觉效果/" rel="prev" title="基本动画，视觉效果">
-                基本动画，视觉效果 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -805,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小技巧"><span class="nav-number">1.</span> <span class="nav-text">小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌入地图"><span class="nav-number">2.</span> <span class="nav-text">嵌入地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geocoder"><span class="nav-number">3.</span> <span class="nav-text">Geocoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#气球-annotation"><span class="nav-number">4.</span> <span class="nav-text">气球(annotation)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义"><span class="nav-number">4.1.</span> <span class="nav-text">自定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义地图"><span class="nav-number">5.</span> <span class="nav-text">自定义地图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内建类属性"><span class="nav-number">1.</span> <span class="nav-text">内建类属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">2.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法重写"><span class="nav-number">4.</span> <span class="nav-text">方法重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重写基本函数"><span class="nav-number">4.1.</span> <span class="nav-text">重写基本函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符重载"><span class="nav-number">5.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据隐藏"><span class="nav-number">6.</span> <span class="nav-text">数据隐藏</span></a></li></ol></div>
             
 
           </div>
@@ -961,9 +918,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/12/18/chap16 地图/";
-        this.page.identifier = "2018/12/18/chap16 地图/";
-        this.page.title = '地图';
+        this.page.url = "http://jeffren.top/2019/03/20/PythonNote8/";
+        this.page.identifier = "2019/03/20/PythonNote8/";
+        this.page.title = 'Python Note(8)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

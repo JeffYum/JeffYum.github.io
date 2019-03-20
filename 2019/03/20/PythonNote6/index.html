@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="基本步骤 创建 添加动作 显示">
-<meta name="keywords" content="iOS,Swift">
+  <meta name="description" content="关于文件操作。这是一篇很长，还有点水的烂尾笔记…今后还会做修改">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tableView 简单交互">
-<meta property="og:url" content="http://jeffren.top/2018/12/06/chap10 tableView 简单交互/index.html">
+<meta property="og:title" content="Python Note(6)">
+<meta property="og:url" content="http://jeffren.top/2019/03/20/PythonNote6/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="基本步骤 创建 添加动作 显示">
+<meta property="og:description" content="关于文件操作。这是一篇很长，还有点水的烂尾笔记…今后还会做修改">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:06:40.241Z">
+<meta property="og:updated_time" content="2019-03-20T12:22:19.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tableView 简单交互">
-<meta name="twitter:description" content="基本步骤 创建 添加动作 显示">
+<meta name="twitter:title" content="Python Note(6)">
+<meta name="twitter:description" content="关于文件操作。这是一篇很长，还有点水的烂尾笔记…今后还会做修改">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/12/06/chap10 tableView 简单交互/">
+  <link rel="canonical" href="http://jeffren.top/2019/03/20/PythonNote6/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>tableView 简单交互 | Jeff Ren</title>
+  <title>Python Note(6) | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/12/06/chap10 tableView 简单交互/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote6/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tableView 简单交互
+          <h1 class="post-title" itemprop="name headline">Python Note(6)
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-12-06 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-06T00:00:00+08:00">2018-12-06</time>
+              <time title="Created: 2019-03-20 00:00:00 / Modified: 20:22:19" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 00:06:40" itemprop="dateModified" datetime="2019-01-14T00:06:40+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/12/06/chap10 tableView 简单交互/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/06/chap10 tableView 简单交互/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,30 +478,33 @@
 
       
         <blockquote>
-<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><ol>
-<li>创建</li>
-<li>添加动作</li>
-<li>显示</li>
-</ol>
+<p>关于文件操作。这是一篇很长，还有点水的烂尾笔记…今后还会做修改</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>Delegate pattern 委托模式(Separation of concerns 关注点分离)</strong></p>
-<p>每个委托负责执行特定功能和任务，来保持系统简洁。每当一个对象需要执行某个任务时，它都依赖于另一个对象来处理它。</p>
-<p><code>tableView(_:didSelectRowAt:)</code> 当用户选择了一行后，处理它</p>
-<p><code>handler</code>: 进一步动作</p>
-<h2 id="Closure-闭包-：可以在代码中传递的自包含功能块"><a href="#Closure-闭包-：可以在代码中传递的自包含功能块" class="headerlink" title="Closure(闭包)：可以在代码中传递的自包含功能块"></a>Closure(闭包)：可以在代码中传递的自包含功能块</h2><p>声明一个常量 callAcitonHandler, 它的值是括号中的内容。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> callActionHandler = &#123; (action:<span class="type">UIAlertAction</span>!) -&gt; <span class="type">Void</span> <span class="keyword">in</span> <span class="comment">// in 分隔参数和主体部分</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// Main body of the alert window</span></span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> alertMessage = <span class="type">UIAlertController</span>(title: <span class="string">"Service Unavailable"</span>, message: <span class="string">"Sorry, the call feature is not available yet. Please retry later."</span>, preferredStyle: .alert)</span><br><span class="line"></span><br><span class="line">         <span class="comment">// Button "OK"</span></span><br><span class="line"></span><br><span class="line">         alertMessage.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"OK"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>))</span><br><span class="line"></span><br><span class="line">          <span class="comment">// Display</span></span><br><span class="line"></span><br><span class="line">          <span class="keyword">self</span>.present(alertMessage, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="回顾字符串操作"><a href="#回顾字符串操作" class="headerlink" title="回顾字符串操作"></a>回顾字符串操作</h2><p>“Call” + “ 123-000-(indexPath.row)”</p>
-<ol>
-<li>+ 号连接</li>
-<li>() 饮用其他的量</li>
-</ol>
-<h2 id="适配-iPad"><a href="#适配-iPad" class="headerlink" title="适配 iPad"></a>适配 iPad</h2><h3 id="调整-cell-的宽度"><a href="#调整-cell-的宽度" class="headerlink" title="调整 cell 的宽度"></a>调整 cell 的宽度</h3><p>横屏时 cell 太宽，不美观。</p>
-<p>在 <code>viewDidLoad()</code> 中添加</p>
-<p><code>tableView.cellLayoutMarginsFollowReadableWidth = true</code></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>与 iPhone 不同，iPad 会以<strong>弹出</strong>的风格展示 alert。在哪弹出呢？</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> popoverController = optionMenu.popoverPresentationController &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">let</span> cell = tableView.cellForRow(at: indexPath) &#123;</span><br><span class="line">        popoverController.sourceView = cell <span class="comment">// which cell</span></span><br><span class="line">        popoverController.sourceRect = cell.bounds <span class="comment">// the detail location in the cell</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在 iPhone 上运行时，<code>popoverPresentationController</code> 被设为 <code>nil</code>，而运行在 iPad 上时，储存弹出显示的控制器。因此我们用 <code>if let</code>来检查。</p>
+<h2 id="Files-I-O"><a href="#Files-I-O" class="headerlink" title="Files I/O"></a>Files I/O</h2><p>从最基本的键盘输入输出开始，<code>print()</code>, <code>input()</code>。输入的用法很奇妙，可以在接受输入之前先显示一些内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input(<span class="string">"Type something:"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="打开关闭"><a href="#打开关闭" class="headerlink" title="打开关闭"></a>打开关闭</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject = open(file_name, access_mode, buffering)</span><br></pre></td></tr></table></figure>
+<p>几种访问模式 </p>
+<p>r, rb, r+, rb+: 只读，b 表示二进制，+ 表示写。文件指针位于开始位置</p>
+<p>w, wb, w+, wb+: 只写，如文件存在，覆盖；不存在，新建。+ 表示读。</p>
+<p>a, ab, a+, ab+: 指针位于文件末尾，即在后面附加内容，而不是 overwrite。+ 还是读</p>
+<p>打开了一个文件，即得到了一个文件对象，我们可以访问这个文件的属性，非常 straightforward</p>
+<ul>
+<li><code>file.closed</code>, 关闭了返回 true</li>
+<li><code>file.mode</code></li>
+<li><code>file.name</code></li>
+</ul>
+<p>最后，关闭文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.close()</span><br></pre></td></tr></table></figure>
+<h3 id="读写"><a href="#读写" class="headerlink" title="读写"></a>读写</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileObject.write(string) <span class="comment"># 写入字符串</span></span><br><span class="line">str = fileObject.read(count) <span class="comment"># 从开头读取特定长度（单位 bytes）的字符串</span></span><br><span class="line"><span class="comment"># 如果不指定长度，则读取尽可能多的字符</span></span><br></pre></td></tr></table></figure>
+<h3 id="文件内位置"><a href="#文件内位置" class="headerlink" title="文件内位置"></a>文件内位置</h3><p><code>tell()</code> 当前在文件中的位置，下一次读写会在文件开始第多少个字节进行。<code>seek(offset, from)</code> 改变文件位置，offset 偏移量，from 0 开头，1 当前，2 末尾。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fo = open(<span class="string">"foo.txt"</span>, <span class="string">"r+"</span>)</span><br><span class="line">str = fo.read(<span class="number">10</span>)</span><br><span class="line">print(<span class="string">"Read string is:"</span>, str)</span><br><span class="line"></span><br><span class="line">position = fo.tell() <span class="comment"># tell me</span></span><br><span class="line">print(<span class="string">"Current file position:"</span>, position)</span><br><span class="line"></span><br><span class="line">position = fo.seek(<span class="number">0</span>, <span class="number">0</span>) <span class="comment"># 定位到开始</span></span><br><span class="line">str = fo.read(<span class="number">10</span>)</span><br><span class="line">print(<span class="string">"Again read string is:"</span>, str)</span><br><span class="line"></span><br><span class="line">fo.close()</span><br></pre></td></tr></table></figure>
+<h3 id="处理文件，目录"><a href="#处理文件，目录" class="headerlink" title="处理文件，目录"></a>处理文件，目录</h3><p>导入 <code>os</code> 模块，非常直观的操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">os.rename(current_file_name, new_file_name)</span><br><span class="line">os.remove(file_name)</span><br><span class="line">os.mkdir(<span class="string">"newdir"</span>) <span class="comment"># 创建</span></span><br><span class="line">os.chdirz(<span class="string">"newdir"</span>) <span class="comment"># 改变当前目录</span></span><br><span class="line">os.getcwd() <span class="comment"># 获取当前目录</span></span><br><span class="line">os.rmdir(<span class="string">'dirname'</span>) <span class="comment"># 删除，必须先清除里面的内容</span></span><br></pre></td></tr></table></figure>
+<h3 id="更多方法"><a href="#更多方法" class="headerlink" title="更多方法"></a>更多方法</h3><p>操作文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fileObj.flush() <span class="comment"># 冲刷缓存？</span></span><br><span class="line">.fileno() <span class="comment"># 整数描述符？</span></span><br><span class="line">.isatty <span class="comment"># 是否连接终端设备？</span></span><br><span class="line">next(fileObj) <span class="comment"># 返回文件下一行</span></span><br><span class="line">.readline(size) <span class="comment"># 读一行，size 规定读多少字节(optional)，保留换行符</span></span><br><span class="line">.readlines(sizehint) <span class="comment"># 读取所有行，返回列表，参数干什么用的？</span></span><br><span class="line">.truncate(size) <span class="comment"># 截断，删除 size 以后的内容，如果不给size，默认当前位置</span></span><br><span class="line">.writelines(sequence) <span class="comment"># 写入多行</span></span><br></pre></td></tr></table></figure>
+<p>处理文件及目录</p>
+<p>暂时跳过，太多了</p>
 
       
     </div>
@@ -569,9 +560,7 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/StudentJeffRen.github.io/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/StudentJeffRen.github.io/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -584,8 +573,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/12/06/chap8 开始 table/" rel="next" title="最基础的 Table Based App">
-                <i class="fa fa-chevron-left"></i> 最基础的 Table Based App
+              <a href="/StudentJeffRen.github.io/2019/03/17/PythonNote5/" rel="next" title="Python Note(5)">
+                <i class="fa fa-chevron-left"></i> Python Note(5)
               </a>
             
           </div>
@@ -593,10 +582,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2018/12/06/chap11 滑动/" rel="prev" title="对行的一些操作">
-                对行的一些操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -780,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本步骤"><span class="nav-number">1.</span> <span class="nav-text">基本步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Closure-闭包-：可以在代码中传递的自包含功能块"><span class="nav-number">2.</span> <span class="nav-text">Closure(闭包)：可以在代码中传递的自包含功能块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回顾字符串操作"><span class="nav-number">3.</span> <span class="nav-text">回顾字符串操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配-iPad"><span class="nav-number">4.</span> <span class="nav-text">适配 iPad</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调整-cell-的宽度"><span class="nav-number">4.1.</span> <span class="nav-text">调整 cell 的宽度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">4.2.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Files-I-O"><span class="nav-number">1.</span> <span class="nav-text">Files I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开关闭"><span class="nav-number">1.1.</span> <span class="nav-text">打开关闭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写"><span class="nav-number">1.2.</span> <span class="nav-text">读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件内位置"><span class="nav-number">1.3.</span> <span class="nav-text">文件内位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理文件，目录"><span class="nav-number">1.4.</span> <span class="nav-text">处理文件，目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多方法"><span class="nav-number">1.5.</span> <span class="nav-text">更多方法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -936,9 +921,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/12/06/chap10 tableView 简单交互/";
-        this.page.identifier = "2018/12/06/chap10 tableView 简单交互/";
-        this.page.title = 'tableView 简单交互';
+        this.page.url = "http://jeffren.top/2019/03/20/PythonNote6/";
+        this.page.identifier = "2019/03/20/PythonNote6/";
+        this.page.title = 'Python Note(6)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

@@ -366,6 +366,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/04/14/prosyn/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" class="post-title-link" itemprop="url">Mutual Exclusion</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:52:33" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/prosyn/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h2 id="Critical-Section"><a href="#Critical-Section" class="headerlink" title="Critical Section"></a>Critical Section</h2><p>不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。</p>
+<h2 id="几种实现方法"><a href="#几种实现方法" class="headerlink" title="几种实现方法"></a>几种实现方法</h2><h3 id="Disable-Interrupt"><a href="#Disable-Interrupt" class="headerlink" title="Disable Interrupt"></a>Disable Interrupt</h3><p><strong>禁止</strong> context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。</p>
+<h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><p>也是 shared object，也有竞争</p>
+<h3 id="Strict-Alteration"><a href="#Strict-Alteration" class="headerlink" title="Strict Alteration"></a>Strict Alteration</h3><p>交替运行。等待太多，浪费 CPU；顺序严格，一个进程不能<strong>连续两次</strong>进入临界区；一个进程被另一个处于临界区外的进程阻塞。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// turn 初始 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Process 0</span></span><br><span class="line"><span class="keyword">while</span>(True) &#123;</span><br><span class="line">  <span class="keyword">while</span>(turn != <span class="number">0</span>)</span><br><span class="line">    ; <span class="comment">// busy waiting, 初始不会进入</span></span><br><span class="line">  critical_section();</span><br><span class="line">  turn = <span class="number">1</span>;</span><br><span class="line">  noncritical_section();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Process 1</span></span><br><span class="line"><span class="keyword">while</span>(True) &#123;</span><br><span class="line">  <span class="keyword">while</span>(turn != <span class="number">1</span>);</span><br><span class="line">  critical_section();</span><br><span class="line">  turn = <span class="number">0</span>;</span><br><span class="line">  noncritical_section();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###Peterson</p>
+<p>仅限于<strong>两个</strong>进程在 critical section 和之外交替执行</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> turn;</span><br><span class="line"><span class="keyword">int</span> interested[<span class="number">2</span>] = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">enter_region</span><span class="params">(<span class="keyword">int</span> process)</span>  <span class="comment">// process 0</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> other = <span class="number">1</span> - process;    <span class="comment">// other = 1 另一个进程 process 1</span></span><br><span class="line">    </span><br><span class="line">    interested[process] = TRUE; <span class="comment">// interested[0] = 1 想进入</span></span><br><span class="line">    turn = process;             <span class="comment">// turn = 0</span></span><br><span class="line">    <span class="keyword">while</span> (turn == process      <span class="comment">// true</span></span><br><span class="line">           &amp;&amp; interested[other] == TRUE) <span class="comment">// process 1 在里面</span></span><br><span class="line">      <span class="comment">/* 我想进入，别人在里面(true, true)，等待 */</span></span><br><span class="line">      <span class="comment">/* 否则不等待，进入临界区。*/</span></span><br><span class="line">      <span class="comment">/* 如果这个进程没有退出，则另外一个进程运行到这里时 line 14 会 true，进入循环，等待。*/</span></span><br><span class="line">        ; <span class="comment">/* busy waiting */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leave_region</span><span class="params">(<span class="keyword">int</span> process)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     interested[process] = FALSE;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>虽然 Peterson 已经避免了许多问题，但 busy waiting 还是很浪费 CPU 的，并且有更严重的隐性问题，一个低优先级的进程进入了 critical section，这时来了一个更高优先级的进程，进入 busy waiting。因为他有更高的优先级，CPU 就只想先做完他，却只能在 busy waiting 里面空转，又不管那个在 critical section 里的低优先级进程。</p>
+<p>下篇文章中会介绍新的机制 Semaphore，用睡觉来替代 busy waiting。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote8/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -486,6 +667,185 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/" class="post-title-link" itemprop="url">Python Note(6)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-20 00:00:00 / Modified: 20:22:19" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>关于文件操作。这是一篇很长，还有点水的烂尾笔记…今后还会做修改</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -666,185 +1026,6 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote6/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeff Ren">
-      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
-      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jeff Ren">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/" class="post-title-link" itemprop="url">Python Note(6)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-20 00:00:00 / Modified: 20:22:19" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote6/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>关于文件操作。这是一篇很长，还有点水的烂尾笔记…今后还会做修改</p>
-</blockquote>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1508,7 +1689,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-13 16:05:19" itemprop="dateModified" datetime="2019-03-13T16:05:19+08:00">2019-03-13</time>
+                <time title="Modified: 2019-04-06 00:53:49" itemprop="dateModified" datetime="2019-04-06T00:53:49+08:00">2019-04-06</time>
               
             
           </span>
@@ -1699,7 +1880,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-09 22:52:01" itemprop="dateModified" datetime="2019-03-09T22:52:01+08:00">2019-03-09</time>
+                <time title="Modified: 2019-04-06 00:53:18" itemprop="dateModified" datetime="2019-04-06T00:53:18+08:00">2019-04-06</time>
               
             
           </span>
@@ -1992,191 +2173,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/02/28/chap20 Search Bar/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeff Ren">
-      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
-      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jeff Ren">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/StudentJeffRen.github.io/2019/02/28/chap20 Search Bar/" class="post-title-link" itemprop="url">Search Bar</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-02-28 00:00:00 / Modified: 14:01:44" itemprop="dateCreated datePublished" datetime="2019-02-28T00:00:00+08:00">2019-02-28</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/StudentJeffRen.github.io/2019/02/28/chap20 Search Bar/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/28/chap20 Search Bar/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>UISeachController</code>, creat a search bar and manage search results.</p>
-<ul>
-<li>添加搜索栏</li>
-<li>过滤逻辑</li>
-<li>更新 table，显示搜索结果</li>
-<li>把搜索栏放到 Table Header View</li>
-<li>个性化外观</li>
-<li>未解决的问题</li>
-</ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/StudentJeffRen.github.io/2019/02/28/chap20 Search Bar/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2224,7 +2220,7 @@
                 
                   <a href="/StudentJeffRen.github.io/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="Solve the following system of equations:$$y+x^2-1-x=0 \x^2-2y^2-y=0$$Initial guess x = 0, y = 0.">
-<meta name="keywords" content="MATLAB,Numerical Methods">
+  <meta name="description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。 几种实现方法Disable Interrupt禁止 context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。 Lo">
+<meta name="keywords" content="操作系统,Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="牛顿法解非线性方程组（MATLAB 实现）">
-<meta property="og:url" content="http://jeffren.top/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/index.html">
+<meta property="og:title" content="Mutual Exclusion">
+<meta property="og:url" content="http://jeffren.top/2019/04/14/prosyn/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="Solve the following system of equations:$$y+x^2-1-x=0 \x^2-2y^2-y=0$$Initial guess x = 0, y = 0.">
+<meta property="og:description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。 几种实现方法Disable Interrupt禁止 context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。 Lo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:05:35.608Z">
+<meta property="og:updated_time" content="2019-04-14T09:52:33.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="牛顿法解非线性方程组（MATLAB 实现）">
-<meta name="twitter:description" content="Solve the following system of equations:$$y+x^2-1-x=0 \x^2-2y^2-y=0$$Initial guess x = 0, y = 0.">
+<meta name="twitter:title" content="Mutual Exclusion">
+<meta name="twitter:description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。 几种实现方法Disable Interrupt禁止 context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。 Lo">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/">
+  <link rel="canonical" href="http://jeffren.top/2019/04/14/prosyn/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>牛顿法解非线性方程组（MATLAB 实现） | Jeff Ren</title>
+  <title>Mutual Exclusion | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/04/14/prosyn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">牛顿法解非线性方程组（MATLAB 实现）
+          <h1 class="post-title" itemprop="name headline">Mutual Exclusion
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-10-17 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-17T00:00:00+08:00">2018-10-17</time>
+              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:52:33" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 00:05:35" itemprop="dateModified" datetime="2019-01-14T00:05:35+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/prosyn/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -489,15 +477,17 @@
       
 
       
-        <p>Solve the following system of equations:<br>$$<br>y+x^2-1-x=0 \<br>x^2-2y^2-y=0<br>$$<br>Initial guess x = 0, y = 0.</p>
-<a id="more"></a>
-<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>牛顿迭代公式：<br>$$<br>X_{k+1} = X_k - \frac{F(X_k)}{F’(X_k)} \tag{1}<br>$$<br>其中<br>$$<br>F’(X) =<br>\left[<br>\begin{matrix}<br>\frac{\partial{y_1}}{\partial{x}} &amp; \frac{\partial{y_1}}{\partial{y}} \<br>\frac{\partial{y_2}}{\partial{x}} &amp; \frac{\partial{y_2}}{\partial{y}}<br>\end{matrix}<br>\right] \tag{2}<br>$$</p>
-<h2 id="MATLAB-代码"><a href="#MATLAB-代码" class="headerlink" title="MATLAB 代码"></a>MATLAB 代码</h2><p>原矩阵 F(X)</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% F.m</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Z</span> = <span class="title">F</span><span class="params">(X)</span></span></span><br><span class="line"><span class="comment">%   计算F(X)</span></span><br><span class="line">x = X(<span class="number">1</span>); y = X(<span class="number">2</span>); <span class="comment">% 从参数中获取 x, y 的值</span></span><br><span class="line">Z = <span class="built_in">zeros</span>(<span class="number">2</span>, <span class="number">1</span>); <span class="comment">% 先定义一个零矩阵，2 行 1 列</span></span><br><span class="line">Z(<span class="number">1</span>) = y + x^<span class="number">2</span> - <span class="number">1</span> - x; <span class="comment">% 为矩阵中的两个元素赋值</span></span><br><span class="line">Z(<span class="number">2</span>) = x^<span class="number">2</span> - <span class="number">2</span>*y^<span class="number">2</span> - y;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>对 F(X) 求偏导得到 F’(X)。折腾了半天想让 Jacobian 矩阵根据原矩阵自己得出，没有成功，书上的例子也是手动输入。留个疑问，以后熟练了再来看看。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% JF.m</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">W</span> = <span class="title">JF</span><span class="params">(X)</span></span></span><br><span class="line"><span class="comment">% 对原矩阵求偏导，Jacobian 矩阵</span></span><br><span class="line">x = X(<span class="number">1</span>); y = X(<span class="number">2</span>);</span><br><span class="line">W = [<span class="number">2</span>*x<span class="number">-1</span> <span class="number">1</span>; <span class="number">2</span>*x <span class="number">-4</span>*y<span class="number">-1</span>];</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>迭代</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clc;</span><br><span class="line">clear;</span><br><span class="line"></span><br><span class="line">X = [<span class="number">0</span>; <span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="number">5</span></span><br><span class="line">    A = feval(<span class="string">'F'</span>, X); <span class="comment">% 执行函数：feval('函数名', 参数)</span></span><br><span class="line">    B = feval(<span class="string">'JF'</span>, X);</span><br><span class="line">    X = X - inv(B)*A; <span class="comment">% 牛顿迭代公式，inv() 是求逆矩阵</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+<h2 id="Critical-Section"><a href="#Critical-Section" class="headerlink" title="Critical Section"></a>Critical Section</h2><p>不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。</p>
+<h2 id="几种实现方法"><a href="#几种实现方法" class="headerlink" title="几种实现方法"></a>几种实现方法</h2><h3 id="Disable-Interrupt"><a href="#Disable-Interrupt" class="headerlink" title="Disable Interrupt"></a>Disable Interrupt</h3><p><strong>禁止</strong> context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。</p>
+<h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><p>也是 shared object，也有竞争</p>
+<h3 id="Strict-Alteration"><a href="#Strict-Alteration" class="headerlink" title="Strict Alteration"></a>Strict Alteration</h3><p>交替运行。等待太多，浪费 CPU；顺序严格，一个进程不能<strong>连续两次</strong>进入临界区；一个进程被另一个处于临界区外的进程阻塞。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// turn 初始 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Process 0</span></span><br><span class="line"><span class="keyword">while</span>(True) &#123;</span><br><span class="line">  <span class="keyword">while</span>(turn != <span class="number">0</span>)</span><br><span class="line">    ; <span class="comment">// busy waiting, 初始不会进入</span></span><br><span class="line">  critical_section();</span><br><span class="line">  turn = <span class="number">1</span>;</span><br><span class="line">  noncritical_section();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Process 1</span></span><br><span class="line"><span class="keyword">while</span>(True) &#123;</span><br><span class="line">  <span class="keyword">while</span>(turn != <span class="number">1</span>);</span><br><span class="line">  critical_section();</span><br><span class="line">  turn = <span class="number">0</span>;</span><br><span class="line">  noncritical_section();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###Peterson</p>
+<p>仅限于<strong>两个</strong>进程在 critical section 和之外交替执行</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> turn;</span><br><span class="line"><span class="keyword">int</span> interested[<span class="number">2</span>] = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">enter_region</span><span class="params">(<span class="keyword">int</span> process)</span>  <span class="comment">// process 0</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> other = <span class="number">1</span> - process;    <span class="comment">// other = 1 另一个进程 process 1</span></span><br><span class="line">    </span><br><span class="line">    interested[process] = TRUE; <span class="comment">// interested[0] = 1 想进入</span></span><br><span class="line">    turn = process;             <span class="comment">// turn = 0</span></span><br><span class="line">    <span class="keyword">while</span> (turn == process      <span class="comment">// true</span></span><br><span class="line">           &amp;&amp; interested[other] == TRUE) <span class="comment">// process 1 在里面</span></span><br><span class="line">      <span class="comment">/* 我想进入，别人在里面(true, true)，等待 */</span></span><br><span class="line">      <span class="comment">/* 否则不等待，进入临界区。*/</span></span><br><span class="line">      <span class="comment">/* 如果这个进程没有退出，则另外一个进程运行到这里时 line 14 会 true，进入循环，等待。*/</span></span><br><span class="line">        ; <span class="comment">/* busy waiting */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leave_region</span><span class="params">(<span class="keyword">int</span> process)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     interested[process] = FALSE;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>虽然 Peterson 已经避免了许多问题，但 busy waiting 还是很浪费 CPU 的，并且有更严重的隐性问题，一个低优先级的进程进入了 critical section，这时来了一个更高优先级的进程，进入 busy waiting。因为他有更高的优先级，CPU 就只想先做完他，却只能在 busy waiting 里面空转，又不管那个在 critical section 里的低优先级进程。</p>
+<p>下篇文章中会介绍新的机制 Semaphore，用睡觉来替代 busy waiting。</p>
 
       
     </div>
@@ -553,9 +543,9 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/MATLAB/" rel="tag"># MATLAB</a>
+            <a href="/StudentJeffRen.github.io/tags/操作系统/" rel="tag"># 操作系统</a>
           
-            <a href="/StudentJeffRen.github.io/tags/Numerical-Methods/" rel="tag"># Numerical Methods</a>
+            <a href="/StudentJeffRen.github.io/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -568,8 +558,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/10/11/chap5/" rel="next" title="Auto Layout">
-                <i class="fa fa-chevron-left"></i> Auto Layout
+              <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/" rel="next" title="Python Note(8)">
+                <i class="fa fa-chevron-left"></i> Python Note(8)
               </a>
             
           </div>
@@ -577,10 +567,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2018/10/23/chap6/" rel="prev" title="Stack View">
-                Stack View <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -764,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本原理"><span class="nav-number">1.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MATLAB-代码"><span class="nav-number">2.</span> <span class="nav-text">MATLAB 代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Critical-Section"><span class="nav-number">1.</span> <span class="nav-text">Critical Section</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种实现方法"><span class="nav-number">2.</span> <span class="nav-text">几种实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Disable-Interrupt"><span class="nav-number">2.1.</span> <span class="nav-text">Disable Interrupt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock"><span class="nav-number">2.2.</span> <span class="nav-text">Lock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Strict-Alteration"><span class="nav-number">2.3.</span> <span class="nav-text">Strict Alteration</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -920,9 +906,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/";
-        this.page.identifier = "2018/10/17/牛顿法解非线性方程组（MATLAB 实现）/";
-        this.page.title = '牛顿法解非线性方程组（MATLAB 实现）';
+        this.page.url = "http://jeffren.top/2019/04/14/prosyn/";
+        this.page.identifier = "2019/04/14/prosyn/";
+        this.page.title = 'Mutual Exclusion';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

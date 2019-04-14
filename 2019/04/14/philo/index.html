@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="理清 Linux 中的父进程和子进程的关系">
-<meta name="keywords" content="Linux">
+  <meta name="description" content="1234567891011121314151617181920212223242526#define N 5 semaphore chopstick[5] = [1,1,1,1,1]; // 初始可用// 使用第 i 只void take_chopstick(int i) &amp;#123;  down(chopstick[i]);&amp;#125;// 放下void put_chopstick(int i">
+<meta name="keywords" content="操作系统,Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解 Linux 进程">
-<meta property="og:url" content="http://jeffren.top/2019/03/09/understand process/index.html">
+<meta property="og:title" content="哲学家就餐问题">
+<meta property="og:url" content="http://jeffren.top/2019/04/14/philo/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="理清 Linux 中的父进程和子进程的关系">
+<meta property="og:description" content="1234567891011121314151617181920212223242526#define N 5 semaphore chopstick[5] = [1,1,1,1,1]; // 初始可用// 使用第 i 只void take_chopstick(int i) &amp;#123;  down(chopstick[i]);&amp;#125;// 放下void put_chopstick(int i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-05T16:53:49.229Z">
+<meta property="og:updated_time" content="2019-04-14T09:55:58.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理解 Linux 进程">
-<meta name="twitter:description" content="理清 Linux 中的父进程和子进程的关系">
+<meta name="twitter:title" content="哲学家就餐问题">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526#define N 5 semaphore chopstick[5] = [1,1,1,1,1]; // 初始可用// 使用第 i 只void take_chopstick(int i) &amp;#123;  down(chopstick[i]);&amp;#125;// 放下void put_chopstick(int i">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2019/03/09/understand process/">
+  <link rel="canonical" href="http://jeffren.top/2019/04/14/philo/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>理解 Linux 进程 | Jeff Ren</title>
+  <title>哲学家就餐问题 | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/09/understand process/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/04/14/philo/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">理解 Linux 进程
+          <h1 class="post-title" itemprop="name headline">哲学家就餐问题
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2019-03-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-09T00:00:00+08:00">2019-03-09</time>
+              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:55:58" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-06 00:53:49" itemprop="dateModified" datetime="2019-04-06T00:53:49+08:00">2019-04-06</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2019/03/09/understand process/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/04/14/philo/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/09/understand process/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/philo/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -489,11 +477,19 @@
       
 
       
-        <blockquote>
-<p>理清 Linux 中的父进程和子进程的关系</p>
-</blockquote>
-<a id="more"></a>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> childpid;</span><br><span class="line">    <span class="keyword">int</span> pid;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is parent process step1.\n\n"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// child process</span></span><br><span class="line">    <span class="keyword">if</span> (fork() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span> * execv_str[] = &#123;<span class="string">"echo"</span>, <span class="string">"executed by execv"</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (execv(<span class="string">"/bin/echo"</span>, execv_str) &lt; <span class="number">0</span>) &#123; <span class="comment">// 失败返回错误信息，继续执行后面的代码</span></span><br><span class="line">            perror(<span class="string">"error on exec"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>); <span class="comment">// 子进程完成后退出</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// parent process</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        pid = wait(&amp;childpid); <span class="comment">// 等待子进程结束，再执行。参数记录子进程的结束状态值</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"child pid = %d, exit status = %d\n"</span>, pid, WEXITSTATUS(childpid));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"execv done.\n\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"before execl ...\n"</span>);</span><br><span class="line">    execl(<span class="string">"/bin/ls"</span>, <span class="string">"/bin/ls"</span>, <span class="literal">NULL</span>); <span class="comment">// 如果成功执行，进程结束，后面的代码就没机会执行了，失败见 16 行。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"after execl ...\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5 </span></span><br><span class="line">semaphore chopstick[<span class="number">5</span>] = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]; <span class="comment">// 初始可用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用第 i 只</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放下</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  up(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    think();</span><br><span class="line">    </span><br><span class="line">    take_chopstick(i); <span class="comment">// suppose 0</span></span><br><span class="line">    take_chopstick((i+<span class="number">1</span>) % N); <span class="comment">// (0+1)%5 = 1</span></span><br><span class="line">    </span><br><span class="line">    eat();</span><br><span class="line">    </span><br><span class="line">    put_chopstick(i);</span><br><span class="line">    put_chopstick((i+<span class="number">1</span>) % N);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>官方解读：当 0 号哲学家已经拿起 0 号筷子(Line 14 - 18)，准备拿起 1 号(Line 15)时，1 号哲学家拿起了他左边的筷子(即 1 号)(Line 14 - 18)，导致 0 号哲学家必须停下等待(Line 15 睡觉)，接着 2、3、4 号也如此</p>
+<p><strong>疑问：</strong></p>
+<p><strong>情况1: 所有哲学家同时拿起左边的筷子？没人能吃到捞面。</strong></p>
+<p><strong>情况2: 最多只有一个哲学家能吃到捞面，其他全部饿扁。</strong></p>
+<p>一种解决方案，当某哲学家发现有一边用不了时，放下已经拿起来的。睡 1s，再拿起，再检测，持续下去，直到两只手都有时停止。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    down(&amp;chopstick[i]);</span><br><span class="line">    <span class="keyword">if</span>(chopstick[(i+<span class="number">1</span>) % N] is used) &#123;</span><br><span class="line">      up(&amp;chopstick[i]);</span><br><span class="line">      sleep(<span class="number">1</span>); <span class="comment">// 只睡 1 秒</span></span><br><span class="line">      <span class="comment">// sleep(random)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      down(chopstick[(i+<span class="number">1</span>) % N]);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么睡随机时间也不 work？某日两个人同时饿了，random 也是相同的值</p>
+<h2 id="最终解决方案"><a href="#最终解决方案" class="headerlink" title="最终解决方案"></a>最终解决方案</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT ((i+N-1) % N)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RIGHT ((i+1) % N)</span></span><br><span class="line"><span class="keyword">int</span> state[N]; <span class="comment">// 每个人的状态</span></span><br><span class="line">semaphore mutex = <span class="number">1</span>; <span class="comment">// 同一时间只允许一个人改变状态</span></span><br><span class="line">semaphore s[N]; <span class="comment">// 初始 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(state[i] == HUNGRY &amp;&amp; state[LEFT] != EATING &amp;&amp; state[RIGHT] != EATING) &#123;</span><br><span class="line">	 state[i] = EATING;</span><br><span class="line">	 up(&amp;s[i]); <span class="comment">// 顺利通过或者疏通第 20 行</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(&amp;mutex);</span><br><span class="line">  state[i] = HUNGRY;</span><br><span class="line">  test(i); <span class="comment">// 检查，决定能否通过 20 行</span></span><br><span class="line">  up(&amp;mutex);</span><br><span class="line">  down(&amp;s[i]); <span class="comment">// 阻止没有通过检测条件的哲学家</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放下筷子，并尝试让左右邻居进入可捞的状态</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(&amp;mutex);</span><br><span class="line">  state[i] = THINKING;</span><br><span class="line">  test(LEFT); </span><br><span class="line">  test(RIGHT);</span><br><span class="line">  up(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  think();</span><br><span class="line">  take_chopsticks(i);</span><br><span class="line">  eat();</span><br><span class="line">  put_chopsticks(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>过程：</p>
+<p>进入拿筷子函数，状态设为饥饿，test(i) 检测左右，成功：状态设为捞，s[i] 加一，顺利完成拿起操作。</p>
+<p>进入放下函数，状态设为思考，test(LEFT), test(RIGHT)，为可能卡在 Line 20 睡觉的左右邻居做检测。</p>
 
       
     </div>
@@ -549,6 +545,8 @@
       
         <div class="post-tags">
           
+            <a href="/StudentJeffRen.github.io/tags/操作系统/" rel="tag"># 操作系统</a>
+          
             <a href="/StudentJeffRen.github.io/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
@@ -562,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/03/08/PythonNote2/" rel="next" title="Python Note(2)">
-                <i class="fa fa-chevron-left"></i> Python Note(2)
+              <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/" rel="next" title="Python Note(8)">
+                <i class="fa fa-chevron-left"></i> Python Note(8)
               </a>
             
           </div>
@@ -572,8 +570,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/03/09/PythonNote3/" rel="prev" title="Python Note(3)">
-                Python Note(3) <i class="fa fa-chevron-right"></i>
+              <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" rel="prev" title="Mutual Exclusion">
+                Mutual Exclusion <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -626,8 +624,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -738,6 +745,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最终解决方案"><span class="nav-number">1.</span> <span class="nav-text">最终解决方案</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -888,9 +912,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2019/03/09/understand process/";
-        this.page.identifier = "2019/03/09/understand process/";
-        this.page.title = '理解 Linux 进程';
+        this.page.url = "http://jeffren.top/2019/04/14/philo/";
+        this.page.identifier = "2019/04/14/philo/";
+        this.page.title = '哲学家就餐问题';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

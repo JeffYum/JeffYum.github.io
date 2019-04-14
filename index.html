@@ -726,7 +726,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote7/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/04/14/philo/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -746,7 +746,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/" class="post-title-link" itemprop="url">Python Note(7)</a>
+                <a href="/StudentJeffRen.github.io/2019/04/14/philo/" class="post-title-link" itemprop="url">哲学家就餐问题</a>
               
             
           </h1>
@@ -771,7 +771,7 @@
                 
               
 
-              <time title="Created: 2019-03-20 00:00:00 / Modified: 22:40:38" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
+              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:55:58" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
@@ -808,9 +808,192 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/04/14/philo/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote7/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/philo/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5 </span></span><br><span class="line">semaphore chopstick[<span class="number">5</span>] = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]; <span class="comment">// 初始可用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用第 i 只</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放下</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  up(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    think();</span><br><span class="line">    </span><br><span class="line">    take_chopstick(i); <span class="comment">// suppose 0</span></span><br><span class="line">    take_chopstick((i+<span class="number">1</span>) % N); <span class="comment">// (0+1)%5 = 1</span></span><br><span class="line">    </span><br><span class="line">    eat();</span><br><span class="line">    </span><br><span class="line">    put_chopstick(i);</span><br><span class="line">    put_chopstick((i+<span class="number">1</span>) % N);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>官方解读：当 0 号哲学家已经拿起 0 号筷子(Line 14 - 18)，准备拿起 1 号(Line 15)时，1 号哲学家拿起了他左边的筷子(即 1 号)(Line 14 - 18)，导致 0 号哲学家必须停下等待(Line 15 睡觉)，接着 2、3、4 号也如此</p>
+<p><strong>疑问：</strong></p>
+<p><strong>情况1: 所有哲学家同时拿起左边的筷子？没人能吃到捞面。</strong></p>
+<p><strong>情况2: 最多只有一个哲学家能吃到捞面，其他全部饿扁。</strong></p>
+<p>一种解决方案，当某哲学家发现有一边用不了时，放下已经拿起来的。睡 1s，再拿起，再检测，持续下去，直到两只手都有时停止。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    down(&amp;chopstick[i]);</span><br><span class="line">    <span class="keyword">if</span>(chopstick[(i+<span class="number">1</span>) % N] is used) &#123;</span><br><span class="line">      up(&amp;chopstick[i]);</span><br><span class="line">      sleep(<span class="number">1</span>); <span class="comment">// 只睡 1 秒</span></span><br><span class="line">      <span class="comment">// sleep(random)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      down(chopstick[(i+<span class="number">1</span>) % N]);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么睡随机时间也不 work？某日两个人同时饿了，random 也是相同的值</p>
+<h2 id="最终解决方案"><a href="#最终解决方案" class="headerlink" title="最终解决方案"></a>最终解决方案</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT ((i+N-1) % N)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RIGHT ((i+1) % N)</span></span><br><span class="line"><span class="keyword">int</span> state[N]; <span class="comment">// 每个人的状态</span></span><br><span class="line">semaphore mutex = <span class="number">1</span>; <span class="comment">// 同一时间只允许一个人改变状态</span></span><br><span class="line">semaphore s[N]; <span class="comment">// 初始 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(state[i] == HUNGRY &amp;&amp; state[LEFT] != EATING &amp;&amp; state[RIGHT] != EATING) &#123;</span><br><span class="line">	 state[i] = EATING;</span><br><span class="line">	 up(&amp;s[i]); <span class="comment">// 顺利通过或者疏通第 20 行</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(&amp;mutex);</span><br><span class="line">  state[i] = HUNGRY;</span><br><span class="line">  test(i); <span class="comment">// 检查，决定能否通过 20 行</span></span><br><span class="line">  up(&amp;mutex);</span><br><span class="line">  down(&amp;s[i]); <span class="comment">// 阻止没有通过检测条件的哲学家</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放下筷子，并尝试让左右邻居进入可捞的状态</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(&amp;mutex);</span><br><span class="line">  state[i] = THINKING;</span><br><span class="line">  test(LEFT); </span><br><span class="line">  test(RIGHT);</span><br><span class="line">  up(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  think();</span><br><span class="line">  take_chopsticks(i);</span><br><span class="line">  eat();</span><br><span class="line">  put_chopsticks(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>过程：</p>
+<p>进入拿筷子函数，状态设为饥饿，test(i) 检测左右，成功：状态设为捞，s[i] 加一，顺利完成拿起操作。</p>
+<p>进入放下函数，状态设为思考，test(LEFT), test(RIGHT)，为可能卡在 Line 20 睡觉的左右邻居做检测。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote8/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/" class="post-title-link" itemprop="url">Python Note(8)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-20 00:00:00 / Modified: 22:44:20" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote8/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -840,13 +1023,12 @@
       
         
           <blockquote>
-<p>异常处理</p>
+<p>Python 的面向对象，之前 iOS 的<a href="http://jeffren.top/2018/12/07/chap%2013%20OOP/#more">文章</a>中有更基础详细的讲解。</p>
 </blockquote>
-<p>通常会在函数的开头检查输入，结尾检查输出。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/#more" rel="contents">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1085,7 +1267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote8/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote7/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -1105,7 +1287,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/" class="post-title-link" itemprop="url">Python Note(8)</a>
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/" class="post-title-link" itemprop="url">Python Note(7)</a>
               
             
           </h1>
@@ -1130,7 +1312,7 @@
                 
               
 
-              <time title="Created: 2019-03-20 00:00:00 / Modified: 22:44:20" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
+              <time title="Created: 2019-03-20 00:00:00 / Modified: 22:40:38" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
             
 
             
@@ -1167,9 +1349,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote8/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote7/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1199,12 +1381,13 @@
       
         
           <blockquote>
-<p>Python 的面向对象，之前 iOS 的<a href="http://jeffren.top/2018/12/07/chap%2013%20OOP/#more">文章</a>中有更基础详细的讲解。</p>
+<p>异常处理</p>
 </blockquote>
+<p>通常会在函数的开头检查输入，结尾检查输出。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#more" rel="contents">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote7/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1982,197 +2165,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/08/PythonNote2/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeff Ren">
-      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
-      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jeff Ren">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/StudentJeffRen.github.io/2019/03/08/PythonNote2/" class="post-title-link" itemprop="url">Python Note(2)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-08 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-08T00:00:00+08:00">2019-03-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-06 00:53:18" itemprop="dateModified" datetime="2019-04-06T00:53:18+08:00">2019-04-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/StudentJeffRen.github.io/2019/03/08/PythonNote2/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/08/PythonNote2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>这本教材讨论了巨量的函数。留个印象，以后要用到的时候知道有这么个函数。本文讨论数字和字符串函数。</p>
-</blockquote>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/StudentJeffRen.github.io/2019/03/08/PythonNote2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2220,7 +2212,7 @@
                 
                   <a href="/StudentJeffRen.github.io/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

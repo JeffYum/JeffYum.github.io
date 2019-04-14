@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。  尝试写只读段 读写不存在的数组元素 使用之前没有合理定义指针 意外地使用变量值作为地址">
-<meta name="keywords" content="C,操作系统">
+  <meta name="description" content="123456789101112void down(semaphore *s) &amp;#123;	if( *s &amp;gt; 0 )		*s = *s-1;	else		sleep();&amp;#125;void up(semaphore *s) &amp;#123;	if( *s == 0 )		wakeup_proc();	*s = *s + 1;&amp;#125; 信号丢失叫醒没有睡觉的人？信号丢失 123456789">
+<meta name="keywords" content="操作系统,Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Segmentation Fault">
-<meta property="og:url" content="http://jeffren.top/2019/01/22/Segmentation Fault/index.html">
+<meta property="og:title" content="生产者，消费者问题">
+<meta property="og:url" content="http://jeffren.top/2019/04/14/pro_con/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。  尝试写只读段 读写不存在的数组元素 使用之前没有合理定义指针 意外地使用变量值作为地址">
+<meta property="og:description" content="123456789101112void down(semaphore *s) &amp;#123;	if( *s &amp;gt; 0 )		*s = *s-1;	else		sleep();&amp;#125;void up(semaphore *s) &amp;#123;	if( *s == 0 )		wakeup_proc();	*s = *s + 1;&amp;#125; 信号丢失叫醒没有睡觉的人？信号丢失 123456789">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-03T11:38:12.731Z">
+<meta property="og:updated_time" content="2019-04-14T09:54:26.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Segmentation Fault">
-<meta name="twitter:description" content="具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。  尝试写只读段 读写不存在的数组元素 使用之前没有合理定义指针 意外地使用变量值作为地址">
+<meta name="twitter:title" content="生产者，消费者问题">
+<meta name="twitter:description" content="123456789101112void down(semaphore *s) &amp;#123;	if( *s &amp;gt; 0 )		*s = *s-1;	else		sleep();&amp;#125;void up(semaphore *s) &amp;#123;	if( *s == 0 )		wakeup_proc();	*s = *s + 1;&amp;#125; 信号丢失叫醒没有睡觉的人？信号丢失 123456789">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2019/01/22/Segmentation Fault/">
+  <link rel="canonical" href="http://jeffren.top/2019/04/14/pro_con/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>Segmentation Fault | Jeff Ren</title>
+  <title>生产者，消费者问题 | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/01/22/Segmentation Fault/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/04/14/pro_con/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Segmentation Fault
+          <h1 class="post-title" itemprop="name headline">生产者，消费者问题
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2019-01-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-01-22T00:00:00+08:00">2019-01-22</time>
+              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:54:26" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-03 19:38:12" itemprop="dateModified" datetime="2019-02-03T19:38:12+08:00">2019-02-03</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2019/01/22/Segmentation Fault/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/04/14/pro_con/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/22/Segmentation Fault/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/pro_con/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -489,29 +477,15 @@
       
 
       
-        <p>具有内存保护的硬件通知操作系统，程序试图访问受限制的内存区域。</p>
-<ul>
-<li>尝试写只读段</li>
-<li>读写不存在的数组元素</li>
-<li>使用之前没有合理定义指针</li>
-<li>意外地使用变量值作为地址</li>
-</ul>
-<a id="more"></a>
-<h2 id="s-和-s-有什么区别？"><a href="#s-和-s-有什么区别？" class="headerlink" title="*s 和 s[] 有什么区别？"></a>*s 和 s[] 有什么区别？</h2><ol>
-<li>栈区(stack)：由编译器自动分配释放，存放函数的参数值，局部变量的值等</li>
-<li>文字常量区：存放常量字符串</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Writing to read-only memory\n"</span>);</span><br><span class="line">	<span class="keyword">char</span> *s = <span class="string">"hello world"</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s);</span><br><span class="line">	*s = <span class="string">'H'</span>;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//char s[] = "hello world";</span></span><br><span class="line">	<span class="comment">//s[0] = 'H'; // equivalently, *s = 'H';</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>Char *s = &quot;hello world&quot;</code> ， s 是 “hello world” 的地址，其本身位于<strong>栈区</strong>，而它指向的 “hello world”，位于<strong>文字常量区</strong>，因此 “hello world” 是不可以改动的。</p>
-<p><code>char s[] = &quot;hello world&quot;</code> ，这个数组位于<strong>栈区</strong>，可以被改动。</p>
-<p>下面两个例子更进一步解释他们的区别：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *str = <span class="string">"hello world"</span>;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个函数能返回正确的结果，因为 “hello world” 被保存在只读的数据段，即文字常量区。</p>
-<p>然而</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[] = <span class="string">"hello world"</span>;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不一定返回正确的结果，因为数组存在于函数 strB 的栈帧中，是<strong>局部变量</strong>，当调用完成，栈帧恢复调用之前的状态，临时空间被重置，str 指向的地址啥都没有了。</p>
-<h2 id="空指针是值为-0-的常量"><a href="#空指针是值为-0-的常量" class="headerlink" title="空指针是值为 0 的常量"></a>空指针是值为 0 的常量</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Null pointer dereference\n"</span>);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">// NULL pointer is a constant with a value of zero</span></span><br><span class="line">	<span class="keyword">int</span> *ptr = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">	*ptr = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *ptr);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="没有基础条件的递归"><a href="#没有基础条件的递归" class="headerlink" title="没有基础条件的递归"></a>没有基础条件的递归</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	main();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(semaphore *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( *s &gt; <span class="number">0</span> )</span><br><span class="line">		*s = *s<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		sleep();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(semaphore *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( *s == <span class="number">0</span> )</span><br><span class="line">		wakeup_proc();</span><br><span class="line">	*s = *s + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="信号丢失"><a href="#信号丢失" class="headerlink" title="信号丢失"></a>信号丢失</h2><p>叫醒没有睡觉的人？信号丢失</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> item;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    item = produce_item();</span><br><span class="line">    <span class="keyword">if</span> (count == N) sleep();</span><br><span class="line">    insert_item(item);</span><br><span class="line">    count = count + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">1</span>) wakeup(consumer);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> item;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">0</span>) sleep();</span><br><span class="line">    item = remove_item();</span><br><span class="line">    count = count - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (count = N - <span class="number">1</span>) wakeup(producer);</span><br><span class="line">    consume_item(item);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>mutex 确保缓存只被一人访问，empty 和 full 用于同步。</p>
+<p>为什么 mutex 初始是 1？生产者和消耗者都有 <code>down()</code> 让 mutex 减一。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> item;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">		item = produce_item();</span><br><span class="line">		down(&amp;empty); <span class="comment">// 检查是否大于 0。如果是 0，没有坑位，睡眠；否则减一</span></span><br><span class="line">		down(&amp;mutex); <span class="comment">// 如果 0，睡眠</span></span><br><span class="line">		insert_item(item);</span><br><span class="line">		up(&amp;mutex); <span class="comment">// 现在肯定是 0，唤醒生产者，加 1.</span></span><br><span class="line">	 	up(&amp;full); <span class="comment">// 满 +1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> item;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">		down(&amp;full); <span class="comment">// full = 0，即空，没东西减，睡眠</span></span><br><span class="line">		down(&amp;mutex); <span class="comment">// 同上</span></span><br><span class="line">		item = remove_item();</span><br><span class="line">		up(&amp;mutex); <span class="comment">// 同上</span></span><br><span class="line">		up(&amp;empty); </span><br><span class="line">	 	consume_item(item);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>交换 6，7 行会发生什么？先把 mutex 减到 0 了，发现 buffer 是满的(empty = 0)，睡眠，消耗者也被 mutex 卡着。生产者等待消耗者提升 empty，消耗者等待生产者提升 mutex，互相等待，史称<strong>死锁(deadlock)</strong>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> item;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">		item = produce_item();</span><br><span class="line">    down(&amp;mutex); <span class="comment">// 减到 0，卡住消费者</span></span><br><span class="line">		down(&amp;empty); <span class="comment">// 完了，mutex 已经减了，到这里走不动</span></span><br><span class="line">		insert_item(item);</span><br><span class="line">		up(&amp;mutex);</span><br><span class="line">	 	up(&amp;full);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -567,9 +541,9 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/C/" rel="tag"># C</a>
-          
             <a href="/StudentJeffRen.github.io/tags/操作系统/" rel="tag"># 操作系统</a>
+          
+            <a href="/StudentJeffRen.github.io/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -582,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/12/24/chap17 基本动画，视觉效果/" rel="next" title="基本动画，视觉效果">
-                <i class="fa fa-chevron-left"></i> 基本动画，视觉效果
+              <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" rel="next" title="Mutual Exclusion">
+                <i class="fa fa-chevron-left"></i> Mutual Exclusion
               </a>
             
           </div>
@@ -591,10 +565,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2019/02/03/chap19 Core Data/" rel="prev" title="Core Data">
-                Core Data <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -778,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#s-和-s-有什么区别？"><span class="nav-number">1.</span> <span class="nav-text">*s 和 s[] 有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空指针是值为-0-的常量"><span class="nav-number">2.</span> <span class="nav-text">空指针是值为 0 的常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有基础条件的递归"><span class="nav-number">3.</span> <span class="nav-text">没有基础条件的递归</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#信号丢失"><span class="nav-number">1.</span> <span class="nav-text">信号丢失</span></a></li></ol></div>
             
 
           </div>
@@ -934,9 +904,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2019/01/22/Segmentation Fault/";
-        this.page.identifier = "2019/01/22/Segmentation Fault/";
-        this.page.title = 'Segmentation Fault';
+        this.page.url = "http://jeffren.top/2019/04/14/pro_con/";
+        this.page.identifier = "2019/04/14/pro_con/";
+        this.page.title = '生产者，消费者问题';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

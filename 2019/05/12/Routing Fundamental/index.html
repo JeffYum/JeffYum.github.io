@@ -122,25 +122,25 @@
 
 
 
-  <meta name="description" content="OOP 面向对象编程的一些基本概念">
-<meta name="keywords" content="iOS,Swift">
+  <meta name="description" content="关于路由的基础知识。路由过程，静态&amp;amp;动态路由…">
+<meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Object Oriented Programming">
-<meta property="og:url" content="http://jeffren.top/2018/12/07/chap 13 OOP/index.html">
+<meta property="og:title" content="Routing Fundamental">
+<meta property="og:url" content="http://jeffren.top/2019/05/12/Routing Fundamental/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="OOP 面向对象编程的一些基本概念">
+<meta property="og:description" content="关于路由的基础知识。路由过程，静态&amp;amp;动态路由…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T16:05:54.271Z">
+<meta property="og:updated_time" content="2019-05-12T07:46:56.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Object Oriented Programming">
-<meta name="twitter:description" content="OOP 面向对象编程的一些基本概念">
+<meta name="twitter:title" content="Routing Fundamental">
+<meta name="twitter:description" content="关于路由的基础知识。路由过程，静态&amp;amp;动态路由…">
 
 
 
 
 
 
-  <link rel="canonical" href="http://jeffren.top/2018/12/07/chap 13 OOP/">
+  <link rel="canonical" href="http://jeffren.top/2019/05/12/Routing Fundamental/">
 
 
 
@@ -150,7 +150,7 @@
   };
 </script>
 
-  <title>Object Oriented Programming | Jeff Ren</title>
+  <title>Routing Fundamental | Jeff Ren</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2018/12/07/chap 13 OOP/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/05/12/Routing Fundamental/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Object Oriented Programming
+          <h1 class="post-title" itemprop="name headline">Routing Fundamental
 
               
             
@@ -410,24 +410,12 @@
                 
               
 
-              <time title="Created: 2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+08:00">2018-12-07</time>
+              <time title="Created: 2019-05-12 00:00:00 / Modified: 15:46:56" itemprop="dateCreated datePublished" datetime="2019-05-12T00:00:00+08:00">2019-05-12</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-14 00:05:54" itemprop="dateModified" datetime="2019-01-14T00:05:54+08:00">2019-01-14</time>
               
             
           </span>
@@ -459,9 +447,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2018/12/07/chap 13 OOP/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/05/12/Routing Fundamental/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/07/chap 13 OOP/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/12/Routing Fundamental/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,55 +478,130 @@
 
       
         <blockquote>
-<p>OOP 面向对象编程的一些基本概念</p>
+<p>关于路由的基础知识。路由过程，静态&amp;动态路由…</p>
 </blockquote>
 <a id="more"></a>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Properties</th>
-<th>Functionalities</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>汽车</td>
-<td>颜色，型号，最大速度，制造商</td>
-<td>加速，刹车，转向</td>
-</tr>
-<tr>
-<td><code>UIButton</code></td>
-<td>背景，大小，颜色，字体</td>
-<td>检测 touch</td>
-</tr>
-</tbody>
-</table>
-<p><strong><em>Method:</em></strong> 提供对象的功能，通常一个方法与对象的一个特定功能相关。</p>
-<blockquote>
-<p>函数(function)和方法(method)有什么区别？功能上没啥差别，函数定义在类中被称为方法。</p>
-</blockquote>
-<p><strong><em>Class:</em></strong> 类是创建对象的蓝图或模型。通常，一个类由 properties 和 methods 组成。例如，我们定义一个 <code>Course</code> 类，它包含一些 <strong>properties</strong>，如<strong>名称，课程编号，总人数</strong>。</p>
-<p>这个类代表着课程的模型，我们用它创建不同的课程，如 iOS Programming course with course code IPC101, Cooking course with course code CC101 等等。在这里，”iOS Programming course” 和 “Cooking course” 是 <code>Course</code> 类的对象。我们通常把一门课程称为 <code>Course</code>类的一个 <strong><em>instance</em></strong>. 为简单起见，术语 <strong><em>instance</em></strong> 和 <strong><em>object</em></strong> 有时可以交换。</p>
-<blockquote>
-<p>A blueprint for a house design is like a class description. All the houses built from<br>that blueprint are objects of that class. A given house is an instance.</p>
-<p>Source: <a href="http://stackoverflow.com/questions/3323330/difference-between-objectand-instance" target="_blank" rel="noopener">http://stackoverflow.com/questions/3323330/difference-between-objectand-instance</a></p>
-</blockquote>
-<h2 id="创建-Restaurant-类将所有属性合并"><a href="#创建-Restaurant-类将所有属性合并" class="headerlink" title="创建 Restaurant 类将所有属性合并"></a>创建 Restaurant 类将所有属性合并</h2><p>现在，我们总共定义了 5 个数组来存储 Restaurant 的所有属性，每当要访问一个 restaurant 时，都需要分别从各个数组中取出相应的值，这未免有些麻烦。因此，我们可以考虑自己创建一个类 <code>Restaurant</code>，来表示一家餐馆，用一个数组，来存储多家餐馆。</p>
-<blockquote>
-<p><strong>关键字 <code>self</code>?</strong></p>
-<p>区分属性和参数。下面的 <code>init</code>方法，是将传入的参数赋值给类中的属性，而属性和参数有着同样的名称，因此用 <code>self.</code>来指明是属性。</p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Restaurant</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> type: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> location: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> image: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> isVisited: <span class="type">Bool</span></span><br><span class="line">    </span><br><span class="line">	<span class="keyword">init</span>(name: <span class="type">String</span>, type: <span class="type">String</span>, location: <span class="type">String</span>, image: <span class="type">String</span>, isVisited: <span class="type">Bool</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.name = name</span><br><span class="line">		<span class="keyword">self</span>.type = type</span><br><span class="line">		<span class="keyword">self</span>.location = location</span><br><span class="line">		<span class="keyword">self</span>.image = image</span><br><span class="line">		<span class="keyword">self</span>.isVisited = isVisited</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">convenience</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">		<span class="keyword">self</span>.<span class="keyword">init</span>(name: <span class="string">""</span>, type: <span class="string">""</span>, location: <span class="string">""</span>, image: <span class="string">""</span>, isVisited: <span class="literal">false</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>初始化器设置初始值， 接着还有一个便捷？初始化，就是为了更快捷地创建一个默认的 Restaurant，如下面第二行代码。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kfc = <span class="type">Restaurant</span>(name: <span class="string">"KFC"</span>, type: <span class="string">"chicken"</span>, location: <span class="string">"Anywhere"</span>，image: <span class="string">"kfc"</span>, isVisited: <span class="literal">false</span>) <span class="comment">// 普通初始化</span></span><br><span class="line">basicRestaurant = <span class="type">Restaurant</span>() <span class="comment">// convenience 初始化</span></span><br></pre></td></tr></table></figure>
-<p>现在，我们可以用一个数组存储所有餐馆的所有信息了。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> restaurants: [<span class="type">Restaurant</span>] = [...]</span><br></pre></td></tr></table></figure>
-<p>自然地，我们使用点语法来访问各个属性的值。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cell.nameLabel.text = restaurants[indexPath.row].name</span><br></pre></td></tr></table></figure>
-<h2 id="更好地管理文件和代码"><a href="#更好地管理文件和代码" class="headerlink" title="更好地管理文件和代码"></a>更好地管理文件和代码</h2><p>随着<strong>工程中的文件</strong>越来越多，我们可以将文件按 MVC 分类装进文件夹。</p>
-<p>随着<strong>类中的方法</strong>越来越多，注释中的<code>MARK</code>关键字可以将方法按不同意义，分割成几个 section。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MARK: - Table view data source</span></span><br></pre></td></tr></table></figure>
+<h1 id="Routing-Process"><a href="#Routing-Process" class="headerlink" title="Routing Process"></a>Routing Process</h1><p>路由器收到一个包后是否继续传递取决于当前的 routing process 状态。</p>
+<ul>
+<li>打开，根据路由表的信息传递给下一个合适的 port</li>
+<li>关闭，丢掉</li>
+</ul>
+<p>命令(ipv4, ipv6)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#ip routing</span><br><span class="line">Router(config)#ipv6 unicast-routing</span><br></pre></td></tr></table></figure>
+<h2 id="Connected-vs-Remote-Network"><a href="#Connected-vs-Remote-Network" class="headerlink" title="Connected vs. Remote Network"></a>Connected vs. Remote Network</h2><p>Connected: 与路由器直接相连的网络。当路由器接口配置了 IP 地址和子网掩码时，connected 网络的路由会自动添加</p>
+<p>Remote: not directly</p>
+<h2 id="路由表"><a href="#路由表" class="headerlink" title="路由表"></a>路由表</h2><p>决定下一步怎么走。路由表条目中的<strong>目标</strong>网络叫做<strong>路由</strong>。</p>
+<p>Routing process 根据路由，将目标地址映射到 next-hop，然后向前传递。</p>
+<p>路由表中的路由包含至少三个主要字段：</p>
+<ul>
+<li>Destination network</li>
+<li>Next-hop</li>
+<li>Metric</li>
+</ul>
+<p>注意：路由仅仅指示到目标网络的 next-hop 路由器，而不是最终路由器。直连网络没有 next-hop 地址，因为网络和路由器之间没有第三层设备媒介。</p>
+<h3 id="Routing-Table-Fields"><a href="#Routing-Table-Fields" class="headerlink" title="Routing Table Fields"></a>Routing Table Fields</h3><ul>
+<li>Protocol type</li>
+<li>Destination network</li>
+<li>Routing metrics</li>
+<li>Next-hop address</li>
+<li>Outbound interface</li>
+</ul>
+<h3 id="Routing-Table-Maintenance"><a href="#Routing-Table-Maintenance" class="headerlink" title="Routing Table Maintenance"></a>Routing Table Maintenance</h3><p>路由器必须维护路由表，以便让其他路由器知道网络拓扑的改变。这些网络的路由可以由网络管理员手动配置，也可以使用动态路由协议自动学习。</p>
+<p>路由器使用<strong>路由协议</strong>来建立和维护路由表，与其他路由器传送 <strong>routing update message</strong> 来交流。分析邻居传来的更新信息，建立和维护自己的路由表。</p>
+<p>建立维护路由表方法的不同取决于使用的路由协议。</p>
+<ul>
+<li>何时传递：周期性传递更新信息 vs. 改变时传递</li>
+<li>更新信息内容：整个路由表 vs. 有改变的路由</li>
+</ul>
+<h2 id="Route-Lookup"><a href="#Route-Lookup" class="headerlink" title="Route Lookup"></a>Route Lookup</h2><p>在路由表中搜索首选路由</p>
+<h1 id="Static-Routing"><a href="#Static-Routing" class="headerlink" title="Static Routing"></a>Static Routing</h1><p>在 stub 网络(只有一条路)中，静态是不错的，因为改变少，又有管理员指定，优先级高，可信度高。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#ip route ip-address subnet-mask &#123;next-hop-ip-address | outgoing-interface&#125;</span><br><span class="line">[administrative-distance]</span><br><span class="line"></span><br><span class="line">Specify next-hop IP address:</span><br><span class="line">Router(config)#ip route 192.168.22.0 255.255.255.0 172.16.1.2</span><br><span class="line"></span><br><span class="line">outgoing interface:</span><br><span class="line">Router(config)#ip route 192.168.22.0 255.255.255.0 serial 0/0</span><br></pre></td></tr></table></figure>
+<p>Administrative distance 是可选的，越高可信度就越低。使用 next-hop 地址时是 1，outgoing inferface 时是 0。</p>
+<p>确认静态路由配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show ip route</span><br></pre></td></tr></table></figure>
+<h2 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h2><p>让路由器向任意互联网主机传递包，而不必对每一个互联网网络维护表项目。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Static:</span><br><span class="line">Router(config)#ip route 0.0.0.0 0.0.0.0 &#123;next-hop-ip-address | outgoing-interface&#125;</span><br><span class="line">[administrative-distance]</span><br><span class="line"></span><br><span class="line">Dynamic:</span><br><span class="line">Router(config)#ip default-network network-address</span><br></pre></td></tr></table></figure>
+<h1 id="Dynamic-Routing"><a href="#Dynamic-Routing" class="headerlink" title="Dynamic Routing"></a>Dynamic Routing</h1><p><strong>Rout<em>ing</em> Protocol</strong> 是路由器之间的通信协议，让他们分享信息，由此建立维护自己的路由表。</p>
+<ul>
+<li>Routing Information Protocol (RIP)</li>
+<li>Open Shortest Path First (OSPF)</li>
+<li>Enhanced Interior Gateway Routing Protocol (EIGRP)</li>
+</ul>
+<p><strong>Rout<em>ed</em> Protocol</strong> 用来引导用户流量，在它的网络层地址中提供足够的信息，来让包从一个主机向另一个传递，基于寻址方案。</p>
+<ul>
+<li>Internet Protocol (IP)</li>
+</ul>
+<p>动态路由依赖于两个基本路由器功能：</p>
+<ul>
+<li>及时以 routing updates 的形式，向其他路由器分发路由信息</li>
+<li>使用接受的 routing updates 维护路由表</li>
+</ul>
+<h2 id="决定最佳路由"><a href="#决定最佳路由" class="headerlink" title="决定最佳路由"></a>决定最佳路由</h2><p>某些情况下，路由器可能学习到多条路由，通往同一个目的地。为了决定在路由表中安装哪条路由，路由器使用 <strong>metric</strong> 和 <strong>administrative distance</strong> 来做决定。</p>
+<p>Metric：多条路由到同一目的地，评估和区分可用路径</p>
+<ul>
+<li>Hop count</li>
+<li>Bandwidth</li>
+<li>Delay</li>
+<li>Load</li>
+<li>Reliability</li>
+<li>Cost</li>
+</ul>
+<p>Administrative distance: 一个路由从多个源头到同一网络</p>
+<h2 id="路由协议分类"><a href="#路由协议分类" class="headerlink" title="路由协议分类"></a>路由协议分类</h2><p>By ranges:</p>
+<ul>
+<li>Interior Gateway Protocols</li>
+<li>Exterior Gateway Protocols</li>
+</ul>
+<p>By classes:</p>
+<ul>
+<li>Classful routing protocols</li>
+<li>Classless routing protocols</li>
+</ul>
+<p>By algorithms:</p>
+<ul>
+<li>Distance vector</li>
+<li>Link-state</li>
+<li>Balanced-Hybrid</li>
+</ul>
+<h2 id="Autonmous-System-自治系统"><a href="#Autonmous-System-自治系统" class="headerlink" title="Autonmous System 自治系统"></a>Autonmous System 自治系统</h2><p>共同管理下共享路由策略的网络集合，对外面世界来说，一个 AS 被视作一个单一实体。AS 将全球互联网划分为更小更易于管理的网络。</p>
+<p>AS number: 16 bit，用于区分 AS。</p>
+<p>上面提到的 IGP 就是在 AS 内路由数据，EGP 则是在 AS 之间路由数据。</p>
+<p>常见的 IGPs 有: RIP, EIGRP, OSPF, IS-IS</p>
+<p>EGP: BGP</p>
+<h2 id="Classful-vs-Classless-routing-protocols"><a href="#Classful-vs-Classless-routing-protocols" class="headerlink" title="Classful vs. Classless routing protocols"></a>Classful vs. Classless routing protocols</h2><p>Classful 在路由更新中不发送子网掩码信息，因为可以基于网路地址的前八位来确定。当网络使用多个子网掩码时，classful 不适用，换句话说，classful routing protocols 不支持 Variable Length-Subnet Masks (VLSM)可变长度子网掩码 和不连续的网络。</p>
+<p>今天的网络都是使用 clessless 了。</p>
+<h2 id="Routing-Algorithms"><a href="#Routing-Algorithms" class="headerlink" title="Routing Algorithms"></a>Routing Algorithms</h2><p>为每条路生成 metric 值。通常值越小，路径越优。</p>
+<p>设计目标：</p>
+<ul>
+<li>Optimization，选择路径的能力</li>
+<li>Simplicity and low overhead，越简单越高效</li>
+<li>Robustness and stability，遇到不正常或不可预见的情况时，应该正确执行</li>
+<li>Flexibility，快速适应变化的网络</li>
+<li>Rapid convergence，快速收敛，拓扑中的所有路由器掌握相同的知识</li>
+</ul>
+<p>规则：</p>
+<ul>
+<li>何时发送，周期地？拓扑改变时？</li>
+<li>发送什么，整个？部分？路由表</li>
+<li>发给谁，所有网络路由器？直连路由器？</li>
+<li>定位接受者，发送前与直连路由器建立连接？</li>
+</ul>
+<p>分类：</p>
+<ul>
+<li>Distance vector</li>
+<li>Link-state, 重建整个网络的精准拓扑，又称为 shortest path first</li>
+<li>Balanced-Hybrid，组合</li>
+</ul>
+<h3 id="Distance-Vector"><a href="#Distance-Vector" class="headerlink" title="Distance Vector"></a>Distance Vector</h3><ol>
+<li>周期性复制路由表，发送整个路由表给直连邻居路由器。</li>
+<li>逐渐累积网络距离，以便维护网络拓扑信息的数据库。</li>
+<li>不知道互联网的精确拓扑</li>
+</ol>
+<h3 id="Link-state"><a href="#Link-state" class="headerlink" title="Link-state"></a>Link-state</h3><p>稍后讨论</p>
+<h2 id="Routing-Protocols-Configuration"><a href="#Routing-Protocols-Configuration" class="headerlink" title="Routing Protocols Configuration"></a>Routing Protocols Configuration</h2><p>选择协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IGPR and EIGRP require an autonomous system number. OSPF requires a process ID. RIP does not require either.</span><br><span class="line">Router(config)#router routing-protocol &#123;options&#125;</span><br></pre></td></tr></table></figure>
+<p>决定那个接口参与发送和接受 routing updates</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Router(config-router)#network network-number [wildcard-mask]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -594,9 +657,7 @@
       
         <div class="post-tags">
           
-            <a href="/StudentJeffRen.github.io/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/StudentJeffRen.github.io/tags/Swift/" rel="tag"># Swift</a>
+            <a href="/StudentJeffRen.github.io/tags/计算机网络/" rel="tag"># 计算机网络</a>
           
         </div>
       
@@ -609,8 +670,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2018/12/06/chap11 滑动/" rel="next" title="对行的一些操作">
-                <i class="fa fa-chevron-left"></i> 对行的一些操作
+              <a href="/StudentJeffRen.github.io/2019/04/14/philo/" rel="next" title="哲学家就餐问题">
+                <i class="fa fa-chevron-left"></i> 哲学家就餐问题
               </a>
             
           </div>
@@ -618,10 +679,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/StudentJeffRen.github.io/2018/12/13/chap15 导航栏自定义，扩展，动态类型/" rel="prev" title="导航栏自定义，扩展，动态类型">
-                导航栏自定义，扩展，动态类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -807,7 +864,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-Restaurant-类将所有属性合并"><span class="nav-number">1.</span> <span class="nav-text">创建 Restaurant 类将所有属性合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更好地管理文件和代码"><span class="nav-number">2.</span> <span class="nav-text">更好地管理文件和代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Routing-Process"><span class="nav-number">1.</span> <span class="nav-text">Routing Process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Connected-vs-Remote-Network"><span class="nav-number">1.1.</span> <span class="nav-text">Connected vs. Remote Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由表"><span class="nav-number">1.2.</span> <span class="nav-text">路由表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Routing-Table-Fields"><span class="nav-number">1.2.1.</span> <span class="nav-text">Routing Table Fields</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Routing-Table-Maintenance"><span class="nav-number">1.2.2.</span> <span class="nav-text">Routing Table Maintenance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Route-Lookup"><span class="nav-number">1.3.</span> <span class="nav-text">Route Lookup</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Static-Routing"><span class="nav-number">2.</span> <span class="nav-text">Static Routing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#默认路由"><span class="nav-number">2.1.</span> <span class="nav-text">默认路由</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-Routing"><span class="nav-number">3.</span> <span class="nav-text">Dynamic Routing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决定最佳路由"><span class="nav-number">3.1.</span> <span class="nav-text">决定最佳路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由协议分类"><span class="nav-number">3.2.</span> <span class="nav-text">路由协议分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autonmous-System-自治系统"><span class="nav-number">3.3.</span> <span class="nav-text">Autonmous System 自治系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classful-vs-Classless-routing-protocols"><span class="nav-number">3.4.</span> <span class="nav-text">Classful vs. Classless routing protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Routing-Algorithms"><span class="nav-number">3.5.</span> <span class="nav-text">Routing Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Distance-Vector"><span class="nav-number">3.5.1.</span> <span class="nav-text">Distance Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Link-state"><span class="nav-number">3.5.2.</span> <span class="nav-text">Link-state</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Routing-Protocols-Configuration"><span class="nav-number">3.6.</span> <span class="nav-text">Routing Protocols Configuration</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -963,9 +1020,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "http://jeffren.top/2018/12/07/chap 13 OOP/";
-        this.page.identifier = "2018/12/07/chap 13 OOP/";
-        this.page.title = 'Object Oriented Programming';
+        this.page.url = "http://jeffren.top/2019/05/12/Routing Fundamental/";
+        this.page.identifier = "2019/05/12/Routing Fundamental/";
+        this.page.title = 'Routing Fundamental';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

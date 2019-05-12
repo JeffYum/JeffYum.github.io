@@ -122,18 +122,18 @@
 
 
 
-  <meta name="description" content="1234567891011121314151617181920212223242526#define N 5 semaphore chopstick[5] = [1,1,1,1,1]; // 初始可用// 使用第 i 只void take_chopstick(int i) &amp;#123;  down(chopstick[i]);&amp;#125;// 放下void put_chopstick(int i">
+  <meta name="description" content="…">
 <meta name="keywords" content="操作系统,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哲学家就餐问题">
 <meta property="og:url" content="http://jeffren.top/2019/04/14/philo/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="1234567891011121314151617181920212223242526#define N 5 semaphore chopstick[5] = [1,1,1,1,1]; // 初始可用// 使用第 i 只void take_chopstick(int i) &amp;#123;  down(chopstick[i]);&amp;#125;// 放下void put_chopstick(int i">
+<meta property="og:description" content="…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T09:55:58.058Z">
+<meta property="og:updated_time" content="2019-05-12T07:33:45.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="哲学家就餐问题">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526#define N 5 semaphore chopstick[5] = [1,1,1,1,1]; // 初始可用// 使用第 i 只void take_chopstick(int i) &amp;#123;  down(chopstick[i]);&amp;#125;// 放下void put_chopstick(int i">
+<meta name="twitter:description" content="…">
 
 
 
@@ -410,12 +410,24 @@
                 
               
 
-              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:55:58" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
+              <time title="Created: 2019-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-12 15:33:45" itemprop="dateModified" datetime="2019-05-12T15:33:45+08:00">2019-05-12</time>
               
             
           </span>
@@ -477,7 +489,10 @@
       
 
       
-        <a id="more"></a>
+        <blockquote>
+<p>…</p>
+</blockquote>
+<a id="more"></a>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5 </span></span><br><span class="line">semaphore chopstick[<span class="number">5</span>] = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]; <span class="comment">// 初始可用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用第 i 只</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放下</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  up(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    think();</span><br><span class="line">    </span><br><span class="line">    take_chopstick(i); <span class="comment">// suppose 0</span></span><br><span class="line">    take_chopstick((i+<span class="number">1</span>) % N); <span class="comment">// (0+1)%5 = 1</span></span><br><span class="line">    </span><br><span class="line">    eat();</span><br><span class="line">    </span><br><span class="line">    put_chopstick(i);</span><br><span class="line">    put_chopstick((i+<span class="number">1</span>) % N);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>官方解读：当 0 号哲学家已经拿起 0 号筷子(Line 14 - 18)，准备拿起 1 号(Line 15)时，1 号哲学家拿起了他左边的筷子(即 1 号)(Line 14 - 18)，导致 0 号哲学家必须停下等待(Line 15 睡觉)，接着 2、3、4 号也如此</p>
 <p><strong>疑问：</strong></p>
@@ -560,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/" rel="next" title="Python Note(8)">
-                <i class="fa fa-chevron-left"></i> Python Note(8)
+              <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" rel="next" title="Mutual Exclusion">
+                <i class="fa fa-chevron-left"></i> Mutual Exclusion
               </a>
             
           </div>
@@ -570,8 +585,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" rel="prev" title="Mutual Exclusion">
-                Mutual Exclusion <i class="fa fa-chevron-right"></i>
+              <a href="/StudentJeffRen.github.io/2019/04/14/pro_con/" rel="prev" title="生产者，消费者问题">
+                生产者，消费者问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -411,12 +411,24 @@
                 
               
 
-              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:54:26" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
+              <time title="Created: 2019-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-12 15:34:18" itemprop="dateModified" datetime="2019-05-12T15:34:18+08:00">2019-05-12</time>
               
             
           </span>
@@ -479,199 +491,18 @@
 
       
         
+          <blockquote>
+<p>…</p>
+</blockquote>
+          <!--noindex-->
           
-            <a id="more"></a>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(semaphore *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( *s &gt; <span class="number">0</span> )</span><br><span class="line">		*s = *s<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		sleep();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(semaphore *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( *s == <span class="number">0</span> )</span><br><span class="line">		wakeup_proc();</span><br><span class="line">	*s = *s + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="信号丢失"><a href="#信号丢失" class="headerlink" title="信号丢失"></a>信号丢失</h2><p>叫醒没有睡觉的人？信号丢失</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> item;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    item = produce_item();</span><br><span class="line">    <span class="keyword">if</span> (count == N) sleep();</span><br><span class="line">    insert_item(item);</span><br><span class="line">    count = count + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">1</span>) wakeup(consumer);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> item;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">0</span>) sleep();</span><br><span class="line">    item = remove_item();</span><br><span class="line">    count = count - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (count = N - <span class="number">1</span>) wakeup(producer);</span><br><span class="line">    consume_item(item);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>mutex 确保缓存只被一人访问，empty 和 full 用于同步。</p>
-<p>为什么 mutex 初始是 1？生产者和消耗者都有 <code>down()</code> 让 mutex 减一。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> item;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">		item = produce_item();</span><br><span class="line">		down(&amp;empty); <span class="comment">// 检查是否大于 0。如果是 0，没有坑位，睡眠；否则减一</span></span><br><span class="line">		down(&amp;mutex); <span class="comment">// 如果 0，睡眠</span></span><br><span class="line">		insert_item(item);</span><br><span class="line">		up(&amp;mutex); <span class="comment">// 现在肯定是 0，唤醒生产者，加 1.</span></span><br><span class="line">	 	up(&amp;full); <span class="comment">// 满 +1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> item;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">		down(&amp;full); <span class="comment">// full = 0，即空，没东西减，睡眠</span></span><br><span class="line">		down(&amp;mutex); <span class="comment">// 同上</span></span><br><span class="line">		item = remove_item();</span><br><span class="line">		up(&amp;mutex); <span class="comment">// 同上</span></span><br><span class="line">		up(&amp;empty); </span><br><span class="line">	 	consume_item(item);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>交换 6，7 行会发生什么？先把 mutex 减到 0 了，发现 buffer 是满的(empty = 0)，睡眠，消耗者也被 mutex 卡着。生产者等待消耗者提升 empty，消耗者等待生产者提升 mutex，互相等待，史称<strong>死锁(deadlock)</strong>。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> item;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">		item = produce_item();</span><br><span class="line">    down(&amp;mutex); <span class="comment">// 减到 0，卡住消费者</span></span><br><span class="line">		down(&amp;empty); <span class="comment">// 完了，mutex 已经减了，到这里走不动</span></span><br><span class="line">		insert_item(item);</span><br><span class="line">		up(&amp;mutex);</span><br><span class="line">	 	up(&amp;full);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/04/14/pro_con/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/04/14/prosyn/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeff Ren">
-      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
-      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jeff Ren">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" class="post-title-link" itemprop="url">Mutual Exclusion</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:52:33" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/prosyn/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<h2 id="Critical-Section"><a href="#Critical-Section" class="headerlink" title="Critical Section"></a>Critical Section</h2><p>不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。</p>
-<h2 id="几种实现方法"><a href="#几种实现方法" class="headerlink" title="几种实现方法"></a>几种实现方法</h2><h3 id="Disable-Interrupt"><a href="#Disable-Interrupt" class="headerlink" title="Disable Interrupt"></a>Disable Interrupt</h3><p><strong>禁止</strong> context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。</p>
-<h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><p>也是 shared object，也有竞争</p>
-<h3 id="Strict-Alteration"><a href="#Strict-Alteration" class="headerlink" title="Strict Alteration"></a>Strict Alteration</h3><p>交替运行。等待太多，浪费 CPU；顺序严格，一个进程不能<strong>连续两次</strong>进入临界区；一个进程被另一个处于临界区外的进程阻塞。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// turn 初始 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Process 0</span></span><br><span class="line"><span class="keyword">while</span>(True) &#123;</span><br><span class="line">  <span class="keyword">while</span>(turn != <span class="number">0</span>)</span><br><span class="line">    ; <span class="comment">// busy waiting, 初始不会进入</span></span><br><span class="line">  critical_section();</span><br><span class="line">  turn = <span class="number">1</span>;</span><br><span class="line">  noncritical_section();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Process 1</span></span><br><span class="line"><span class="keyword">while</span>(True) &#123;</span><br><span class="line">  <span class="keyword">while</span>(turn != <span class="number">1</span>);</span><br><span class="line">  critical_section();</span><br><span class="line">  turn = <span class="number">0</span>;</span><br><span class="line">  noncritical_section();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###Peterson</p>
-<p>仅限于<strong>两个</strong>进程在 critical section 和之外交替执行</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> turn;</span><br><span class="line"><span class="keyword">int</span> interested[<span class="number">2</span>] = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">enter_region</span><span class="params">(<span class="keyword">int</span> process)</span>  <span class="comment">// process 0</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> other = <span class="number">1</span> - process;    <span class="comment">// other = 1 另一个进程 process 1</span></span><br><span class="line">    </span><br><span class="line">    interested[process] = TRUE; <span class="comment">// interested[0] = 1 想进入</span></span><br><span class="line">    turn = process;             <span class="comment">// turn = 0</span></span><br><span class="line">    <span class="keyword">while</span> (turn == process      <span class="comment">// true</span></span><br><span class="line">           &amp;&amp; interested[other] == TRUE) <span class="comment">// process 1 在里面</span></span><br><span class="line">      <span class="comment">/* 我想进入，别人在里面(true, true)，等待 */</span></span><br><span class="line">      <span class="comment">/* 否则不等待，进入临界区。*/</span></span><br><span class="line">      <span class="comment">/* 如果这个进程没有退出，则另外一个进程运行到这里时 line 14 会 true，进入循环，等待。*/</span></span><br><span class="line">        ; <span class="comment">/* busy waiting */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leave_region</span><span class="params">(<span class="keyword">int</span> process)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     interested[process] = FALSE;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>虽然 Peterson 已经避免了许多问题，但 busy waiting 还是很浪费 CPU 的，并且有更严重的隐性问题，一个低优先级的进程进入了 critical section，这时来了一个更高优先级的进程，进入 busy waiting。因为他有更高的优先级，CPU 就只想先做完他，却只能在 busy waiting 里面空转，又不管那个在 critical section 里的低优先级进程。</p>
-<p>下篇文章中会介绍新的机制 Semaphore，用睡觉来替代 busy waiting。</p>
-
-          
+          <!--/noindex-->
         
       
     </div>
@@ -771,12 +602,24 @@
                 
               
 
-              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:55:58" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
+              <time title="Created: 2019-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-12 15:33:45" itemprop="dateModified" datetime="2019-05-12T15:33:45+08:00">2019-05-12</time>
               
             
           </span>
@@ -839,22 +682,18 @@
 
       
         
+          <blockquote>
+<p>…</p>
+</blockquote>
+          <!--noindex-->
           
-            <a id="more"></a>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5 </span></span><br><span class="line">semaphore chopstick[<span class="number">5</span>] = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]; <span class="comment">// 初始可用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用第 i 只</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放下</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_chopstick</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  up(chopstick[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    think();</span><br><span class="line">    </span><br><span class="line">    take_chopstick(i); <span class="comment">// suppose 0</span></span><br><span class="line">    take_chopstick((i+<span class="number">1</span>) % N); <span class="comment">// (0+1)%5 = 1</span></span><br><span class="line">    </span><br><span class="line">    eat();</span><br><span class="line">    </span><br><span class="line">    put_chopstick(i);</span><br><span class="line">    put_chopstick((i+<span class="number">1</span>) % N);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>官方解读：当 0 号哲学家已经拿起 0 号筷子(Line 14 - 18)，准备拿起 1 号(Line 15)时，1 号哲学家拿起了他左边的筷子(即 1 号)(Line 14 - 18)，导致 0 号哲学家必须停下等待(Line 15 睡觉)，接着 2、3、4 号也如此</p>
-<p><strong>疑问：</strong></p>
-<p><strong>情况1: 所有哲学家同时拿起左边的筷子？没人能吃到捞面。</strong></p>
-<p><strong>情况2: 最多只有一个哲学家能吃到捞面，其他全部饿扁。</strong></p>
-<p>一种解决方案，当某哲学家发现有一边用不了时，放下已经拿起来的。睡 1s，再拿起，再检测，持续下去，直到两只手都有时停止。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    down(&amp;chopstick[i]);</span><br><span class="line">    <span class="keyword">if</span>(chopstick[(i+<span class="number">1</span>) % N] is used) &#123;</span><br><span class="line">      up(&amp;chopstick[i]);</span><br><span class="line">      sleep(<span class="number">1</span>); <span class="comment">// 只睡 1 秒</span></span><br><span class="line">      <span class="comment">// sleep(random)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      down(chopstick[(i+<span class="number">1</span>) % N]);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为什么睡随机时间也不 work？某日两个人同时饿了，random 也是相同的值</p>
-<h2 id="最终解决方案"><a href="#最终解决方案" class="headerlink" title="最终解决方案"></a>最终解决方案</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT ((i+N-1) % N)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RIGHT ((i+1) % N)</span></span><br><span class="line"><span class="keyword">int</span> state[N]; <span class="comment">// 每个人的状态</span></span><br><span class="line">semaphore mutex = <span class="number">1</span>; <span class="comment">// 同一时间只允许一个人改变状态</span></span><br><span class="line">semaphore s[N]; <span class="comment">// 初始 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(state[i] == HUNGRY &amp;&amp; state[LEFT] != EATING &amp;&amp; state[RIGHT] != EATING) &#123;</span><br><span class="line">	 state[i] = EATING;</span><br><span class="line">	 up(&amp;s[i]); <span class="comment">// 顺利通过或者疏通第 20 行</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(&amp;mutex);</span><br><span class="line">  state[i] = HUNGRY;</span><br><span class="line">  test(i); <span class="comment">// 检查，决定能否通过 20 行</span></span><br><span class="line">  up(&amp;mutex);</span><br><span class="line">  down(&amp;s[i]); <span class="comment">// 阻止没有通过检测条件的哲学家</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放下筷子，并尝试让左右邻居进入可捞的状态</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_chopsticks</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  down(&amp;mutex);</span><br><span class="line">  state[i] = THINKING;</span><br><span class="line">  test(LEFT); </span><br><span class="line">  test(RIGHT);</span><br><span class="line">  up(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  think();</span><br><span class="line">  take_chopsticks(i);</span><br><span class="line">  eat();</span><br><span class="line">  put_chopsticks(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>过程：</p>
-<p>进入拿筷子函数，状态设为饥饿，test(i) 检测左右，成功：状态设为捞，s[i] 加一，顺利完成拿起操作。</p>
-<p>进入放下函数，状态设为思考，test(LEFT), test(RIGHT)，为可能卡在 Line 20 睡觉的左右邻居做检测。</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/04/14/philo/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -909,7 +748,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote8/">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/04/14/prosyn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff Ren">
@@ -929,7 +768,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/" class="post-title-link" itemprop="url">Python Note(8)</a>
+                <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" class="post-title-link" itemprop="url">Mutual Exclusion</a>
               
             
           </h1>
@@ -954,12 +793,24 @@
                 
               
 
-              <time title="Created: 2019-03-20 00:00:00 / Modified: 22:44:20" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
+              <time title="Created: 2019-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-12 15:35:03" itemprop="dateModified" datetime="2019-05-12T15:35:03+08:00">2019-05-12</time>
               
             
           </span>
@@ -991,9 +842,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#comments" itemprop="discussionUrl">
+                <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote8/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/prosyn/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1022,13 +873,11 @@
 
       
         
-          <blockquote>
-<p>Python 的面向对象，之前 iOS 的<a href="http://jeffren.top/2018/12/07/chap%2013%20OOP/#more">文章</a>中有更基础详细的讲解。</p>
-</blockquote>
+          <h2 id="Critical-Section"><a href="#Critical-Section" class="headerlink" title="Critical Section"></a>Critical Section</h2><p>不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#more" rel="contents">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/04/14/prosyn/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1208,6 +1057,185 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/03/20/PythonNote8/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/" class="post-title-link" itemprop="url">Python Note(8)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-20 00:00:00 / Modified: 22:44:20" itemprop="dateCreated datePublished" datetime="2019-03-20T00:00:00+08:00">2019-03-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/PythonNote8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>Python 的面向对象，之前 iOS 的<a href="http://jeffren.top/2018/12/07/chap%2013%20OOP/#more">文章</a>中有更基础详细的讲解。</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/StudentJeffRen.github.io/2019/03/20/PythonNote8/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

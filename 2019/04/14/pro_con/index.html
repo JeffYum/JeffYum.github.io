@@ -122,18 +122,18 @@
 
 
 
-  <meta name="description" content="123456789101112void down(semaphore *s) &amp;#123;	if( *s &amp;gt; 0 )		*s = *s-1;	else		sleep();&amp;#125;void up(semaphore *s) &amp;#123;	if( *s == 0 )		wakeup_proc();	*s = *s + 1;&amp;#125; 信号丢失叫醒没有睡觉的人？信号丢失 123456789">
+  <meta name="description" content="…">
 <meta name="keywords" content="操作系统,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="生产者，消费者问题">
 <meta property="og:url" content="http://jeffren.top/2019/04/14/pro_con/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="123456789101112void down(semaphore *s) &amp;#123;	if( *s &amp;gt; 0 )		*s = *s-1;	else		sleep();&amp;#125;void up(semaphore *s) &amp;#123;	if( *s == 0 )		wakeup_proc();	*s = *s + 1;&amp;#125; 信号丢失叫醒没有睡觉的人？信号丢失 123456789">
+<meta property="og:description" content="…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T09:54:26.964Z">
+<meta property="og:updated_time" content="2019-05-12T07:34:18.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生产者，消费者问题">
-<meta name="twitter:description" content="123456789101112void down(semaphore *s) &amp;#123;	if( *s &amp;gt; 0 )		*s = *s-1;	else		sleep();&amp;#125;void up(semaphore *s) &amp;#123;	if( *s == 0 )		wakeup_proc();	*s = *s + 1;&amp;#125; 信号丢失叫醒没有睡觉的人？信号丢失 123456789">
+<meta name="twitter:description" content="…">
 
 
 
@@ -410,12 +410,24 @@
                 
               
 
-              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:54:26" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
+              <time title="Created: 2019-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-12 15:34:18" itemprop="dateModified" datetime="2019-05-12T15:34:18+08:00">2019-05-12</time>
               
             
           </span>
@@ -477,7 +489,10 @@
       
 
       
-        <a id="more"></a>
+        <blockquote>
+<p>…</p>
+</blockquote>
+<a id="more"></a>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(semaphore *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( *s &gt; <span class="number">0</span> )</span><br><span class="line">		*s = *s<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		sleep();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(semaphore *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( *s == <span class="number">0</span> )</span><br><span class="line">		wakeup_proc();</span><br><span class="line">	*s = *s + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="信号丢失"><a href="#信号丢失" class="headerlink" title="信号丢失"></a>信号丢失</h2><p>叫醒没有睡觉的人？信号丢失</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> item;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    item = produce_item();</span><br><span class="line">    <span class="keyword">if</span> (count == N) sleep();</span><br><span class="line">    insert_item(item);</span><br><span class="line">    count = count + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">1</span>) wakeup(consumer);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> item;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(TRUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">0</span>) sleep();</span><br><span class="line">    item = remove_item();</span><br><span class="line">    count = count - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (count = N - <span class="number">1</span>) wakeup(producer);</span><br><span class="line">    consume_item(item);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -556,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/04/14/prosyn/" rel="next" title="Mutual Exclusion">
-                <i class="fa fa-chevron-left"></i> Mutual Exclusion
+              <a href="/StudentJeffRen.github.io/2019/04/14/philo/" rel="next" title="哲学家就餐问题">
+                <i class="fa fa-chevron-left"></i> 哲学家就餐问题
               </a>
             
           </div>

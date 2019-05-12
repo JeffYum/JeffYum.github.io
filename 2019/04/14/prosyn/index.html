@@ -122,18 +122,18 @@
 
 
 
-  <meta name="description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。 几种实现方法Disable Interrupt禁止 context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。 Lo">
+  <meta name="description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。">
 <meta name="keywords" content="操作系统,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mutual Exclusion">
 <meta property="og:url" content="http://jeffren.top/2019/04/14/prosyn/index.html">
 <meta property="og:site_name" content="Jeff Ren">
-<meta property="og:description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。 几种实现方法Disable Interrupt禁止 context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。 Lo">
+<meta property="og:description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T09:52:33.764Z">
+<meta property="og:updated_time" content="2019-05-12T07:35:03.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mutual Exclusion">
-<meta name="twitter:description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。 几种实现方法Disable Interrupt禁止 context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。 Lo">
+<meta name="twitter:description" content="Critical Section不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。">
 
 
 
@@ -410,12 +410,24 @@
                 
               
 
-              <time title="Created: 2019-04-14 00:00:00 / Modified: 17:52:33" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
+              <time title="Created: 2019-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00+08:00">2019-04-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-12 15:35:03" itemprop="dateModified" datetime="2019-05-12T15:35:03+08:00">2019-05-12</time>
               
             
           </span>
@@ -477,8 +489,8 @@
       
 
       
-        <a id="more"></a>
-<h2 id="Critical-Section"><a href="#Critical-Section" class="headerlink" title="Critical Section"></a>Critical Section</h2><p>不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。</p>
+        <h2 id="Critical-Section"><a href="#Critical-Section" class="headerlink" title="Critical Section"></a>Critical Section</h2><p>不分享的代码段，保证 mutual exclusion，应该尽可能紧凑：dependency of data, 模块化，充分利用多个 CPU。</p>
+<a id="more"></a>
 <h2 id="几种实现方法"><a href="#几种实现方法" class="headerlink" title="几种实现方法"></a>几种实现方法</h2><h3 id="Disable-Interrupt"><a href="#Disable-Interrupt" class="headerlink" title="Disable Interrupt"></a>Disable Interrupt</h3><p><strong>禁止</strong> context switching，导致如果 critical section 中有一个接受输入语句，用户又不输入，其他处理器也一直不允许访问分享内存，有点流氓了。</p>
 <h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><p>也是 shared object，也有竞争</p>
 <h3 id="Strict-Alteration"><a href="#Strict-Alteration" class="headerlink" title="Strict Alteration"></a>Strict Alteration</h3><p>交替运行。等待太多，浪费 CPU；顺序严格，一个进程不能<strong>连续两次</strong>进入临界区；一个进程被另一个处于临界区外的进程阻塞。</p>
@@ -558,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/04/14/philo/" rel="next" title="哲学家就餐问题">
-                <i class="fa fa-chevron-left"></i> 哲学家就餐问题
+              <a href="/StudentJeffRen.github.io/2019/03/20/PythonNote6/" rel="next" title="Python Note(6)">
+                <i class="fa fa-chevron-left"></i> Python Note(6)
               </a>
             
           </div>
@@ -568,8 +580,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/StudentJeffRen.github.io/2019/04/14/pro_con/" rel="prev" title="生产者，消费者问题">
-                生产者，消费者问题 <i class="fa fa-chevron-right"></i>
+              <a href="/StudentJeffRen.github.io/2019/04/14/philo/" rel="prev" title="哲学家就餐问题">
+                哲学家就餐问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

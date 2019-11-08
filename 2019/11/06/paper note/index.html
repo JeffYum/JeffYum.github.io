@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/StudentJeffRen.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/StudentJeffRen.github.io/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/StudentJeffRen.github.io/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/StudentJeffRen.github.io/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/StudentJeffRen.github.io/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/StudentJeffRen.github.io/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/StudentJeffRen.github.io/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="待整理">
+<meta name="keywords" content="软件工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程论文笔记">
+<meta property="og:url" content="http://jeffren.top/2019/11/06/paper note/index.html">
+<meta property="og:site_name" content="Jeff Ren">
+<meta property="og:description" content="待整理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-08T05:08:38.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程论文笔记">
+<meta name="twitter:description" content="待整理">
+
+
+
+
+
+
+  <link rel="canonical" href="http://jeffren.top/2019/11/06/paper note/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>软件工程论文笔记 | Jeff Ren</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127291009-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127291009-1');
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4e5c9b3d17bfd01c7e6f81305b2eff02";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/StudentJeffRen.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jeff Ren</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/StudentJeffRen.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/StudentJeffRen.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/StudentJeffRen.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/StudentJeffRen.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jeffren.top/StudentJeffRen.github.io/2019/11/06/paper note/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff Ren">
+      <meta itemprop="description" content="「Stay Hungry, Stay Foolish.」">
+      <meta itemprop="image" content="/StudentJeffRen.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeff Ren">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软件工程论文笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-11-06 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-06T00:00:00+08:00">2019-11-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-08 13:08:38" itemprop="dateModified" datetime="2019-11-08T13:08:38+08:00">2019-11-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/StudentJeffRen.github.io/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/StudentJeffRen.github.io/2019/11/06/paper note/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/06/paper note/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>待整理</p>
+</blockquote>
+<a id="more"></a>
+<p>需要检查的数据规模：全世界。</p>
+<p>数据更改量：一天上千次。</p>
+<p>如果只改变一丁点地方，却对整个地图做检查，那性能开销巨大。</p>
+<p>现在的技术依赖<strong>手工策划静态子集</strong>，运行在数据产生的不同阶段。这些硬编码子集对数据更改不了解，导致 bug 检查推迟到质量保证的下一个阶段。</p>
+<p>不仅服务代码要用传统的基于代码的测试案例测试，数据也必须使用 <em>data correctness checks</em> 验证其合理性。</p>
+<p>Apple Maps 每次发行前都要运行数十亿次数据检查，一些检查即便利用了大量的计算资源，仍然需要花费几小时。因此不可能对每次数据更改都运行全部的检查。</p>
+<p>现在的地图团队主要在两方面让数据检查更容易处理：</p>
+<ol>
+<li>把所有检查分为<strong>检查组</strong>，每次运行一组，而不是全部检查</li>
+<li>在一批修改后运行一次检查，而不是每次修改都运行</li>
+</ol>
+<p>Hand-curated 检查组采用硬编码，不考虑修改数据的类型，在手动选择的特定点执行。</p>
+<p>我们发现这样不了解修改的硬编码会造成两个问题</p>
+<ol>
+<li>检查组中的很多检查可能和修改无关</li>
+<li>而那些有关的检查没有包含进来执行</li>
+</ol>
+<p>这造成了一错误没有被发现，知道发布前的 catch-all 检查才发现。</p>
+<p>尽可能快地找到错误。为一个新的地区绘制地图，规则可能会改变，例如。。。结果就是，为老地区开发的检查在新地区可能会不通过。</p>
+<p>因此，我们在两方面升级了地图产品的软件工程：</p>
+<ol>
+<li><strong>动态检查推荐器</strong>，可以选择和排名，仅与最后一次修改有关的检查，帮助我们快速检测错误，节省大量的计算资源</li>
+<li><strong>快速渗透</strong>最后一次造成失败的特征，为整个地图开发过程提供了前所未有的<strong>可见性</strong>，以便快速通知数据编辑者和检查编辑者。</li>
+</ol>
+<p>核心思路：全集能检查出的错误，子集也能够全部检查出来，我们认为它是安全的。</p>
+<h2 id="RQ1-Safe-subset-of-check-与-hand-curated-static-set-相比，效率如何？"><a href="#RQ1-Safe-subset-of-check-与-hand-curated-static-set-相比，效率如何？" class="headerlink" title="RQ1 Safe subset of check 与 hand-curated static set 相比，效率如何？"></a>RQ1 <em>Safe subset of check</em> 与 <em>hand-curated static set</em> 相比，效率如何？</h2><p>两个指标：</p>
+<p>（1）effeciency：推荐子集/手工策划静态集</p>
+<p>（2）recall：子集检查出错误/全集检查出错误</p>
+<p>hand-curated 和 recommended sets 在每次合并请求时改变，所以一次请求，一次计算</p>
+<p>Static analysis based check selection to recommend a safe set of checks</p>
+<h2 id="RQ2-Check-coverage-和-safe-selection-的新概念能帮助现在的手工检查选择（使用-check-group）方法识别-gaps吗？"><a href="#RQ2-Check-coverage-和-safe-selection-的新概念能帮助现在的手工检查选择（使用-check-group）方法识别-gaps吗？" class="headerlink" title="RQ2 Check coverage 和 safe selection 的新概念能帮助现在的手工检查选择（使用 check group）方法识别 gaps吗？"></a>RQ2 <em>Check coverage</em> 和 <em>safe selection</em> 的新概念能帮助现在的手工检查选择（使用 check group）方法识别 gaps吗？</h2><p>将使用候选检查的全集，计算出安全子集，确定当前手工检查操作，所遗漏的检查数量。一次请求，一次计算。</p>
+<h2 id="RQ3-根据失败可能性，排名检查的机器学习模型，准确性如何？"><a href="#RQ3-根据失败可能性，排名检查的机器学习模型，准确性如何？" class="headerlink" title="RQ3 根据失败可能性，排名检查的机器学习模型，准确性如何？"></a>RQ3 根据失败可能性，排名检查的机器学习模型，准确性如何？</h2><p>通过机器学习模型的几个标准的性能指标测量准确性</p>
+<ul>
+<li><em>recall</em>：模型预测出失败检测的百分比</li>
+<li><em>precision</em>：模型预测失败检测的精确度</li>
+<li><em>FPR</em>：误报率（不正确预测/通过的检测数量）</li>
+<li><em>AUC</em>：整体分类器性能度量</li>
+</ul>
+<h2 id="RQ4-机器学习结果能否提供可操作的见解，哪次编辑造成了衰退？"><a href="#RQ4-机器学习结果能否提供可操作的见解，哪次编辑造成了衰退？" class="headerlink" title="RQ4 机器学习结果能否提供可操作的见解，哪次编辑造成了衰退？"></a>RQ4 机器学习结果能否提供可操作的见解，哪次编辑造成了衰退？</h2><p>检验学习模型的决策部分，来认出最有识别力的信号，用它们来界定，哪一次导致了最近检查结果从通过到失败。</p>
+<h2 id="研究过程"><a href="#研究过程" class="headerlink" title="研究过程"></a>研究过程</h2><p>地图数据由不同的团队完成，每个团队负责一个分支，最后汇总到 master 仓库。在汇总之前，需要确保他们所做的改变不会引起恶化。大量编辑和频繁的合并导致这一阶段十分关键，开销也非常大，因此我们的方法会在这一阶段进行操作。</p>
+<p>检查静态地分成<strong>检查组</strong>，根据工程的类型由质量保障人员选择。实际的检查是从所选检查组中执行。</p>
+<p>15500 次合并检查不通过，更改和错误原因被记录。</p>
+<ol>
+<li>计算 diff（数据更改）</li>
+<li>用 diff 来进行安全检查选择</li>
+<li>排名安全集中的检查，使用梯度决策提升树模型和深度神经网络</li>
+</ol>
+<h2 id="RQ1：Safe-Check-Selection"><a href="#RQ1：Safe-Check-Selection" class="headerlink" title="RQ1：Safe Check Selection"></a>RQ1：Safe Check Selection</h2><p>Effeciency：消除多余检查的收益，要远大于做推荐的开销。</p>
+<p>实验结果：推荐了 35%，65% 被消除。推荐工具开销 500 ms &lt;&lt; 验证工作 35 s。</p>
+<p>Recall：最大化能找到错误的检查推荐数量。理想状态，所有的失败检查，确保合并到 master 的数据没有问题。</p>
+<p>实验结果：2.5% 能找出错误的检查没有推荐。有两个主要原因</p>
+<ol>
+<li>识别对象类型和领域的元数据不准确</li>
+<li>在分配时，仓库里已经存在的错误，不是由编辑人员引起的</li>
+</ol>
+<h2 id="RQ2-Improving-Check-Coverage"><a href="#RQ2-Improving-Check-Coverage" class="headerlink" title="RQ2: Improving Check Coverage"></a>RQ2: Improving Check Coverage</h2><p>看看手工检查组有没有遗漏。</p>
+<p>提高检查范围。</p>
+<p>蓝色典型</p>
+<p>橙色考虑全集</p>
+<p>提高范围，提高效率，</p>
+<h2 id="RQ3-Machine-Learning-Based-Ranking-Results"><a href="#RQ3-Machine-Learning-Based-Ranking-Results" class="headerlink" title="RQ3: Machine Learning Based Ranking Results"></a>RQ3: Machine Learning Based Ranking Results</h2><p>使用深度神经网络和梯度提升决策树来预测检查出问题的可能性。这两个模型能够表达复杂关系，而且在很多工业应用中工作得很好。失败的可能性用来排名和选择检查。</p>
+<p>对每一个检查，失败和通过的案例被分为 80% 训练集，20%测试集。每个检查都建立机器学习模型，pass(positive)，fail(negative)</p>
+<p>21% 的检查使用了两种模型。性能几乎相同，但我们展现梯度提升决策树的执行结果，因为它是可解释的，并且我们可以从它的结构中获得见解。我们推测，随着训练数据规模显著增加，深度神经网络的性能会优于梯度提升决策树。</p>
+<p>###解释 Table 2</p>
+<p>以 C01 为例</p>
+<p>测试集中有 419 个失败案例，我们的模型预测出了 407 个，Recall = 97.2%</p>
+<p>预测一个故障时的准确率是 91.8%。</p>
+<p>2293 个通过的案例中有 183 个被错误的标记成失败，FPR = 0.08</p>
+<p>AUC 0.974，表示总体上非常高的分类器性能。</p>
+<p>对于 C03, 04, 05, 尽管 AUC 很高，但 FPR 也增加了，因为模型被调整为至少有 97% 的 recall（97% 的失败要被推荐）</p>
+<p>Table 2 显示我们可以用较低的误报率来预测真正的故障。</p>
+<h2 id="RQ4-Actionable-Insights-Derived-from-ML-Models"><a href="#RQ4-Actionable-Insights-Derived-from-ML-Models" class="headerlink" title="RQ4: Actionable Insights Derived from ML Models"></a>RQ4: Actionable Insights Derived from ML Models</h2><p>特征重要性：输入特征对模型预测输出的重要性。</p>
+<p>每一行代表一个物体的特征，这些字段包含物体的属性，编辑者对他们进行编辑，这些编辑用来训练模型。因此我们可以使用模型中这些字段的重要性，来理解哪次编辑造成了故障检查。</p>
+<p>英国和加拿大的邮递区号和美国格式不同。被训练的模型显示，在编辑加拿大和英国的子邮递区号，和通过或不通过子邮递区号检查的可能性之间，有强烈的关联性。这表明那个特征对检查故障有相当大的影响，因此需要仔细检查。</p>
+<h2 id="数据的世界"><a href="#数据的世界" class="headerlink" title="数据的世界"></a>数据的世界</h2><p>不到一平方英里的面积，也有着巨大的信息密度，例如：单行线，双向道路，交叉，信号灯，建筑，公园，水域等等。</p>
+<p>要构建这样的地图，我们需要遵顼特定的规则，来反映我们对世界的理解，和那些单独元素之间的关系。</p>
+<p>对人类来说，这些都是很直白的，如果道路和水域重叠了，我们会想到那是桥或者隧道；四条单行线交叉，那这个路口不能通向所有方向；3D 地图中，建筑物不能漂浮在空中。人类可以很迅速的发现违反规则的问题。</p>
+<p>而计算机缺乏这种直觉，这就是我们要精确编码这些规则，来检查数据的原因。</p>
+<h2 id="表示法"><a href="#表示法" class="headerlink" title="表示法"></a>表示法</h2><p>把道路分成若干个节点（道路上的点）特征。每个特征赋值 id，和一系列 tag，键值对描述地理属性(Table 1)</p>
+<p>这个建模方法很牛皮啊，允许我们表示任意复杂的地图元素，添加无限可能的 tag，未来可以添加未知的元素来增强 Apple Maps 产品。当然了，只有小部分有用的 tags，最终示例地图的小子集表示为 Figure 2.</p>
+<h2 id="建模数据检查"><a href="#建模数据检查" class="headerlink" title="建模数据检查"></a>建模数据检查</h2><p>我们的模型过于灵活，所有现实世界的实体都可以表示。事实上，必须加上一些额外的限制，来让模型表现理智的世界。例如，在我们的世界里，房子必须建在地上，要是你的地图里面有房子漂在空中，我们可以很自信的说那没有反应真实世界。</p>
+<p>我们希望实体通过我们的<em>数据正确性检查</em>，每次检查都对现实世界中特征行为和它们彼此的关系，实施特定的规则。可表示为<strong>布尔函数 t: U -&gt; {true, flase}</strong>. 下面是一个对交叉路口（至少有一条路通过它）的检查</p>
+<p>地图中存在 F~i~, 类型是 node，子类型是信号，但通过它的路径数小于 1，则检查返回 false。</p>
+<h2 id="数据检查范围"><a href="#数据检查范围" class="headerlink" title="数据检查范围"></a>数据检查范围</h2><p>上面的检查中，F~i~ 有很多没有用到的区域，每次只需检查可能用到的 tags 子集就行了。定义集合 D~j~ 表示检查 t 的依赖性，它是 t 产生正确结果需要<em>覆盖的</em>  tags 的集合。上面的例子中，t~intersection~ 覆盖 type, subtype, and paths.</p>
+<p>虚构一个程序，包含表示地图中所有特征的代码，特征每个 tags 都有对应的访问函数，在程序上运行检查 t~j~，记录它调用了哪些访问函数，再把这些 tags 放到 D~j~ 里面去。</p>
+<p><em>短路</em></p>
+<p>地图大，检查是为定位已经存在于地图中的特征而编写，这确保了代码覆盖方法将捕捉所有 tags</p>
+<h3 id="严格定义-D-j"><a href="#严格定义-D-j" class="headerlink" title="严格定义 D~j~"></a>严格定义 D~j~</h3><p>依赖性</p>
+<blockquote>
+<p>\ 差集</p>
+<p>Δ 对称差，只属于其中一个集合</p>
+</blockquote>
+<p>通过严格定义，我们可以断言，D~j~ 中的标签<strong>不变</strong>，t~j~ 的检查结果也<strong>不会变</strong>。</p>
+<h2 id="建模地图修改"><a href="#建模地图修改" class="headerlink" title="建模地图修改"></a>建模地图修改</h2><p>改变应该指出哪些检查可能会找到错误。比如我们改变了水体，那对水体的检查将会找到错误。我们为<strong>每个 Feature</strong>（row） 定义了 C，计算公式为<br>$$<br>C = {f | (f, v) ∈ (F ∆ F’)}<br>$$<br>实际应用中，通常会同时改变多个 Feature，最后得到一个改变矩阵 𝑪~i,j~ ，有改变的标签记为 1，否则为 0。 </p>
+<p>通过在改变前后的 M 中添加空行，表示整个 Feature 删除或添加。</p>
+<h2 id="定义数据选择安全性"><a href="#定义数据选择安全性" class="headerlink" title="定义数据选择安全性"></a>定义数据选择安全性</h2><p><strong>检查选择算法</strong>在原始检查集中，选取一部分，这部分检查囊括了原始集中，能够暴露改版地图所有错误的检查。</p>
+<p>因为我们要运行一套检查，所以定义检查依赖性矩阵 D~i,j~ ，表示每一条检查依赖哪些标签。</p>
+<p>利用 J，C，D 算出安全集 U。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/StudentJeffRen.github.io/uploads/wechat-qcode.jpg" alt="Jeff Ren wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/StudentJeffRen.github.io/images/wechatpay.jpg" alt="Jeff Ren WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/StudentJeffRen.github.io/tags/软件工程/" rel="tag"># 软件工程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/StudentJeffRen.github.io/2019/05/12/Routing Fundamental/" rel="next" title="Routing Fundamental">
+                <i class="fa fa-chevron-left"></i> Routing Fundamental
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jeff Ren</p>
+              <p class="site-description motion-element" itemprop="description">「Stay Hungry, Stay Foolish.」</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/StudentJeffRen.github.io/archives/">
+                
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/StudentJeffRen.github.io/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/StudentJeffRen.github.io/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/StudentJeffRen" title="GitHub &rarr; https://github.com/StudentJeffRen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ1-Safe-subset-of-check-与-hand-curated-static-set-相比，效率如何？"><span class="nav-number">1.</span> <span class="nav-text">RQ1 Safe subset of check 与 hand-curated static set 相比，效率如何？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ2-Check-coverage-和-safe-selection-的新概念能帮助现在的手工检查选择（使用-check-group）方法识别-gaps吗？"><span class="nav-number">2.</span> <span class="nav-text">RQ2 Check coverage 和 safe selection 的新概念能帮助现在的手工检查选择（使用 check group）方法识别 gaps吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ3-根据失败可能性，排名检查的机器学习模型，准确性如何？"><span class="nav-number">3.</span> <span class="nav-text">RQ3 根据失败可能性，排名检查的机器学习模型，准确性如何？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ4-机器学习结果能否提供可操作的见解，哪次编辑造成了衰退？"><span class="nav-number">4.</span> <span class="nav-text">RQ4 机器学习结果能否提供可操作的见解，哪次编辑造成了衰退？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#研究过程"><span class="nav-number">5.</span> <span class="nav-text">研究过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ1：Safe-Check-Selection"><span class="nav-number">6.</span> <span class="nav-text">RQ1：Safe Check Selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ2-Improving-Check-Coverage"><span class="nav-number">7.</span> <span class="nav-text">RQ2: Improving Check Coverage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ3-Machine-Learning-Based-Ranking-Results"><span class="nav-number">8.</span> <span class="nav-text">RQ3: Machine Learning Based Ranking Results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RQ4-Actionable-Insights-Derived-from-ML-Models"><span class="nav-number">9.</span> <span class="nav-text">RQ4: Actionable Insights Derived from ML Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据的世界"><span class="nav-number">10.</span> <span class="nav-text">数据的世界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表示法"><span class="nav-number">11.</span> <span class="nav-text">表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建模数据检查"><span class="nav-number">12.</span> <span class="nav-text">建模数据检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据检查范围"><span class="nav-number">13.</span> <span class="nav-text">数据检查范围</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#严格定义-D-j"><span class="nav-number">13.1.</span> <span class="nav-text">严格定义 D~j~</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建模地图修改"><span class="nav-number">14.</span> <span class="nav-text">建模地图修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义数据选择安全性"><span class="nav-number">15.</span> <span class="nav-text">定义数据选择安全性</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff Ren</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/StudentJeffRen.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/StudentJeffRen.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/StudentJeffRen.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/StudentJeffRen.github.io/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/StudentJeffRen.github.io/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/StudentJeffRen.github.io/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/StudentJeffRen.github.io/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/StudentJeffRen.github.io/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/StudentJeffRen.github.io/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/StudentJeffRen.github.io/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://jeffren.disqus.com/count.js" async></script>
+  
+
+  
+    <script>
+      var disqus_config = function () {
+        this.page.url = "http://jeffren.top/2019/11/06/paper note/";
+        this.page.identifier = "2019/11/06/paper note/";
+        this.page.title = '软件工程论文笔记';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jeffren.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
